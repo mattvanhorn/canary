@@ -1,12 +1,19 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.1.1'
-
-# Bundle edge Rails instead:
-# gem 'rails',     :git => 'git://github.com/rails/rails.git'
-
 gem 'pg'
 
+gem 'jquery-rails'
+gem "haml"
+gem "sass"
+gem "haml-rails"
+gem "jquery-rails"
+gem "formtastic"
+gem "paperclip"
+gem 'decent_exposure'
+gem 'draper'
+gem 'omniauth-identity'
+gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -14,47 +21,33 @@ group :assets do
   gem 'sass-rails',   '~> 3.1.4'
   gem 'coffee-rails', '~> 3.1.1'
   gem 'uglifier', '>= 1.0.3'
+  gem "compass"
 end
 
-gem 'jquery-rails'
+group :development do
+  gem "pickler"
+  gem "guard"
+  gem "guard-rspec"
+  gem "guard-cucumber"
+  gem "guard-spork"
+  gem "guard-pow"
+  gem "rb-fsevent"
+  gem "growl"
+  gem "hpricot"
+  gem "ruby_parser"
+end
 
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+group :development, :test do
+  gem "cucumber-rails"
+  gem "rspec-rails"
+  gem "shoulda-matchers"
+  gem "capybara"
+  gem "fabrication"
+  gem "database_cleaner"
+  gem "launchy"
+  gem "cover_me"
+  gem "faker"
+  gem "spork"
+end
 
-# Use unicorn as the web server
-# gem 'unicorn'
 
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'
-
-gem "pg"
-gem "haml"
-gem "sass"
-gem "haml-rails"
-gem "jquery-rails"
-gem "formtastic"
-gem "paperclip"
-gem "compass", :group => :assets
-gem "pickler", :group => :development
-gem "guard", :group => :development
-gem "guard-rspec", :group => :development
-gem "guard-cucumber", :group => :development
-gem "guard-spork", :group => :development
-gem "guard-pow", :group => :development
-gem "rb-fsevent", :group => :development
-gem "growl", :group => :development
-gem "hpricot", :group => :development
-gem "ruby_parser", :group => :development
-gem "cucumber-rails", :group => [:development, :test]
-gem "rspec-rails", :group => [:development, :test]
-gem "shoulda-matchers", :group => [:development, :test]
-gem "capybara", :group => [:development, :test]
-gem "fabrication", :group => [:development, :test]
-gem "database_cleaner", :group => [:development, :test]
-gem "launchy", :group => [:development, :test]
-gem "cover_me", :group => [:development, :test]
-gem "faker", :group => [:development, :test]
-gem "spork", :group => [:development, :test]
