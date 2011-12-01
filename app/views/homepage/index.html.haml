@@ -1,7 +1,7 @@
 - if current_user
-  %p= link_to "Log Out", "/logout"
+  %p= link_to "Sign Out", sign_out_path
   %p= link_to "Update Status", "/status/new"
   
 - else
-  %p= link_to "Log In", "/auth/identity"
-  %p= link_to "Register", "/auth/identity/register"
+  %p= link_to "Sign In", sign_in_path
+  %p= link_to "Sign Up", sign_up_path

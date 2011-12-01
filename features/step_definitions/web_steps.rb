@@ -14,6 +14,10 @@ Then /^I should see a link to (.+)$/ do |page_name|
   page.should have_selector("a[href='#{path_to(page_name)}']")
 end
 
+Then /^I should not see a link to (.+)$/ do |page_name|
+  page.should_not have_selector("a[href='#{path_to(page_name)}']")
+end
+
 Then /^show me the page$/ do
   save_and_open_page
 end

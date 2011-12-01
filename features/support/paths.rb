@@ -11,12 +11,15 @@ module NavigationHelpers
     when /the home\s?page/
       '/'
       
-    when /the registration page/
-      '/auth/identity/register'
+    when /the sign-up page/
+      '/sign-up'
     
-    when /the logout page/
-      '/logout'
+    when /the sign-out page/
+      '/sign-out'
     
+    when /the sign-in page/
+      '/sign-in'
+      
     when /the update status page/
       '/status/new' # there are no real 'updates' - just new statuses
     else

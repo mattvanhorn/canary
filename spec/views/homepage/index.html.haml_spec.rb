@@ -9,31 +9,31 @@ describe 'homepage/index.html.haml' do
       render
     end
     
-    it "has a link to register" do
-      rendered.should have_selector('a[href="/auth/identity/register"]')
+    it "has a link to sign up" do
+      rendered.should have_selector("a[href='#{sign_up_path}']")
     end
     
-    it "has a link to log in" do
-      rendered.should have_selector('a[href="/auth/identity"]')
+    it "has a link to sign in" do
+      rendered.should have_selector("a[href='#{sign_in_path}']")
     end
   end
   
-  describe "when logged in" do
+  describe "when signed in" do
     before(:each) do
       view.stub(:current_user).and_return(mock('user'))
       render
     end
     
-    it "has no link to register" do
-      rendered.should_not have_selector('a[href="/auth/identity/register"]')
+    it "has no link to sign up" do
+      rendered.should_not have_selector("a[href='#{sign_up_path}']")
     end
     
-    it "has no link to log in" do
-      rendered.should_not have_selector('a[href="/auth/identity"]')
+    it "has no link to sign in" do
+      rendered.should_not have_selector("a[href='#{sign_in_path}']")
     end
     
-    it "has a link to log out" do
-      rendered.should have_selector('a[href="/logout"]')
+    it "has a link to sign out" do
+      rendered.should have_selector("a[href='#{sign_out_path}']")
     end
   end
 end

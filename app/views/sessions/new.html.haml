@@ -1,7 +1,15 @@
-<form method='post' action='/auth/identity/callback' noValidate='noValidate'>
-<label for='auth_key'>Login:</label>
-<input type='text' id='auth_key' name='auth_key'/>
-<label for='password'>Password:</label>
-<input type='password' id='password' name='password'/><p align='center'><a href='/auth/identity/register'>Create an Identity</a></p>      
-<button type='submit'>Connect</button>
-</form>
+= flash[:alert]
+
+= form_tag '/auth/identity/callback', :class => 'formtastic' do |f| 
+  %fieldset.inputs
+    %ol
+      = semantic_input_tag(:auth_key, :string, t('.auth_key'))
+      = semantic_input_tag(:password, :password)  
+      
+  %fieldset.buttons
+    %ol
+      %li.commit.button.input
+        = submit_tag t('.submit'), :class => 'btn primary create'
+        
+  %p= link_to t('.sign_up_link'), sign_up_path
+  

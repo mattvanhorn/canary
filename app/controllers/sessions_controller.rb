@@ -1,8 +1,13 @@
 class SessionsController < ApplicationController
+  
   def create
     @identity = Identity.find_from_hash(auth_hash)
     self.current_user = @identity.user
-    redirect_to '/'
+    redirect_to root_url
+  end
+  
+  def failure
+    redirect_to sign_in_url, :alert => I18n.t(request.env['omniauth.error.type'])
   end
   
   def destroy
@@ -12,7 +17,6 @@ class SessionsController < ApplicationController
   end
   
   protected
-
   def auth_hash
     request.env['omniauth.auth']
   end

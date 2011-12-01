@@ -1,11 +1,3 @@
-/*
- * This is a manifest file that'll automatically include all the stylesheets available in this directory
- * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
- * the top of the compiled file, but it's generally better to create a new file per style scope.
- *= require_self
- *= require_tree .
- *= require forms
-*/
 /* -------------------------------------------------------------------------------------------------
 
 It's *strongly* suggested that you don't modify this file.  Instead, load a new stylesheet after
@@ -16,9 +8,9 @@ This stylesheet forms part of the Formtastic Rails Plugin
 (c) 2008-2011 Justin French
 
 --------------------------------------------------------------------------------------------------*/
-
 /* NORMALIZE AND RESET - obviously inspired by Yahoo's reset.css, but scoped to just .formtastic
 --------------------------------------------------------------------------------------------------*/
+/* line 23, ../../app/assets/stylesheets/forms.css.scss */
 .formtastic,
 .formtastic ul,
 .formtastic ol,
@@ -29,254 +21,283 @@ This stylesheet forms part of the Formtastic Rails Plugin
 .formtastic textarea,
 .formtastic select,
 .formtastic p {
-  margin:0;
-  padding:0;
+  margin: 0;
+  padding: 0;
 }
 
+/* line 28, ../../app/assets/stylesheets/forms.css.scss */
 .formtastic fieldset {
-  border:0;
+  border: 0;
 }
 
+/* line 33, ../../app/assets/stylesheets/forms.css.scss */
 .formtastic em,
 .formtastic strong {
-  font-style:normal;
-  font-weight:normal;
+  font-style: normal;
+  font-weight: normal;
 }
 
+/* line 39, ../../app/assets/stylesheets/forms.css.scss */
 .formtastic ol,
 .formtastic ul {
-  list-style:none;
+  list-style: none;
 }
 
+/* line 44, ../../app/assets/stylesheets/forms.css.scss */
 .formtastic abbr,
 .formtastic acronym {
-  border:0;
-  font-variant:normal;
+  border: 0;
+  font-variant: normal;
 }
 
+/* line 50, ../../app/assets/stylesheets/forms.css.scss */
 .formtastic input,
 .formtastic textarea {
-  font-family:sans-serif;
-  font-size:inherit;
-  font-weight:inherit;
+  font-family: sans-serif;
+  font-size: inherit;
+  font-weight: inherit;
 }
 
+/* line 58, ../../app/assets/stylesheets/forms.css.scss */
 .formtastic input,
 .formtastic textarea,
 .formtastic select {
-  font-size:100%;
+  font-size: 100%;
 }
 
+/* line 62, ../../app/assets/stylesheets/forms.css.scss */
 .formtastic legend {
-  white-space:normal;
-  color:#000;
+  white-space: normal;
+  color: #000;
 }
-
 
 /* SEMANTIC ERRORS
 --------------------------------------------------------------------------------------------------*/
+/* line 70, ../../app/assets/stylesheets/forms.css.scss */
 .formtastic .errors {
-  color:#cc0000;
-  margin:0.5em 0 1.5em 25%;
-  list-style:square;
+  color: #cc0000;
+  margin: 0.5em 0 1.5em 25%;
+  list-style: square;
 }
 
+/* line 76, ../../app/assets/stylesheets/forms.css.scss */
 .formtastic .errors li {
-  padding:0;
-  border:none;
-  display:list-item;
+  padding: 0;
+  border: none;
+  display: list-item;
 }
-
 
 /* BUTTONS
 --------------------------------------------------------------------------------------------------*/
+/* line 85, ../../app/assets/stylesheets/forms.css.scss */
 .formtastic .buttons {
-  overflow:hidden; /* clear containing floats */
-  padding-left:25%;
+  overflow: hidden;
+  /* clear containing floats */
+  padding-left: 25%;
 }
 
+/* line 90, ../../app/assets/stylesheets/forms.css.scss */
 .formtastic .button {
-  float:left;
-  padding-right:0.5em;
+  float: left;
+  padding-right: 0.5em;
 }
-
 
 /* INPUTS
 --------------------------------------------------------------------------------------------------*/
+/* line 98, ../../app/assets/stylesheets/forms.css.scss */
 .formtastic .inputs {
-  overflow:hidden; /* clear containing floats */
+  overflow: hidden;
+  /* clear containing floats */
 }
 
+/* line 102, ../../app/assets/stylesheets/forms.css.scss */
 .formtastic .input {
-  overflow:hidden; /* clear containing floats */
-  padding:0.5em 0; /* padding and negative margin juggling is for Firefox */
-  margin-top:-0.5em;
-  margin-bottom:1em;
+  overflow: hidden;
+  /* clear containing floats */
+  padding: 0.5em 0;
+  /* padding and negative margin juggling is for Firefox */
+  margin-top: -0.5em;
+  margin-bottom: 1em;
 }
-
 
 /* LEFT ALIGNED LABELS
 --------------------------------------------------------------------------------------------------*/
+/* line 112, ../../app/assets/stylesheets/forms.css.scss */
 .formtastic .input .label {
-  display:block;
-  width:25%;
-  float:left;
-  padding-top:.2em;
+  display: block;
+  width: 25%;
+  float: left;
+  padding-top: .2em;
 }
 
+/* line 120, ../../app/assets/stylesheets/forms.css.scss */
 .formtastic .fragments .label,
 .formtastic .choices .label {
-  position:absolute;
-  width:95%;
-  left:0px;
+  position: absolute;
+  width: 95%;
+  left: 0px;
 }
 
+/* line 127, ../../app/assets/stylesheets/forms.css.scss */
 .formtastic .fragments .label label,
 .formtastic .choices .label label {
-  position:absolute;
+  position: absolute;
 }
 
 /* NESTED FIELDSETS AND LEGENDS (radio, check boxes and date/time inputs use nested fieldsets)
 --------------------------------------------------------------------------------------------------*/
+/* line 133, ../../app/assets/stylesheets/forms.css.scss */
 .formtastic .choices {
-  position:relative;
+  position: relative;
 }
 
+/* line 137, ../../app/assets/stylesheets/forms.css.scss */
 .formtastic .choices-group {
-  float:left;
-  width:74%;
-  margin:0;
-  padding:0 0 0 25%;
+  float: left;
+  width: 74%;
+  margin: 0;
+  padding: 0 0 0 25%;
 }
 
+/* line 144, ../../app/assets/stylesheets/forms.css.scss */
 .formtastic .choice {
-  padding:0;
-  border:0;
+  padding: 0;
+  border: 0;
 }
-
 
 /* INLINE HINTS
 --------------------------------------------------------------------------------------------------*/
+/* line 152, ../../app/assets/stylesheets/forms.css.scss */
 .formtastic .input .inline-hints {
-  color:#666;
-  margin:0.5em 0 0 25%;
+  color: #666;
+  margin: 0.5em 0 0 25%;
 }
-
 
 /* INLINE ERRORS
 --------------------------------------------------------------------------------------------------*/
+/* line 160, ../../app/assets/stylesheets/forms.css.scss */
 .formtastic .inline-errors {
-  color:#cc0000;
-  margin:0.5em 0 0 25%;
+  color: #cc0000;
+  margin: 0.5em 0 0 25%;
 }
 
+/* line 165, ../../app/assets/stylesheets/forms.css.scss */
 .formtastic .errors {
-  color:#cc0000;
-  margin:0.5em 0 0 25%;
-  list-style:square;
+  color: #cc0000;
+  margin: 0.5em 0 0 25%;
+  list-style: square;
 }
 
+/* line 171, ../../app/assets/stylesheets/forms.css.scss */
 .formtastic .errors li {
-  padding:0;
-  border:none;
-  display:list-item;
+  padding: 0;
+  border: none;
+  display: list-item;
 }
-
 
 /* STRING, NUMERIC, PASSWORD, EMAIL, URL, PHONE, SEARCH (ETC) OVERRIDES
 --------------------------------------------------------------------------------------------------*/
+/* line 180, ../../app/assets/stylesheets/forms.css.scss */
 .formtastic .stringish input {
-  width:72%;
+  width: 72%;
 }
 
+/* line 184, ../../app/assets/stylesheets/forms.css.scss */
 .formtastic .stringish input[size] {
-  width:auto;
-  max-width:72%;
+  width: auto;
+  max-width: 72%;
 }
-
 
 /* TEXTAREA OVERRIDES
 --------------------------------------------------------------------------------------------------*/
+/* line 192, ../../app/assets/stylesheets/forms.css.scss */
 .formtastic .text textarea {
-  width:72%;
+  width: 72%;
 }
 
+/* line 196, ../../app/assets/stylesheets/forms.css.scss */
 .formtastic .text textarea[cols] {
-  width:auto;
-  max-width:72%;
+  width: auto;
+  max-width: 72%;
 }
-
 
 /* HIDDEN OVERRIDES
 --------------------------------------------------------------------------------------------------*/
+/* line 204, ../../app/assets/stylesheets/forms.css.scss */
 .formtastic .hidden {
-  display:none;
+  display: none;
 }
-
 
 /* BOOLEAN LABELS
 --------------------------------------------------------------------------------------------------*/
+/* line 211, ../../app/assets/stylesheets/forms.css.scss */
 .formtastic .boolean label {
-  padding-left:25%;
-  display:block;
+  padding-left: 25%;
+  display: block;
 }
-
 
 /* CHOICE GROUPS
 --------------------------------------------------------------------------------------------------*/
+/* line 219, ../../app/assets/stylesheets/forms.css.scss */
 .formtastic .choices-group {
-  margin-bottom:-0.5em;
+  margin-bottom: -0.5em;
 }
 
+/* line 223, ../../app/assets/stylesheets/forms.css.scss */
 .formtastic .choice {
-  margin:0.1em 0 0.5em 0;
+  margin: 0.1em 0 0.5em 0;
 }
 
+/* line 227, ../../app/assets/stylesheets/forms.css.scss */
 .formtastic .choice label {
-  float:none;
-  width:100%;
-  line-height:100%;
-  padding-top:0;
-  margin-bottom:0.6em;
+  float: none;
+  width: 100%;
+  line-height: 100%;
+  padding-top: 0;
+  margin-bottom: 0.6em;
 }
-
 
 /* ADJUSTMENTS FOR INPUTS INSIDE LABELS (boolean input, radio input, check_boxes input)
 --------------------------------------------------------------------------------------------------*/
+/* line 239, ../../app/assets/stylesheets/forms.css.scss */
 .formtastic .choice label input,
 .formtastic .boolean label input {
-  margin:0 0.3em 0 0.1em;
-  line-height:100%;
+  margin: 0 0.3em 0 0.1em;
+  line-height: 100%;
 }
-
 
 /* FRAGMENTED INPUTS (DATE/TIME/DATETIME)
 --------------------------------------------------------------------------------------------------*/
+/* line 247, ../../app/assets/stylesheets/forms.css.scss */
 .formtastic .fragments {
-  position:relative;
+  position: relative;
 }
 
+/* line 251, ../../app/assets/stylesheets/forms.css.scss */
 .formtastic .fragments-group {
-  float:left;
-  width:74%;
-  margin:0;
-  padding:0 0 0 25%;
+  float: left;
+  width: 74%;
+  margin: 0;
+  padding: 0 0 0 25%;
 }
 
+/* line 258, ../../app/assets/stylesheets/forms.css.scss */
 .formtastic .fragment {
-  float:left;
-  width:auto;
-  margin:0 .3em 0 0;
-  padding:0;
-  border:0;
+  float: left;
+  width: auto;
+  margin: 0 .3em 0 0;
+  padding: 0;
+  border: 0;
 }
 
+/* line 266, ../../app/assets/stylesheets/forms.css.scss */
 .formtastic .fragment label {
-  display:none;
+  display: none;
 }
 
+/* line 270, ../../app/assets/stylesheets/forms.css.scss */
 .formtastic .fragment label input {
-  display:inline;
-  margin:0;
-  padding:0;
+  display: inline;
+  margin: 0;
+  padding: 0;
 }

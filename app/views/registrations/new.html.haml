@@ -1,0 +1,17 @@
+= flash[:alert]
+
+= form_tag '/auth/identity/register', :class => 'formtastic' do |f| 
+  %h1 Create an Account 
+
+  %fieldset.inputs
+    %ol
+      = semantic_input_tag(:auth_key, :string, "Email")
+      = semantic_input_tag(:password, :password)
+      = semantic_input_tag(:password_confirmation, :password, "Confirm Password")
+
+  %fieldset.buttons
+    %ol
+      %li.commit.button.input
+        = submit_tag "Connect", :class => 'btn primary create'
+
+  %p= link_to "Create an Identity", sign_up_path

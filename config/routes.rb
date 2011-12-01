@@ -1,9 +1,14 @@
 Canary::Application.routes.draw do
   match '/auth/:provider/callback', to: 'sessions#create'
-  # match '/auth/identity/registration', to: 'users#new', :via => :get
-  match '/logout', to: 'sessions#destroy'
+  match '/auth/failure',            to: 'sessions#failure'
+  
+  match '/sign-up',  to: 'registrations#new', :as => :sign_up
+  match '/sign-in',  to: 'sessions#new',      :as => :sign_in
+  match '/sign-out', to: 'sessions#destroy',  :as => :sign_out
   
   resource :status
+  resource :registration, :only => [:new]
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
