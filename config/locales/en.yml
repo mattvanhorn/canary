@@ -5,7 +5,23 @@
 #
 # Use this as the base for the locale file of your language.
 en:
+  sign_up: &sign_up
+    page_header: 'Create an Account'
+    auth_key: 'Email'
+    password: 'Password'
+    password_confirmation: 'Confirm Password'
+    submit: 'Connect'
+    sign_in_link: 'Sign in with existing account'
+    email_missing: 'You must provide an email address'
+    password_missing: 'You must provide a password'
+    password_confirmation_missing: 'You must provide a password confirmation'
+    password_no_match: 'Your password did not match the confirmation'
+  registrations:
+    new:
+      <<: *sign_up
+      
   sign_in: &sign_in
+    page_header: 'Sign In'
     auth_key: 'Email'
     password: 'Password'
     submit: 'Connect'
@@ -17,6 +33,7 @@ en:
   sessions:
     new:
       <<: *sign_in
+  
   
   date:
     formats:

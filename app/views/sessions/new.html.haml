@@ -1,6 +1,8 @@
 = flash[:alert]
 
 = form_tag '/auth/identity/callback', :class => 'formtastic' do |f| 
+  %h1= t('.page_header')
+  
   %fieldset.inputs
     %ol
       = semantic_input_tag(:auth_key, :string, t('.auth_key'))

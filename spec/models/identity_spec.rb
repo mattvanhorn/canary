@@ -13,6 +13,7 @@ describe Identity do
   end
   
   describe "being created" do
+    
     it "creates a user" do
       mock_user = mock_model(User)
       User.should_receive(:create).and_return(mock_user)

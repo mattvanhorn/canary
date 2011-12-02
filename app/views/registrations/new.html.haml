@@ -1,17 +1,16 @@
-= flash[:alert]
+= flash_errors if flash[:alert].present?
 
 = form_tag '/auth/identity/register', :class => 'formtastic' do |f| 
   %h1 Create an Account 
-
   %fieldset.inputs
     %ol
-      = semantic_input_tag(:auth_key, :string, "Email")
+      = semantic_input_tag(:email, :string, t('.auth_key'))
       = semantic_input_tag(:password, :password)
-      = semantic_input_tag(:password_confirmation, :password, "Confirm Password")
+      = semantic_input_tag(:password_confirmation, :password, t('.password_confirmation'))
 
   %fieldset.buttons
     %ol
       %li.commit.button.input
-        = submit_tag "Connect", :class => 'btn primary create'
+        = submit_tag t('.submit'), :class => 'btn primary create'
 
-  %p= link_to "Create an Identity", sign_up_path
+  %p= link_to t('.sign_in_link'), sign_in_path
