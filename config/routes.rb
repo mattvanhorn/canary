@@ -1,4 +1,5 @@
 Canary::Application.routes.draw do
+
   match '/auth/:provider/callback', to: 'sessions#create'
   match '/auth/failure',            to: 'sessions#failure'
   
@@ -8,6 +9,7 @@ Canary::Application.routes.draw do
   
   resource :status
   resource :registration, :only => [:new]
+  resources :projects
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

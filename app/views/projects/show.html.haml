@@ -1,0 +1,6 @@
+-if flash[:alert]
+  .alert-message.error= flash[:alert]
+  
+%h1#page-header= project.name
+
+= link_to "Invite Members", "/invitations/new"

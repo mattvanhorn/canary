@@ -7,6 +7,12 @@ GIT
       fssm (>= 0.2.7)
       sass (~> 3.1)
 
+PATH
+  remote: /Users/mattvanhorn/projects/nulldb
+  specs:
+    activerecord-nulldb-adapter (0.2.1)
+      activerecord (>= 2.0.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -226,6 +232,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord-nulldb-adapter!
   bcrypt-ruby (~> 3.0.0)
   capybara
   coffee-rails (~> 3.1.1)

@@ -25,3 +25,15 @@ end
 When /^(?:|I )follow "([^"]*)"$/ do |link|
   click_link(link)
 end
+
+When /^(.*) within ([^:"]+)$/ do |scoped_step, scope|
+  within(selector_for(scope)) do
+    step(scoped_step)
+  end
+end
+
+When /^(.*) within ([^:"]+):$/ do |scoped_step, scope, table_or_string|
+  within(selector_for(scope)) do
+    step("#{scoped_step}:", table_or_string)
+  end
+end

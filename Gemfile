@@ -49,6 +49,7 @@ group :development, :test do
   gem "cover_me"
   gem "faker"
   gem "spork"
+  gem 'activerecord-nulldb-adapter', :path => '/Users/mattvanhorn/projects/nulldb'
 end
 
 

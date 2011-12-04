@@ -1,0 +1,8 @@
+%h1#page-header= t('.page_header')
+
+= semantic_form_for project do |f|
+  = f.inputs :name, :title => :project
+  = f.buttons do
+    = f.commit_button :button_html  => { :class => %w(btn primary) },
+                      :wrapper_html => { :class => %w(actions input) }
+  

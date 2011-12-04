@@ -1,4 +1,5 @@
-= flash[:alert]
+-if flash[:alert]
+  .alert-message.error= flash[:alert]
 
 = form_tag '/auth/identity/callback', :class => 'formtastic' do |f| 
   %h1= t('.page_header')

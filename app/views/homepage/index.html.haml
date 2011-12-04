@@ -1,6 +1,7 @@
 - if current_user
   %p= link_to "Sign Out", sign_out_path
   %p= link_to "Update Status", "/status/new"
+  %p= link_to "New Project", "/projects/new"
   
 - else
   %p= link_to "Sign In", sign_in_path
