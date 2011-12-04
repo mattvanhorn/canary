@@ -33,8 +33,25 @@ en:
   sessions:
     new:
       <<: *sign_in
-  
-  
+
+  projects:
+    new:
+      page_header: 'Create a Project'
+      
+  formtastic:
+    titles:
+      project: "Project"
+    labels:
+      project:
+        name: "Name"
+    hints:
+      project:
+        name:
+    placeholders:
+    actions:
+      create: "Create my %{model}"
+      update: "Save my %{model}"
+      
   date:
     formats:
       default: "%Y-%m-%d"
