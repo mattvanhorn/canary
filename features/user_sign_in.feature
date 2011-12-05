@@ -5,29 +5,37 @@ Feature: User Sign In
   I want to sign in to my account
 
   Background:
-    Given I am not signed in
-  
+    Given I have an account
+      And I am not signed in
+
   Scenario: Cannot update while logged out
     When I visit the homepage
     Then I should not see a link to the update status page
-  
+
   Scenario: home page log in link
-    Given I have an account
     When I visit the homepage
     Then I should see a link to the sign-in page
 
   Scenario: Signing in
-    Given I have an account
     When I sign in
     Then I should be on the homepage
      And I should see a link to the update status page
      And I should see a link to the sign-out page
-   
+
+  Scenario: Signing in redirects back to page
+    Given the following project:
+        | name   | Foobar |
+      And I am a member of "Foobar"
+    When I visit the project page for "Foobar"
+    Then I should be on the sign-in page
+    When I sign in
+    Then I should be on the project page for "Foobar"
+     
   Scenario: Signing in with no credentials
     When I sign in with no credentials
     Then I should be on the sign-in page
      And I should see "How do you expect me to sign you in with no credentials?"
-   
+
   Scenario: Signing in with no password
     When I sign in with no password
     Then I should be on the sign-in page

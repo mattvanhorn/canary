@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   def create
     identity = Identity.find_from_hash(auth_hash)
     self.current_user = identity.user
-    redirect_to root_url
+    redirect_back_or_default
   end
   
   def failure

@@ -1,8 +1,10 @@
 class ProjectsController < ApplicationController
+  before_filter :authenticate_user!
+  
   respond_to :html
   
+  expose(:projects){ current_user.projects }
   expose(:project)
-  expose(:projects){ Project.scoped }
   
   def create
     project.save
