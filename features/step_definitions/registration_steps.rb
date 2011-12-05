@@ -1,5 +1,6 @@
 When /^I have an account$/ do
-  Fabricate(:identity, :email => 'alice@example.com')
+  @my_identity = Fabricate(:identity, :email => 'alice@example.com')
+  @me = @my_identity.user
 end
 
 When /^I submit my valid registration information$/ do
