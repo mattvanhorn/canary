@@ -8,10 +8,10 @@ module InvitationSpecHelper
   end
   
   def valid_post_params
-    @valid_post_params ||= {
+    @valid_post_params ||= fake_params(
       'recipient_email' => Faker::Internet.email,
       'project_id' => (rand(9999) + 1).to_s 
-    }
+    )
   end
   
 end

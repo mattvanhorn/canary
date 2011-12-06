@@ -18,7 +18,7 @@ describe ProjectsController do
   end
   
   it "exposes a project from the current user's collection" do
-    controller.stub(:params).and_return(:id => '42')
+    controller.stub(:params).and_return(fake_params(:id => '42'))
     collection.should_receive(:find)
     controller.project
   end

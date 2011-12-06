@@ -44,6 +44,10 @@ Spork.prefork do
     # config.include EmailSpec::Helpers
     # config.include EmailSpec::Matchers
   end
+  
+  def fake_params(hash)
+    HashWithIndifferentAccess.new(hash)
+  end
 end
 
 Spork.each_run do

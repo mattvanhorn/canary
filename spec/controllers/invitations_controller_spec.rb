@@ -13,7 +13,7 @@ describe InvitationsController do
   let(:current_user){ mock_model(User, :invite => invitation) }
   
   before(:each) do
-    controller.stub(:params).and_return('project_id' => '42')
+    controller.stub(:params).and_return(fake_params('project_id' => '42'))
     controller.stub(:current_user).and_return(current_user)
     current_user.stub(:projects).and_return(projects)
     invitation.stub(:to_join).and_return(invitation)
@@ -36,7 +36,7 @@ describe InvitationsController do
   end
   
   it "exposes an existing invitation" do
-    controller.stub(:params).and_return('project_id' => '42', :id => '12')
+    controller.stub(:params).and_return(fake_params('project_id' => '42', :id => '12'))
     collection.should_receive(:find)
     controller.invitation
   end
