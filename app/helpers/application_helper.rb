@@ -6,8 +6,7 @@ module ApplicationHelper
     #   .input= text_field_tag :auth_key
 
     content_tag(:li, :id => "#{name}_input", :class => ['input', type.to_s].join(' ').strip) do
-      label_text = t(".#{name.to_s}")
-      label_tag(name, label || label_text) + "\n" +
+      label_tag(name, label || t(".#{name.to_s}")) + "\n" +
       content_tag(:div, :class => 'input') do
         case type
         when :password

@@ -31,6 +31,7 @@ group :development do
   gem "guard-rspec"
   gem "guard-cucumber"
   gem "guard-spork"
+  gem "guard-bundler"
   gem "guard-pow"
   gem "rb-fsevent"
   gem "growl"
