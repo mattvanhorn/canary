@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'nulldb_rspec'
 
 describe Project do
   include NullDB::RSpec::NullifiedDatabase
@@ -9,6 +8,7 @@ describe Project do
   end
   it { should have_many(:memberships) }
   it { should have_many(:users).through(:memberships) }
+  it { should have_many(:invitations) }
   it { should validate_presence_of(:name) }
   
   it "should validate the uniqueness of name" do

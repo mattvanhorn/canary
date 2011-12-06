@@ -10,7 +10,7 @@ gem "haml-rails"
 gem "jquery-rails"
 gem "formtastic"
 gem "paperclip"
-gem 'decent_exposure'
+gem 'decent_exposure', :path => '/Users/mattvanhorn/projects/decent_exposure'
 gem 'draper'
 gem 'omniauth-identity'
 gem 'bcrypt-ruby', '~> 3.0.0'
@@ -51,6 +51,7 @@ group :development, :test do
   gem "faker"
   gem "spork"
   gem 'activerecord-nulldb-adapter', :path => '/Users/mattvanhorn/projects/nulldb'
+  gem 'email_spec'
 end
 
 

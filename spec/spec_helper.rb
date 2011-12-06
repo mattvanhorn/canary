@@ -9,6 +9,8 @@ Spork.prefork do
   require 'rspec/autorun'
   require 'paperclip/matchers'
   require 'nulldb_rspec'
+  require "email_spec"
+  
   NullDB.configure {|ndb| ndb.project_root = Rails.root}
   
   # Requires supporting ruby files with custom matchers and macros, etc,
@@ -39,6 +41,8 @@ Spork.prefork do
     config.infer_base_class_for_anonymous_controllers = false
 
     config.include Paperclip::Shoulda::Matchers
+    # config.include EmailSpec::Helpers
+    # config.include EmailSpec::Matchers
   end
 end
 

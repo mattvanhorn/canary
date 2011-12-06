@@ -8,6 +8,11 @@ GIT
       sass (~> 3.1)
 
 PATH
+  remote: /Users/mattvanhorn/projects/decent_exposure
+  specs:
+    decent_exposure (1.0.1)
+
+PATH
   remote: /Users/mattvanhorn/projects/nulldb
   specs:
     activerecord-nulldb-adapter (0.2.1)
@@ -85,10 +90,12 @@ GEM
       cucumber (>= 1.1.1)
       nokogiri (>= 1.5.0)
     database_cleaner (0.7.0)
-    decent_exposure (1.0.1)
     diff-lcs (1.1.3)
     draper (0.9.5)
       activesupport (>= 2.3.10)
+    email_spec (1.2.1)
+      mail (~> 2.2)
+      rspec (~> 2.0)
     erubis (2.7.0)
     execjs (1.2.9)
       multi_json (~> 1.0)
@@ -244,8 +251,9 @@ DEPENDENCIES
   cover_me
   cucumber-rails
   database_cleaner
-  decent_exposure
+  decent_exposure!
   draper
+  email_spec
   fabrication
   faker
   formtastic

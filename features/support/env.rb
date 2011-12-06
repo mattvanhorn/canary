@@ -2,6 +2,8 @@ require 'spork'
 
 Spork.prefork do
   require 'cucumber/rails'
+  require 'email_spec'
+  require 'email_spec/cucumber'
 end
 
 Spork.each_run do

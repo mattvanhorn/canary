@@ -38,12 +38,18 @@ en:
     new:
       page_header: 'Create a Project'
       
+  invitations:
+    new:
+      page_header: 'Create an Invitation'
+      
   formtastic:
     titles:
       project: "Project"
     labels:
       project:
         name: "Name"
+      invitation:
+        recipient_email: "Email"
     hints:
       project:
         name:

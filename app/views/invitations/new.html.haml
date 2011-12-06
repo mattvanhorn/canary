@@ -1,0 +1,7 @@
+%h1#page-header= t('.page_header')
+
+= semantic_form_for invitation, :url => project_invitations_path(project) do |f|
+  = f.inputs :recipient_email, :title => :invitation
+  = f.buttons do
+    = f.commit_button :button_html  => { :class => %w(btn primary) },
+                      :wrapper_html => { :class => %w(actions input) }

@@ -6,7 +6,7 @@ Feature: User Sign Up
 
   Background:
     Given I am not signed in
-    
+
   Scenario: Sign Up link
     When I visit the homepage
      And I follow "Sign Up"
@@ -24,7 +24,7 @@ Feature: User Sign Up
     And I submit my registration information without an email
    Then I should be on the sign-up page
     And I should see "Email can't be blank"
-  
+
   Scenario: Sign Up without password
    When I visit the sign-up page
     And I submit my registration information without a password
@@ -42,5 +42,5 @@ Feature: User Sign Up
     And I submit my registration information without password matching confirmation
    Then I should be on the sign-up page
     And I should see "Password doesn't match confirmation"
-  
-  
+
+

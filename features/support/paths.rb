@@ -23,8 +23,8 @@ module NavigationHelpers
     when /the update status page/
       '/status/new' # there are no real 'updates' - just new statuses
       
-    when /the invite members page/
-      '/invitations/new' # there are no real 'updates' - just new statuses
+    when /the invite members page for "([^"]+)"/
+      new_project_invitation_path(Project.find_by_name($1))
       
     when /the project page for "([^"]+)"/
       project_path(Project.find_by_name($1))
