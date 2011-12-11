@@ -14,6 +14,7 @@ gem 'decent_exposure', :path => '/Users/mattvanhorn/projects/decent_exposure'
 gem 'draper'
 gem 'omniauth-identity'
 gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'state_machine'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -37,6 +38,7 @@ group :development do
   gem "growl"
   gem "hpricot"
   gem "ruby_parser"
+  gem 'ruby-graphviz', :require => 'graphviz' # For graphing of state-machines
 end
 
 group :development, :test do

@@ -1,18 +1,19 @@
 module ApplicationHelper
   
-  def semantic_input_tag(name, type = :string, label = nil)
+  def semantic_input_tag(name, type = :string, label = nil, options ={})
     # %li#auth_key_input.string.input
     #   = label_tag :auth_key, "Login"
     #   .input= text_field_tag :auth_key
-
+    value = options.delete(:value)
+    
     content_tag(:li, :id => "#{name}_input", :class => ['input', type.to_s].join(' ').strip) do
       label_tag(name, label || t(".#{name.to_s}")) + "\n" +
       content_tag(:div, :class => 'input') do
         case type
         when :password
-          password_field_tag(name)
+          password_field_tag(name, value, options)
         else
-          text_field_tag(name)
+          text_field_tag(name, value, options)
         end
       end
     end

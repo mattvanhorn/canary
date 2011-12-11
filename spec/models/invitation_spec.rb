@@ -4,8 +4,13 @@ describe Invitation do
   include NullDB::RSpec::NullifiedDatabase
   include InvitationSpecHelper
   
-  before(:each) do
-    @invitation = subject
+  let(:invitation){ Invitation.new(valid_invitation_attributes) }
+  
+  describe "class" do
+    it "retrieves an instance by token" do
+      Invitation.should_receive(:where).with(:token => 'foobar').and_return([invitation])
+      Invitation.for_token('foobar')
+    end
   end
   
   it { should belong_to(:user) }
@@ -16,8 +21,15 @@ describe Invitation do
   
   it { should validate_presence_of(:project_id) }
   
+  it "should validate the uniqueness of token" do
+    subject.class.validators_on(:token).select{|v|v.is_a? (ActiveRecord::Validations::UniquenessValidator)}.should_not be_empty
+    subject.should have_db_index(:token).unique(true)
+  end
+  
+  it { should validate_presence_of(:project_id) }
+  
   it "has a recipient email address" do
-    subject.should have_db_column(:recipient_email).of_type(:string)
+    invitation.should have_db_column(:recipient_email).of_type(:string)
   end
   
   it "has a sender email address" do
@@ -32,15 +44,40 @@ describe Invitation do
   
   it "sets the project correctly" do
     project = mock_model(Project)
-    @invitation.to_join(project)
-    @invitation.project_id.should == project.id
+    invitation.to_join(project)
+    invitation.project_id.should == project.id
   end
   
-  it "sends itself" do
-    email = mock('deliverable')
-    @invitation = Invitation.new(valid_invitation_attributes)
-    InvitationMailer.should_receive(:invitation).with(@invitation).and_return(email)
-    email.should_receive(:deliver)
-    @invitation.deliver
+  it "generates a unique code before saving" do
+    invitation = Invitation.new(valid_invitation_attributes)
+    invitation.should_receive(:generate_token).and_return('abc123')
+    invitation.save
   end
+  
+  describe "delivery" do
+    
+    let(:email) { mock('deliverable', :deliver => true) }
+    
+    before(:each) do
+      InvitationMailer.stub(:invitation).and_return(email)
+    end
+    
+    it "sends itself by email" do
+      InvitationMailer.should_receive(:invitation).with(invitation).and_return(email)
+      email.should_receive(:deliver)
+      invitation.deliver
+    end
+
+    it "saves itself before sending" do
+      invitation.should_receive(:save).and_return(true)
+      invitation.deliver
+    end
+
+    it "will not send email if it is not saved" do
+      invitation.stub(:save).and_return(false)
+      InvitationMailer.should_not_receive(:invitation)
+      invitation.deliver
+    end
+  end
+
 end

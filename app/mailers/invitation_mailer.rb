@@ -1,7 +1,8 @@
 class InvitationMailer < ActionMailer::Base
 
   def invitation(model)
-    @project_name = model.project_name
+    @invitation = model
+    
     mail(:to => model.recipient_email,
          :subject => "Invitation",
          :from => model.sender_email)

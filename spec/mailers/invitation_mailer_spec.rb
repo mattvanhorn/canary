@@ -10,7 +10,8 @@ describe InvitationMailer do
     let(:invitation) { mock_model( Invitation,
         :sender_email => 'alice@example.com',
         :recipient_email => 'bob@example.com',
-        :project_name => 'Yoyodyne Website') }
+        :project_name => 'Yoyodyne Website',
+        :token => 'abc123') }
                               
     let(:mail) { InvitationMailer.invitation(invitation) }
 

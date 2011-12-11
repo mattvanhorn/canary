@@ -1,5 +1,5 @@
 class InvitationsController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :only => [:new, :create]
   
   respond_to :html
   
@@ -10,13 +10,16 @@ class InvitationsController < ApplicationController
   def create
     recipient = params['invitation']['recipient_email']
     invitation = current_user.invite(recipient).to_join(project)
-
-    if invitation.save
-      invitation.deliver 
+    
+    if invitation.deliver!
       respond_with(project)
     else
       respond_with(project, invitation)
     end
+  end
+  
+  def edit
+    invitation = Invitation.for_token(params[:token])
   end
   
   protected

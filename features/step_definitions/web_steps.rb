@@ -1,20 +1,26 @@
-Then /^(?:|I )should be on (.+)$/ do |page_name|
-  URI.parse(current_url).path.should == path_to(page_name)
+Then /^(?:they|I) should be on (.+)$/ do |page_name|
+  location = URI.parse(current_url).path
+  expected = path_to(page_name)
+  if path_to(page_name).respond_to?(:match)
+    expected.should match(location)
+  else
+    location.should == expected
+  end
 end
 
-When /^I (?:visit|am on) (.+)$/ do |page_name|
+When /^(?:they|I) (?:visit|am on|are on) (.+)$/ do |page_name|
   visit path_to(page_name)
 end
 
-Then /^I should see "([^"]*)"$/ do |content|
+Then /^(?:they|I) should see "([^"]*)"$/ do |content|
   page.should have_content(content)
 end
 
-Then /^I should see a link to (.+)$/ do |page_name|
+Then /^(?:they|I) should see a link to (.+)$/ do |page_name|
   page.should have_selector("a[href='#{path_to(page_name)}']")
 end
 
-Then /^I should not see a link to (.+)$/ do |page_name|
+Then /^(?:they|I) should not see a link to (.+)$/ do |page_name|
   page.should_not have_selector("a[href='#{path_to(page_name)}']")
 end
 
@@ -22,7 +28,7 @@ Then /^show me the page$/ do
   save_and_open_page
 end
 
-When /^(?:|I )follow "([^"]*)"$/ do |link|
+When /^(?:they|I) follow "([^"]*)"$/ do |link|
   click_link(link)
 end
 

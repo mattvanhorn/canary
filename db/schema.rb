@@ -25,9 +25,13 @@ ActiveRecord::Schema.define(:version => 20111204202140) do
     t.integer  "user_id"
     t.integer  "project_id"
     t.string   "recipient_email"
+    t.string   "token"
+    t.string   "state"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "invitations", ["token"], :name => "index_invitations_on_token", :unique => true
 
   create_table "memberships", :force => true do |t|
     t.integer  "project_id"

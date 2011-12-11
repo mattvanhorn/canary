@@ -25,10 +25,13 @@ module NavigationHelpers
       
     when /the invite members page for "([^"]+)"/
       new_project_invitation_path(Project.find_by_name($1))
+    
+    when /the accept invitation page/
+      /\/invitations\/accept\/[^\/]+/
       
     when /the project page for "([^"]+)"/
       project_path(Project.find_by_name($1))
-      
+    
     else
       begin
         page_name =~ /the (.*) page/

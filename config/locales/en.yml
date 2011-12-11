@@ -50,6 +50,9 @@ en:
         name: "Name"
       invitation:
         recipient_email: "Email"
+        password: "Password"
+        password_confirmation: "Confirm Password"
+        accept_invitation: "Accept Invitation"
     hints:
       project:
         name:

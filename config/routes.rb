@@ -12,8 +12,9 @@ Canary::Application.routes.draw do
   match '/sign-in',  to: 'sessions#new',      :as => :sign_in
   match '/sign-out', to: 'sessions#destroy',  :as => :sign_out
   
+  match '/invitations/accept/:token', to: 'registrations#new', :as => :accept_invitation
+  
   resource :status
-  resource :registration, :only => [:new]
   
   resources :projects do
     resources :invitations

@@ -1,16 +1,23 @@
 require 'spec_helper'
 
-describe User do  
+describe User do 
+  let(:user){ User.new }
+  let(:project){ stub_model(Project)}
+  
   it { should have_one( :identity) }
   it { should have_many(:memberships) }
   it { should have_many(:projects).through(:memberships) }
   it { should have_many(:invitations) }
   
+  it "can join a project" do
+    user.projects.should_receive(:<<).with(project)
+    user.join(project)
+  end
+  
   it "can be a member of a project" do
-    project = stub_model(Project)
-    membership = stub_model(Membership, :project => project)
-    user = User.new
-    user.memberships << membership
+    # membership = stub_model(Membership, :project => project)
+    # user.memberships << membership
+    user.join(project)
     user.should be_member_of(project)
   end
   

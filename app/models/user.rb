@@ -6,8 +6,12 @@ class User < ActiveRecord::Base
   
   delegate :email, :to => :identity
   
+  def join(project)
+    projects << project
+  end
+  
   def member_of?(project)
-    memberships.select{ |m| m.project == project }.any?
+    projects.select{ |p| p == project }.any?
   end
   
   def invite(email)

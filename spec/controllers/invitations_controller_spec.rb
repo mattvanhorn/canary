@@ -3,8 +3,8 @@ require 'spec_helper'
 describe InvitationsController do
   include InvitationSpecHelper
   
-  let(:invitation) { mock_model(Invitation, :save => true, :deliver => true) }
-  let(:invalid_invitation) { mock_model(Invitation, :save => false, :errors => ['omgwtfbbq?!']) }
+  let(:invitation) { mock_model(Invitation) }
+  let(:invalid_invitation) { mock_model(Invitation, :deliver! => nil, :errors => ['omgwtfbbq?!']) }
   
   let(:collection){ mock('invitations', :scoped => [], :new => invitation) }
   let(:project) { mock_model(Project, :invitations => collection) }
@@ -41,6 +41,13 @@ describe InvitationsController do
     controller.invitation
   end
 
+  describe "#new" do
+    it "requires authentication" do
+      controller.should_receive(:user_signed_in?).and_return(false)
+      get :new
+      response.should redirect_to( sign_in_url)
+    end
+  end
 
   describe "#create" do
     before(:each) do
@@ -49,8 +56,15 @@ describe InvitationsController do
       project.stub(:attributes=)
     end    
     
-    describe "receiveing valid params" do
+    it "requires authentication" do
+      controller.should_receive(:user_signed_in?).and_return(false)
+      post :create, 'invitation' => valid_post_params
+      response.should redirect_to( sign_in_url)
+    end
+    
+    describe "receiving valid params" do
       before(:each) do
+        invitation.stub(:deliver!).and_return(true)
         @recipient_email = valid_post_params['recipient_email']
       end
       
@@ -64,13 +78,8 @@ describe InvitationsController do
         post :create, 'invitation' => valid_post_params
       end
 
-      it "saves the new invitation" do
-        invitation.should_receive(:save).and_return(true)
-        post :create, 'invitation' => valid_post_params
-      end
-      
       it "delivers the new invitation" do
-        invitation.should_receive(:deliver)
+        invitation.should_receive(:deliver!).and_return(true)
         post :create, 'invitation' => valid_post_params
       end
       
@@ -80,14 +89,9 @@ describe InvitationsController do
       end
     end
     
-    describe "with invalid params" do
+    describe "receiving invalid params" do
       before(:each) do
         current_user.stub_chain(:invite, :to_join).and_return(invalid_invitation)
-      end
-      
-      it "does not deliver the new invitation" do
-        invalid_invitation.should_not_receive(:deliver)
-        post :create, 'invitation' => {}
       end
       
       it "redisplays the project invitation form" do
@@ -96,4 +100,5 @@ describe InvitationsController do
       end
     end
   end
+  
 end

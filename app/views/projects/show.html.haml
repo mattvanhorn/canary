@@ -4,3 +4,6 @@
 %h1#page-header= project.name
 
 = link_to "Invite Members", new_project_invitation_path(project)
+- if user_signed_in? && current_user.member_of?(project)
+  = link_to "Update Status", 'project/id/status/update'
+  

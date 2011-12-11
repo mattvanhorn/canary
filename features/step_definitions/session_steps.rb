@@ -1,4 +1,8 @@
 When /^I am not signed in$/ do 
+  step "I sign out"
+end
+
+When /^I sign out$/ do 
   visit sign_out_path
 end
 
