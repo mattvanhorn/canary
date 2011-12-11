@@ -5,5 +5,5 @@
 
 = link_to "Invite Members", new_project_invitation_path(project)
 - if user_signed_in? && current_user.member_of?(project)
-  = link_to "Update Status", 'project/id/status/update'
+  = link_to "Update Mood",  new_project_mood_update_path(project)
   

@@ -14,10 +14,9 @@ Canary::Application.routes.draw do
   
   match '/invitations/accept/:token', to: 'registrations#new', :as => :accept_invitation
   
-  resource :status
-  
   resources :projects do
     resources :invitations
+    resources :mood_updates
   end
 
 

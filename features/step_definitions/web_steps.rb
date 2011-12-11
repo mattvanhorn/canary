@@ -28,8 +28,20 @@ Then /^show me the page$/ do
   save_and_open_page
 end
 
+Then /^show me the response$/ do
+  puts headers
+end
+
 When /^(?:they|I) follow "([^"]*)"$/ do |link|
   click_link(link)
+end
+
+When /^(?:they|I) click on "([^"]*)"$/ do |link_or_button|
+  click_on(link_or_button)
+end
+
+When /^(?:they|I) (?:select|choose) "([^"]*)" from "([^"]*)"$/ do |value, field|
+  select(value, :from => field)
 end
 
 When /^(.*) within ([^:"]+)$/ do |scoped_step, scope|

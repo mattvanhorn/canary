@@ -18,7 +18,7 @@ Feature: Create Project
     Then I should be on the project page for "Yoyodyne website"
      And I should see "Yoyodyne website" within the page header
      And I should see a link to the invite members page for "Yoyodyne website"
-       
+
   Scenario: Create a project without a name
     When I visit the new project page
      And I create a project without a name

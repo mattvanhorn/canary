@@ -1,0 +1,4 @@
+%ul
+  - project.users.each do |u|
+    - mood = MoodUpdate.for_user(u).for_project(project).recent.first.mood
+    %li{:class => ['member', mood]}= mood

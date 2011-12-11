@@ -20,9 +20,6 @@ module NavigationHelpers
     when /the sign-in page/
       sign_in_path
       
-    when /the update status page/
-      '/status/new' # there are no real 'updates' - just new statuses
-      
     when /the invite members page for "([^"]+)"/
       new_project_invitation_path(Project.find_by_name($1))
     
@@ -31,7 +28,10 @@ module NavigationHelpers
       
     when /the project page for "([^"]+)"/
       project_path(Project.find_by_name($1))
-    
+      
+    when /the project mood updates page for "([^"]+)"/
+      project_mood_updates_path(Project.find_by_name($1))
+      
     else
       begin
         page_name =~ /the (.*) page/

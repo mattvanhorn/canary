@@ -38,7 +38,8 @@ group :development do
   gem "growl"
   gem "hpricot"
   gem "ruby_parser"
-  gem 'ruby-graphviz', :require => 'graphviz' # For graphing of state-machines
+  # gem 'ruby-graphviz', :require => 'graphviz' # For graphing of state-machines
+  gem 'ruby-debug19'
 end
 
 group :development, :test do

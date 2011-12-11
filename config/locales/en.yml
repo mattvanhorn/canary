@@ -5,6 +5,13 @@
 #
 # Use this as the base for the locale file of your language.
 en:
+  mood: Mood
+  moods:
+    happy: happy
+    satisfied: satisfied
+    bored: bored
+    frustrated: frustrated
+    
   sign_up: &sign_up
     page_header: 'Create an Account'
     auth_key: 'Email'
@@ -16,6 +23,7 @@ en:
     password_missing: 'You must provide a password'
     password_confirmation_missing: 'You must provide a password confirmation'
     password_no_match: 'Your password did not match the confirmation'
+    
   registrations:
     new:
       <<: *sign_up
@@ -60,6 +68,7 @@ en:
     actions:
       create: "Create my %{model}"
       update: "Save my %{model}"
+      submit: "Submit"
       
   date:
     formats:

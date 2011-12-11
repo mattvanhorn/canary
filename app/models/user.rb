@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_many :memberships
   has_many :projects, :through => :memberships
   has_many :invitations
+  has_many :mood_updates
   
   delegate :email, :to => :identity
   

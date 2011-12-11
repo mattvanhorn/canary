@@ -8,6 +8,7 @@ describe User do
   it { should have_many(:memberships) }
   it { should have_many(:projects).through(:memberships) }
   it { should have_many(:invitations) }
+  it { should have_many(:mood_updates) }
   
   it "can join a project" do
     user.projects.should_receive(:<<).with(project)

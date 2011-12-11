@@ -16,7 +16,6 @@ Feature: User Sign Up
     When I visit the sign-up page
      And I submit my valid registration information
     Then I should be on the homepage
-     And I should see a link to the update status page
      And I should see a link to the sign-out page
 
   Scenario: Sign Up without email

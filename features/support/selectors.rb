@@ -9,6 +9,8 @@ module HtmlSelectorsHelper
       "#page-header"
     when /the project (.*) input area/
       "#project_#{$1}_input"
+    when /the mood indicator/
+      "#mood_update_mood_score_input"
     else
       raise "Can't find mapping from \"#{scope}\" to a selector.\n" +
         "Now, go and add a mapping in #{__FILE__}"
