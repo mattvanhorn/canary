@@ -4,7 +4,7 @@
   %h1 Create an Account 
   %fieldset.inputs
     %ol
-      = semantic_input_tag(:email, :string, t('.auth_key'), :value => identity.try(:email))
+      = semantic_input_tag(:email, :string, t('.auth_key'), :value => user.try(:email))
       = semantic_input_tag(:password, :password)
       = semantic_input_tag(:password_confirmation, :password, t('.password_confirmation'))
       = hidden_field_tag(:token, params[:token])

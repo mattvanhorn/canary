@@ -1,8 +1,8 @@
 class SessionsController < ApplicationController
   
   def create
-    identity = Identity.find_from_hash(auth_hash)
-    self.current_user = identity.user
+    user = User.find_from_hash(auth_hash)
+    self.current_user = user
     redirect_back_or_default
   end
   

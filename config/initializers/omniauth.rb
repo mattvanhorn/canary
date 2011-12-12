@@ -14,7 +14,8 @@ OmniAuth.config.on_failure = SessionsController.action(:failure)
 
 Rails.application.config.middleware.use OmniAuth::Builder do
   #provider :developer unless Rails.env.production?
-  provider :identity, :fields => [:email, :token],
+  provider :identity, :fields => [:email, :token], 
+                      :model => User,
                       :form => SessionsController.action(:new),
                       :on_failed_registration => RegistrationsController.action(:failure)
 

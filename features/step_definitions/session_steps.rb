@@ -31,7 +31,7 @@ When /^I sign in with no email$/ do
 end
 
 When /^I sign in with bad credentials$/ do
-  Identity.where(:email => 'no-such-user@example.com').should be_empty
+  User.where(:email => 'no-such-user@example.com').should be_empty
   visit sign_in_path
   fill_in I18n.t('sign_in.auth_key'), :with => 'no-such-user@example.com'
   fill_in I18n.t('sign_in.password'), :with => 'bad-password'

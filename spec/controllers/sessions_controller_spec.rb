@@ -4,12 +4,12 @@ describe SessionsController do
   describe "#create" do
     before(:each) do
       @mock_user = mock_model(User)
-      @mock_identity = mock_model(Identity, :user => @mock_user)
-      Identity.stub(:find_from_hash).and_return(@mock_identity)
+      @mock_user = mock_model(User, :user => @mock_user)
+      User.stub(:find_from_hash).and_return(@mock_user)
     end
     
     it "identifies the authenticated user" do
-      Identity.should_receive(:find_from_hash).and_return(@mock_identity)
+      User.should_receive(:find_from_hash).and_return(@mock_user)
       get :create, :provider => 'identity'
     end
     

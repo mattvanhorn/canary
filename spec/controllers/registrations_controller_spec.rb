@@ -3,10 +3,10 @@ require 'spec_helper'
 describe RegistrationsController do
   
   describe "GET #new" do
-    let!(:identity){ stub_model(Identity) }
+    let!(:user){ stub_model(User) }
     
     before(:each) do
-      Identity.stub(:new).and_return(identity)
+      User.stub(:new).and_return(user)
     end
     
     describe "when a token is provided" do
@@ -23,8 +23,8 @@ describe RegistrationsController do
         get :new, :token => token
       end
       
-      it "sets up an identity with prepoulated email address" do
-        identity.should_receive(:setup_from_invitation).with(invitation)
+      it "sets up an user with prepoulated email address" do
+        user.should_receive(:setup_from_invitation).with(invitation)
         get :new, :token => token
       end
       
@@ -39,8 +39,8 @@ describe RegistrationsController do
       end
     end
     
-    it "sets up an identity" do
-      Identity.should_receive(:new).and_return(identity)
+    it "sets up an user" do
+      User.should_receive(:new).and_return(user)
       get :new
     end
     
@@ -51,10 +51,10 @@ describe RegistrationsController do
   end
 
   describe "handling a failed sign-up" do
-    let(:identity) { stub_model(Identity, :errors => {:foo => 'bar'}) }
+    let(:user) { stub_model(User, :errors => {:foo => 'bar'}) }
     
     before(:each) do
-      request.env['omniauth.identity'] = identity
+      request.env['omniauth.identity'] = user
     end
     
     it "puts error messages in the flash" do

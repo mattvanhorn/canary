@@ -1,11 +1,31 @@
-class User < ActiveRecord::Base
-  has_one  :identity, :dependent => :destroy
+class User < OmniAuth::Identity::Models::ActiveRecord
   has_many :memberships
   has_many :projects, :through => :memberships
   has_many :invitations
   has_many :mood_updates
   
-  delegate :email, :to => :identity
+  validates :email, :password, :password_confirmation, :presence =>true
+  
+  validates :email, :uniqueness=>true, :if => Proc.new{|i| i.email.present?}
+                    
+  validates  :password, :length => { :minimum => 5, :maximum => 40 },
+                        :confirmation =>true,
+                        :if => Proc.new{|i| i.password.present?}
+                    
+  def self.find_from_hash(auth_hash)
+    where(:id => auth_hash['uid']).first
+  end
+  
+  def token=(code)
+    setup_from_invitation(Invitation.for_token(code))
+  end
+  
+  def setup_from_invitation(invitation)
+    if invitation
+      self.email ||= invitation.recipient_email
+      self.join(invitation.project)
+    end
+  end
   
   def join(project)
     projects << project

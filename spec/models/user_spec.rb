@@ -3,12 +3,50 @@ require 'spec_helper'
 describe User do 
   let(:user){ User.new }
   let(:project){ stub_model(Project)}
+  it { should have_db_column(:email).of_type(:string) }
   
-  it { should have_one( :identity) }
   it { should have_many(:memberships) }
   it { should have_many(:projects).through(:memberships) }
   it { should have_many(:invitations) }
   it { should have_many(:mood_updates) }
+  
+  describe "find_from_hash" do
+    
+    it "looks for an User with an id that matches the hash uid" do
+      User.should_receive(:where).with(hash_including(:id => '1')).and_return(mock('arel', :first => nil))
+      User.find_from_hash({'provider' => 'identity', 'uid' => '1', 'info' => {'email' => 'test@example.com'}})
+    end
+  end
+  
+  describe "being created" do
+    let(:token){ 'abc123' }
+    let(:project){ stub_model(Project) }
+    let(:invitation){ stub_model(Invitation, :recipient_email => 'friend@example.com', :project => project) }
+    
+    before(:each) do
+      Invitation.stub(:for_token).and_return(invitation)
+    end
+    
+    it "sets up from invitation if given one" do
+      user.setup_from_invitation(invitation)
+      user.email.should == 'friend@example.com'
+    end
+    
+    it "uses an invitation to populate project if possible" do
+      user.setup_from_invitation(invitation)
+      user.projects.should include(project)
+    end
+    
+    it "uses an invitation to populate email if possible" do
+      user.setup_from_invitation(invitation)
+      user.email.should == 'friend@example.com'
+    end
+  
+    it "uses a token to populate project for user if possible" do
+      user.should_receive(:setup_from_invitation).with(invitation)
+      user.token = 'abc123'
+    end
+  end
   
   it "can join a project" do
     user.projects.should_receive(:<<).with(project)
@@ -20,12 +58,6 @@ describe User do
     # user.memberships << membership
     user.join(project)
     user.should be_member_of(project)
-  end
-  
-  it "has an email via it's identity" do
-    identity = stub_model(Identity, :email => 'alice@example.com')
-    user = User.new(:identity => identity)
-    user.email.should == 'alice@example.com'
   end
   
   describe "calling #invite" do
