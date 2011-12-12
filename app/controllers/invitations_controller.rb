@@ -17,11 +17,7 @@ class InvitationsController < ApplicationController
       respond_with(project, invitation)
     end
   end
-  
-  def edit
-    invitation = Invitation.for_token(params[:token])
-  end
-  
+
   protected
   
   def projects
