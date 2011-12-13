@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111212003933) do
+ActiveRecord::Schema.define(:version => 20111212142056) do
 
   create_table "invitations", :force => true do |t|
     t.integer  "user_id"
@@ -39,6 +39,8 @@ ActiveRecord::Schema.define(:version => 20111212003933) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "mood_updates", ["project_id", "user_id"], :name => "index_mood_updates_on_project_id_and_user_id"
 
   create_table "projects", :force => true do |t|
     t.string   "name"

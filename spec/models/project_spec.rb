@@ -18,4 +18,37 @@ describe Project do
     subject.should have_db_index(:name).unique(true)
   end
   
+  describe "calculating moods" do
+    
+    let(:project){ Project.new }
+    context "with some updates" do
+      before(:each) do
+        m1 = mock_model(MoodUpdate, :mood_score => 3 )
+        m2 = mock_model(MoodUpdate, :mood_score => 1 )
+        m3 = mock_model(MoodUpdate, :mood_score => 2 )
+        project.should_receive(:most_recent_mood_updates).and_return([m1,m2,m3])
+      end
+    
+      it "can calculate an average mood score" do
+        project.average_mood_score.should == 2
+      end
+
+      it "has a mood" do
+        project.mood.should == 'satisfied'
+      end
+    end
+    
+    context "with no updates" do
+      before(:each) do
+        project.should_receive(:most_recent_mood_updates).and_return([])
+      end
+      
+      it "has an unknown mood" do
+        project.mood.should == 'unknown'
+      end
+    end
+  end
+
+  
+
 end
