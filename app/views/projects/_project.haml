@@ -1,0 +1,4 @@
+%li[project]{:class => [project.mood, 'span4']}
+  %a{:href => project_path(project)}
+    %h2= project.name
+    %p= pluralize(project.users.count, 'member')

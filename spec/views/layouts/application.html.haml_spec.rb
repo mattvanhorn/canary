@@ -1,11 +1,10 @@
 require 'spec_helper'
 
-describe 'homepage/index.html.haml' do
+describe 'layouts/application.html.haml' do
   
   describe "when not logged in" do
     before(:each) do
       view.stub(:current_user).and_return(nil)
-      
       render
     end
     
@@ -35,5 +34,10 @@ describe 'homepage/index.html.haml' do
     it "has a link to sign out" do
       rendered.should have_selector("a[href='#{sign_out_path}']")
     end
+    
+    it "has a link to my projects" do
+      rendered.should have_selector("a[href='#{my_projects_path}']")
+    end
+    
   end
 end

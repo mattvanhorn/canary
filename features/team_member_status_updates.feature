@@ -17,5 +17,6 @@ Feature: Team member mood updates
   Then I should be on the project mood updates page for "Yoyodyne website"
    And I should see "happy"
    And I should see 1 happy team member
-   And I should see "team mood: happy"
+   And I should see "Project Mood: Happy"
+   And show me the page
   

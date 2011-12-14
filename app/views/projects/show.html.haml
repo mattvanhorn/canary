@@ -1,9 +1,16 @@
 -if flash[:alert]
   .alert-message.error= flash[:alert]
   
-%h1#page-header= project.name
+%h1.row{:class => project.mood}= project.name
 
-= link_to "Invite Members", new_project_invitation_path(project)
-- if user_signed_in? && current_user.member_of?(project)
-  = link_to "Update Mood",  new_project_mood_update_path(project)
+.row.team
+  %ul
+    - project.most_recent_mood_updates.each do |mu|
+      %li
+        = image_tag("#{mu.mood}.png", :size => '128x128')
+
+- if user_signed_in? && current_user.member_of?(project)        
+  .row.project-actions
+    = link_to t('nav.invite_member'), new_project_invitation_path(project), :class => %w(btn default)
+    = link_to t('nav.update_mood'),  new_project_mood_update_path(project), :class => %w(btn default)
   

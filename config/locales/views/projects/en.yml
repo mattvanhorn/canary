@@ -1,0 +1,26 @@
+en:
+  formtastic:
+    titles:
+      project: "Project"
+    labels:
+      project:
+        name: "Name"
+        company: "Company"
+      invitation:
+        recipient_email: "Email"
+        password: "Password"
+        password_confirmation: "Confirm Password"
+        accept_invitation: "Accept Invitation"
+    hints:
+      project:
+        name: Choose a good name for your project.
+        company: "company, team, group, or yourself"
+    placeholders:
+    actions:
+      create: "Create my %{model}"
+      update: "Save my %{model}"
+      submit: "Submit"
+
+  projects:
+    new:
+      page_header: 'Create a Project'

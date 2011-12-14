@@ -1,3 +1,43 @@
 // Place all the styles related to the Projects controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "compass_twitter_bootstrap/variables";
+@import "compass_twitter_bootstrap/mixins";
+@import "shared/palette";
+@import "shared/project";
+
+h1.row {
+  background: $whats_the_matter;
+  color: $please;
+  font-size: 3em;
+  line-height: 1em;
+  margin-bottom: 0;
+  padding-left: $gridGutterWidth;
+  padding-top: $baseline;
+  padding-bottom: $baseline;
+}
+.row.project-actions{
+  background: $whats_the_matter;
+  padding-top: $baseline;
+  padding-bottom: $baseline;
+  text-align:center;
+}
+.row.projects{
+  background: $whats_the_matter;
+  .media-grid {
+    margin-left: 0;
+  }
+}
+
+
+.row.team {
+  background: $whats_the_matter;
+}
+
+.team ul{
+  list-display-style: none;
+  li {
+    display: block;
+    float: left;
+  }
+}

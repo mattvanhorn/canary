@@ -12,8 +12,12 @@ class MoodUpdate < ActiveRecord::Base
     I18n.translate("moods.#{MOODS[idx]}")
   end
   
+  def self.mood_unknown
+    I18n.translate("moods.unknown")
+  end
+  
   def mood
     self.class.mood(mood_score)
   end
-  
+
 end

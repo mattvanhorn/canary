@@ -24,7 +24,7 @@ module Canary
     # Custom directories with classes and modules you want to be autoloadable.
     # config.autoload_paths += %W(#{config.root}/extras)    config.autoload_paths += %W(#{config.root}/lib)
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
-
+    
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
     # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
@@ -37,9 +37,8 @@ module Canary
     # config.time_zone = 'Central Time (US & Canada)'
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
-    # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
-    # config.i18n.default_locale = :de
-
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
+    
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
 
@@ -57,7 +56,6 @@ module Canary
         # Bundler.require(:default, :assets, Rails.env)
     end
     config.sass.load_paths << Compass::Frameworks['compass'].stylesheets_directory
-    config.sass.load_paths << Compass::Frameworks['twitter_bootstrap'].stylesheets_directory
     config.assets.precompile << /(^[^_]|\/[^_])[^\/]*/
 
     # Version of your assets, change this if you want to expire all your assets

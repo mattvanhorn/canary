@@ -1,0 +1,54 @@
+.media-grid {
+  li.project{
+    @include columns(8);
+    height: 128px;
+    &.happy{
+      background: image-url("happy.png") no-repeat left top;
+    }
+    &.satisfied{
+      background: image-url("satisfied.png") no-repeat left top;
+    }
+    &.bored{
+      background: image-url("bored.png") no-repeat left top;
+    }
+    &.frustrated{
+      background: image-url("frustrated.png") no-repeat left top;
+    }
+    h2, p {
+
+    }
+    h2 {
+      line-height: 64px;
+    }
+    a {
+      color: $spooky_blue;
+      border: 0 none transparent;
+      padding-left: 128px;
+      height: 128px;
+      display: block;
+      border: none;
+      -webkit-border-radius: 0;
+      -moz-border-radius: 0;
+      -ms-border-radius: 0;
+      -o-border-radius: 0;
+      border-radius: 0;
+      -webkit-box-shadow: 0 0px 0px rgba(0, 0, 0, 0.0);
+      -moz-box-shadow: 0 0px 1px rgba(0, 0, 0, 0.0);
+      box-shadow: 0 0px 0px rgba(0, 0, 0, 0.0);
+      
+      &:focus,
+      &:hover,
+      &:active{ 
+        border: none;
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        -ms-border-radius: 0;
+        -o-border-radius: 0;
+        border-radius: 0;
+        -webkit-box-shadow: 0 0px 0px rgba(0, 0, 0, 0.0);
+        -moz-box-shadow: 0 0px 1px rgba(0, 0, 0, 0.0);
+        box-shadow: 0 0px 0px rgba(0, 0, 0, 0.0);
+      }
+    }
+  }
+}

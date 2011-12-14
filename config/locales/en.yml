@@ -5,8 +5,19 @@
 #
 # Use this as the base for the locale file of your language.
 en:
+  brand: 'Canary'
+  nav:
+    sign_up: 'Sign Up'
+    sign_in: 'Sign In'
+    sign_out: 'Sign Out'
+    all_projects: 'All Projects'
+    my_projects: 'My Projects'
+    new_project: 'Create New Project'
+    update_mood: 'Update Mood'
+    invite_member: 'Invite Member'
   mood: Mood
   moods:
+    unknown: unknown
     happy: happy
     satisfied: satisfied
     bored: bored
@@ -41,34 +52,12 @@ en:
   sessions:
     new:
       <<: *sign_in
-
-  projects:
-    new:
-      page_header: 'Create a Project'
       
   invitations:
     new:
       page_header: 'Create an Invitation'
       
-  formtastic:
-    titles:
-      project: "Project"
-    labels:
-      project:
-        name: "Name"
-      invitation:
-        recipient_email: "Email"
-        password: "Password"
-        password_confirmation: "Confirm Password"
-        accept_invitation: "Accept Invitation"
-    hints:
-      project:
-        name:
-    placeholders:
-    actions:
-      create: "Create my %{model}"
-      update: "Save my %{model}"
-      submit: "Submit"
+
       
   date:
     formats:

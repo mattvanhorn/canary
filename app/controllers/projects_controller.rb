@@ -3,11 +3,20 @@ class ProjectsController < ApplicationController
   
   respond_to :html
   
-  expose(:projects){ current_user.projects }
+  expose(:projects) do
+    case action_name
+    when 'mine'
+      current_user.projects
+    else
+      Project.scoped
+    end
+  end
+  
   expose(:project)
   
   def create
     project.save
     respond_with project
   end
+  
 end

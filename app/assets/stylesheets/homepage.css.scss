@@ -1,0 +1,49 @@
+@import "compass_twitter_bootstrap/variables";
+@import "compass_twitter_bootstrap/mixins";
+@import "shared/palette";
+@import "shared/project";
+
+.promo {
+  height: 21 * $baseline;
+  background: $whats_the_matter;
+  .call-to-action {
+    @include makeColumn(8);
+    height: 21 * $baseline;
+  }
+  .illustration1 {
+    @include makeColumn(5);
+    height: 21 * $baseline;
+  }
+  .illustration2 {
+    @include makeColumn(3);
+    height: 21 * $baseline;
+  }
+  h1 {
+    color: $please;
+    font-size: 5em;
+    line-height:1em;
+    margin-top: 0.6em;
+  }
+}
+.details {
+  height: 13 * $baseline;
+  background: $nature;
+  .features1 {
+    height: 13 * $baseline;
+    @include makeColumn(8);
+  }
+  .features2 {
+    height: 13 * $baseline;
+    @include makeColumn(5);
+  }
+  .coming-soon {
+    height: 13 * $baseline;
+    @include makeColumn(3);
+  }
+  h2{
+    color: $please;
+  } 
+  h3 {
+    color: $whats_the_matter;
+  }
+}

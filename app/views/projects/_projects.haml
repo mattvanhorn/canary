@@ -1,0 +1,4 @@
+.projects.row
+  %ul.media-grid
+    - projects.each do |project|
+      = render :partial => 'project', :object => project

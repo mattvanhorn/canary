@@ -39,4 +39,7 @@ class User < OmniAuth::Identity::Models::ActiveRecord
     invitations.new(:recipient_email => email)
   end
   
+  def update_mood(mood_update)
+    self.mood_updates << mood_update
+  end
 end

@@ -1,8 +1,18 @@
 /*
- * This is a manifest file that'll automatically include all the stylesheets available in this directory
- * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
- * the top of the compiled file, but it's generally better to create a new file per style scope.
- *= require_self
- *= require_tree .
-*/
-@import "compass_twitter_bootstrap";
+ * Globally used styles and all the compass and twitter_bootstrap styles and variables and mixins
+ * Other stylesheets should just import variables and mixins as necessary
+ */
+ 
+ @import "compass";
+ @import "compass_twitter_bootstrap";
+ @import "shared/palette";
+ 
+ body { padding-top: 40px; }
+ .footer {
+   background: $icing;
+   height: 8 * $baseline;
+ }
+
+ .topbar-inner, .topbar .fill {
+   background-color: $spooky_blue;
+ }

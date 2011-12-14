@@ -17,9 +17,9 @@ Canary::Application.routes.draw do
   resources :projects do
     resources :invitations
     resources :mood_updates
+    get 'mine', :on => :collection, :as => :my
   end
-
-
+  
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action

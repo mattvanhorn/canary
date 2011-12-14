@@ -23,7 +23,6 @@ group :assets do
   gem 'coffee-rails', '~> 3.1.1'
   gem 'uglifier', '>= 1.0.3'
   gem "compass", :git => "git://github.com/chriseppstein/compass.git"
-  gem 'compass_twitter_bootstrap'
 end
 
 group :development do
@@ -39,7 +38,6 @@ group :development do
   gem "hpricot"
   gem "ruby_parser"
   # gem 'ruby-graphviz', :require => 'graphviz' # For graphing of state-machines
-  gem 'ruby-debug19'
 end
 
 group :development, :test do
@@ -55,6 +53,7 @@ group :development, :test do
   gem "spork"
   gem 'activerecord-nulldb-adapter', :path => '/Users/mattvanhorn/projects/nulldb'
   gem 'email_spec'
+  # gem 'ruby-debug19'
 end
 
 

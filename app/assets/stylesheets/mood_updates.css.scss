@@ -1,0 +1,16 @@
+ul.moods {
+  list-style: none;
+  li {
+    display: block;
+    float: left;
+    height: 128px;
+    width: 128px;
+    text-indent: -9999px;
+  }
+  li.happy {       background: url(/assets/happy.png) no-repeat center top}
+  li.satisfied {   background: url(/assets/satisfied.png) no-repeat center top}
+  li.bored {       background: url(/assets/bored.png) no-repeat center top}
+  li.frustrated {  background: url(/assets/frustrated.png) no-repeat center top}
+}
+  
+  
