@@ -1,5 +1,5 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
-# require 'cover_me'
+require 'cover_me'
 require 'spork'
 
 Spork.prefork do

@@ -52,7 +52,6 @@ group :development, :test do
   gem "fabrication"
   gem "database_cleaner"
   gem "launchy"
-  gem "cover_me"
   gem "faker"
   gem "spork"
   gem 'activerecord-nulldb-adapter', :path => '/Users/mattvanhorn/projects/nulldb'
@@ -60,4 +59,7 @@ group :development, :test do
   # gem 'ruby-debug19'
 end
 
+group :test do
+  gem "cover_me", :require => false
+end
 
