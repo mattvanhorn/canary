@@ -1,0 +1,53 @@
+@import "compass_twitter_bootstrap/variables";
+@import "compass_twitter_bootstrap/mixins";
+@import "shared/palette";
+ 
+.debug {
+  background-image: image-url('grid.png');
+}
+
+body { 
+  padding-top: 40px;
+  
+  .row {
+    background-color: $whats_the_matter;
+  }
+}
+
+body.new,
+body.edit {
+  background: $whats_the_matter;
+  
+  .topbar .container {
+    background: transparent;
+   }
+   
+  .row {
+    background: $whiteSmoke;
+  }
+}
+
+h1.row {
+  color: $please;
+  font-size: 3em;
+  line-height: 1em;
+  margin-bottom: 0;
+  padding-left: $gridGutterWidth;
+  padding-top: $baseline;
+  padding-bottom: $baseline;
+}
+
+form {
+  @include columns(24);
+  background: $whiteSmoke;
+}
+
+.footer {
+  background: $icing;
+  height: 8 * $baseline;
+}
+
+.topbar-inner, .topbar .fill {
+  background-color: $spooky_blue;
+}
+

@@ -1,11 +1,12 @@
 en:
-  formtastic:
+  simple_form:
     titles:
       project: "Project"
     labels:
       project:
-        name: "Name"
-        company: "Company"
+        name: "Project Name"
+      company: 
+        name: "Company Name"
       invitation:
         recipient_email: "Email"
         password: "Password"
@@ -14,7 +15,8 @@ en:
     hints:
       project:
         name: Choose a good name for your project.
-        company: "company, team, group, or yourself"
+      company: 
+        name: "company, team, group, or anything you like"
     placeholders:
     actions:
       create: "Create my %{model}"
@@ -24,3 +26,5 @@ en:
   projects:
     new:
       page_header: 'Create a Project'
+      
+   

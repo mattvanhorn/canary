@@ -1,0 +1,16 @@
+en:
+  sign_up: &sign_up
+    page_header: 'Sign Up for an Account'
+    auth_key: 'Email'
+    password: 'Password'
+    password_confirmation: 'Confirm Password'
+    submit: 'Sign Up'
+    sign_in_link: 'Or, sign in with existing account'
+    email_missing: 'You must provide an email address'
+    password_missing: 'You must provide a password'
+    password_confirmation_missing: 'You must provide a password confirmation'
+    password_no_match: 'Your password did not match the confirmation'
+    
+  registrations:
+    new:
+      <<: *sign_up

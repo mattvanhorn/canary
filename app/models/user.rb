@@ -28,7 +28,7 @@ class User < OmniAuth::Identity::Models::ActiveRecord
   end
   
   def join(project)
-    projects << project
+    (projects << project) if project.valid?
   end
   
   def member_of?(project)

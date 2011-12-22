@@ -1,10 +1,13 @@
 class Project < ActiveRecord::Base
+  belongs_to :company
+  accepts_nested_attributes_for :company, :allow_destroy => true, :reject_if => proc { |obj| obj.blank? }
+  
   has_many :memberships
   has_many :users, :through => :memberships
   has_many :invitations
   has_many :mood_updates
   
-  validates :name, :presence =>true, :uniqueness => true
+  validates :name, :presence =>true, :uniqueness => {:scope => :company_id}
   
   def most_recent_mood_updates
     # yes, it cross joins, but I'm hoping indexes on project_id, user_id help

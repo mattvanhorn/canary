@@ -1,4 +1,9 @@
-= semantic_form_for [project, MoodUpdate.new] do |f|
-  = f.input :mood_score, :label => 'Mood', :as => :select, :collection => moods_and_mood_scores
-  = f.buttons do 
-    = f.commit_button :submit
+.row
+  %h1#page-header= t('.page_header')
+
+.row
+  = simple_form_for [project, MoodUpdate.new] do |f|
+    = f.input :mood_score, :label => 'Mood', :as => :select, :collection => moods_and_mood_scores
+    .actions.input
+      = f.button :submit, :class => 'btn primary'
+     

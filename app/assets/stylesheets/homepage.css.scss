@@ -7,15 +7,16 @@
   height: 21 * $baseline;
   background: $whats_the_matter;
   .call-to-action {
-    @include makeColumn(8);
+    @include makeColumn(12);
+    @include offset(0);
     height: 21 * $baseline;
   }
   .illustration1 {
-    @include makeColumn(5);
+    @include makeColumn(8);
     height: 21 * $baseline;
   }
   .illustration2 {
-    @include makeColumn(3);
+    @include makeColumn(4);
     height: 21 * $baseline;
   }
   h1 {
@@ -30,15 +31,16 @@
   background: $nature;
   .features1 {
     height: 13 * $baseline;
-    @include makeColumn(8);
+    @include makeColumn(12);
+    @include offset(0);
   }
   .features2 {
     height: 13 * $baseline;
-    @include makeColumn(5);
+    @include makeColumn(8);
   }
   .coming-soon {
     height: 13 * $baseline;
-    @include makeColumn(3);
+    @include makeColumn(4);
   }
   h2{
     color: $please;

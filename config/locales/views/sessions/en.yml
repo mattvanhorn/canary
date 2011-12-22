@@ -1,0 +1,15 @@
+en:
+  sign_in: &sign_in
+    page_header: 'Sign In'
+    auth_key: 'Email'
+    password: 'Password'
+    submit: 'Sign In'
+    sign_up_link: 'Or, sign up and create a new account'
+    invalid_credentials: 'Your email address or password is incorrect'
+    email_and_password_missing: 'How do you expect me to sign you in with no credentials?'
+    email_missing: 'You must provide an email address'
+    password_missing: 'You must provide a password'
+  
+  sessions:
+    new:
+      <<: *sign_in

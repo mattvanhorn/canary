@@ -1,0 +1,62 @@
+// Place all the styles related to the Projects controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "compass_twitter_bootstrap/variables";
+@import "compass_twitter_bootstrap/mixins";
+@import "shared/palette";
+.media-grid {
+  @include columns(22);
+  @include offset(1);
+  margin-top: 40px;
+  li.company {
+    &.happy a{
+      background: image-url("happy.png") no-repeat center bottom;
+    }
+    &.satisfied a{
+      background: image-url("satisfied.png") no-repeat center bottom;
+    }
+    &.bored a{
+      background: image-url("bored.png") no-repeat center bottom;
+    }
+    &.frustrated a{
+      background: image-url("frustrated.png") no-repeat center bottom;
+    }
+    &.unknown a{
+      background: image-url("bldg1.png") no-repeat center bottom;
+    }
+
+    a {
+      @include columns(3);
+      @include offset(0);
+      height: $baseline*7;
+      
+      margin: 0;
+      color: $spooky_blue;
+      border: 0 none transparent;
+      display: block;
+      border: none;
+      -webkit-border-radius: 0;
+      -moz-border-radius: 0;
+      -ms-border-radius: 0;
+      -o-border-radius: 0;
+      border-radius: 0;
+      -webkit-box-shadow: 0 0px 0px rgba(0, 0, 0, 0.0);
+      -moz-box-shadow: 0 0px 1px rgba(0, 0, 0, 0.0);
+      box-shadow: 0 0px 0px rgba(0, 0, 0, 0.0);
+      
+      &:focus,
+      &:hover,
+      &:active{ 
+        border: none;
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        -ms-border-radius: 0;
+        -o-border-radius: 0;
+        border-radius: 0;
+        -webkit-box-shadow: 0 0px 0px rgba(0, 0, 0, 0.0);
+        -moz-box-shadow: 0 0px 1px rgba(0, 0, 0, 0.0);
+        box-shadow: 0 0px 0px rgba(0, 0, 0, 0.0);
+      }
+    }
+  }
+}

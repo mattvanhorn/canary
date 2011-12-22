@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe User do 
   let(:user){ User.new }
-  let(:project){ stub_model(Project)}
+  let(:project){ stub_model(Project, :valid? => true)}
   it { should have_db_column(:email).of_type(:string) }
   
   it { should have_many(:memberships) }
@@ -20,7 +20,6 @@ describe User do
   
   describe "being created" do
     let(:token){ 'abc123' }
-    let(:project){ stub_model(Project) }
     let(:invitation){ stub_model(Invitation, :recipient_email => 'friend@example.com', :project => project) }
     
     before(:each) do
@@ -52,10 +51,8 @@ describe User do
     user.projects.should_receive(:<<).with(project)
     user.join(project)
   end
-  
+
   it "can be a member of a project" do
-    # membership = stub_model(Membership, :project => project)
-    # user.memberships << membership
     user.join(project)
     user.should be_member_of(project)
   end

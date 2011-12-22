@@ -7,15 +7,16 @@
 
     = javascript_include_tag "application"
     = csrf_meta_tags
-  %body
+  %body{:class => [controller.controller_name, controller.action_name]}
     .topbar
       .topbar-inner
         .container
           = link_to t('brand'), root_path, :class => 'brand'
           %ul.nav
+            %li= link_to t('nav.companies'), companies_path
+            %li= link_to t('nav.projects'), projects_path
             - if user_signed_in?
-              %li= link_to t('nav.all_projects'), projects_path
-              %li= link_to t('nav.my_projects'), my_projects_path
+              //%li= link_to t('nav.my_projects'), my_projects_path
               %li= link_to t('nav.sign_out'), sign_out_path
 
             - else
@@ -26,7 +27,7 @@
       = yield
       
       .footer.row
-        &copy;#{Time.now.year} Matt Van Horn
+        &copy; #{Time.now.year} Matt Van Horn
         
 :javascript
   $(".alert-message").alert();

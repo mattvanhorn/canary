@@ -23,41 +23,11 @@ en:
     bored: bored
     frustrated: frustrated
     
-  sign_up: &sign_up
-    page_header: 'Create an Account'
-    auth_key: 'Email'
-    password: 'Password'
-    password_confirmation: 'Confirm Password'
-    submit: 'Connect'
-    sign_in_link: 'Sign in with existing account'
-    email_missing: 'You must provide an email address'
-    password_missing: 'You must provide a password'
-    password_confirmation_missing: 'You must provide a password confirmation'
-    password_no_match: 'Your password did not match the confirmation'
     
-  registrations:
-    new:
-      <<: *sign_up
-      
-  sign_in: &sign_in
-    page_header: 'Sign In'
-    auth_key: 'Email'
-    password: 'Password'
-    submit: 'Connect'
-    sign_up_link: 'Create an Identity'
-    invalid_credentials: 'Your email address or password is incorrect'
-    email_and_password_missing: 'How do you expect me to sign you in with no credentials?'
-    email_missing: 'You must provide an email address'
-    password_missing: 'You must provide a password'
-  sessions:
-    new:
-      <<: *sign_in
-      
   invitations:
     new:
       page_header: 'Create an Invitation'
       
-
       
   date:
     formats:
@@ -273,6 +243,7 @@ en:
         header:
           one:    "1 error prohibited this %{model} from being saved"
           other:  "%{count} errors prohibited this %{model} from being saved"
+          one_or_more: "%{errors} prohibited this %{model} from being saved"
         body: "There were problems with the following fields:"
 
       messages:

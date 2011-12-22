@@ -16,6 +16,6 @@ Rails.application.config.middleware.use OmniAuth::Builder do
   provider :identity, :fields => [:email, :token], 
                       :model => User,
                       :form => SessionsController.action(:new),
-                      :on_failed_registration => RegistrationsController.action(:failure)
+                      :on_failed_registration => RegistrationsController.action(:new)
 end
 

@@ -1,0 +1,21 @@
+@import "compass_twitter_bootstrap/variables";
+@import "compass_twitter_bootstrap/mixins";
+@import "shared/palette";
+
+form {
+  @include columns(24);
+  background: #f5f5f5;
+  
+  p.sign-in-link {
+    @include offset(4);
+    font-size: $basefont * 2;
+    line-height: $baseline * 2;
+  }
+}
+.row {
+  background: #f5f5f5;
+  //background-image: image-url('grid.png');
+}
+body {
+  background: $whats_the_matter;
+}

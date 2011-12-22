@@ -1,18 +1,24 @@
+%h1#page-header.row= t('.page_header')
+
 -if flash[:alert]
   .alert-message.error= flash[:alert]
-
-= form_tag '/auth/identity/callback', :class => 'formtastic' do |f| 
-  %h1= t('.page_header')
   
-  %fieldset.inputs
-    %ol
-      = semantic_input_tag(:auth_key, :string, t('.auth_key'))
-      = semantic_input_tag(:password, :password)  
+.row
+  = form_tag '/auth/identity/callback' do |f| 
+    %fieldset
+  
+      .clearfix.string.required
+        = label_tag(:email, t(".auth_key"), :class => 'required')
+        .input
+          = text_field_tag(:auth_key, '', :required => 'required', :class => 'required')
       
-  %fieldset.buttons
-    %ol
-      %li.commit.button.input
+      .clearfix.password.required
+        = label_tag(:password, t(".password"))
+        .input
+          = password_field_tag(:password, '', :required => 'required', :class => 'required')
+    
+      .actions
         = submit_tag t('.submit'), :class => 'btn primary create'
         
-  %p= link_to t('.sign_up_link'), sign_up_path
+    %p.sign-up-link= link_to t('.sign_up_link'), sign_up_path
   

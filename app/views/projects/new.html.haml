@@ -1,8 +1,18 @@
-%h1#page-header= t('.page_header')
+.row
+  %h1#page-header= t('.page_header')
 
-= semantic_form_for project do |f|
-  = f.inputs :name, :title => :project
-  = f.buttons do
-    = f.commit_button :button_html  => { :class => %w(btn primary) },
-                      :wrapper_html => { :class => %w(actions input) }
-  
+.row
+  = simple_form_for project do |f|
+    
+    = f.simple_fields_for :company_attributes do |company_f|
+      = company_f.input :name, :url => autocomplete_company_name_projects_path, :as => :autocomplete,
+                               :required => false,
+                               :label => t('simple_form.labels.company.name'), 
+                               :hint => t('simple_form.hints.company.name'),
+                               :input_html => {:id_element => '#project_company_attributes_id'}
+                               
+      
+      = company_f.hidden_field(:id, :value => '')
+    = f.input :name, :label => t('simple_form.labels.project.name'), :hint => t('simple_form.hints.project.name')
+    .actions.input
+      = f.button :submit, :class => 'btn primary'

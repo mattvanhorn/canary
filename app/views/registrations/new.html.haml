@@ -1,16 +1,36 @@
-= flash_errors
+%h1#page-header.row= t('.page_header')
 
-= form_tag '/auth/identity/register', :class => 'formtastic' do |f| 
-  %h1 Create an Account 
-  %fieldset.inputs
-    %ol
-      = semantic_input_tag(:email, :string, t('.auth_key'), :value => user.try(:email))
-      = semantic_input_tag(:password, :password)
-      = semantic_input_tag(:password_confirmation, :password, t('.password_confirmation'))
+- if @user && @user.errors.any?
+  .row
+    - actual_errors = @user.errors.to_hash.delete_if{|k,v| k == :password_digest}
+  
+    .alert-message.error
+      %a.close{:href => "#"}x
+      = I18n.t('activerecord.errors.template.header.one_or_more', :errors => pluralize(actual_errors.count, "error"), :model => 'user')
+.row
+  = form_tag '/auth/identity/register' do |f| 
+    %fieldset
+      .clearfix.string.required{:class => ('error' if user.errors[:email].any?)}
+        = label_tag(:email, t(".auth_key"), :class => 'required')
+        .input
+          = text_field_tag(:email, user.try(:email), :required => 'required', :class => ['required', ('error' if user.errors[:email].any?)])
+          %span.help-inline= user.errors[:email].map{|e| "Email #{e}"}.uniq.join(', ')
+        
+      .clearfix.password.required{:class => ('error' if user.errors[:password].any?)}
+        = label_tag(:password, t(".password"))
+        .input
+          = password_field_tag(:password, '', :required => 'required', :class => ['required', ('error' if user.errors[:password].any?)])
+          %span.help-inline= user.errors[:password].map{|e| "Password #{e}"}.uniq.join(', ')
+        
+      .clearfix.password.required{:class => ('error' if user.errors[:password_confirmation].any?)}
+        = label_tag(:password_confirmation, t(".password_confirmation"))
+        .input
+          = password_field_tag(:password_confirmation, '', :required => 'required', :class => ['required', ('error' if user.errors[:password_confirmation].any?)])
+          %span.help-inline= user.errors[:password_confirmation].map{|e| "Confirmation #{e}"}.uniq.join(', ')
+          
       = hidden_field_tag(:token, params[:token])
-  %fieldset.buttons
-    %ol
-      %li.commit.button.input
-        = submit_tag t('.submit'), :class => 'btn primary create'
+    
+    .actions
+      = submit_tag t('.submit'), :class => 'btn primary create'
 
-  %p= link_to t('.sign_in_link'), sign_in_path
+    %p.sign-in-link= link_to t('.sign_in_link'), sign_in_path
