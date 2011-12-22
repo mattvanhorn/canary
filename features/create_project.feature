@@ -9,14 +9,15 @@ Feature: Create Project
      And I sign in
 
   Scenario: New Project Link
-    When I visit the homepage
+    When I visit my projects page
     Then I should see a link to the new project page
 
   Scenario: Create a project
     When I visit the new project page
      And I create a project named "Yoyodyne website"
-    Then I should be on the project page for "Yoyodyne website"
-     And I should see "Yoyodyne website" within the page header
+    Then I should be on my projects page
+     And I should see "Yoyodyne website"
+     And I should see one member
      And I should see a link to the invite members page for "Yoyodyne website"
 
   Scenario: Create a project without a name

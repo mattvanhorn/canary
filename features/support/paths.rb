@@ -26,6 +26,9 @@ module NavigationHelpers
     when /the accept invitation page/
       /\/invitations\/accept\/[^\/]+/
       
+    when /my projects page/
+      my_projects_path
+      
     when /the project page for "([^"]+)"/
       project_path(Project.find_by_name($1))
       
