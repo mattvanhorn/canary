@@ -33,6 +33,7 @@ describe Project do
     let(:project){ Project.new }
     context "with some updates" do
       before(:each) do
+        Rails.stub_chain(:cache, :fetch).and_yield
         m1 = mock_model(MoodUpdate, :mood_score => 3 )
         m2 = mock_model(MoodUpdate, :mood_score => 1 )
         m3 = mock_model(MoodUpdate, :mood_score => 2 )

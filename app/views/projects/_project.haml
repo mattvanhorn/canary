@@ -1,4 +1,7 @@
-%li[project]{:class => [project.mood, 'span4']}
-  %a{:href => project_path(project)}
-    %h2= project.name
-    %p= pluralize(project.users.count, 'member')
+- project_attr = {  :'data-id' => project.id, 
+                    :'data-team-size' => project.users.count, 
+                    :'data-mood' => project.average_mood_score || -1,
+                    :class => [project.mood || 'puzzled'] << ('mine' if current_user.member_of?(project)) }
+
+%li[project]{project_attr}
+  %a{ :href => project_path(project), :title => project.name, :'data-content' => pluralize(project.users.count, 'member')}

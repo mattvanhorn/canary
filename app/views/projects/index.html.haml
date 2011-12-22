@@ -1,3 +1,106 @@
-%h1.row All Projects
+%h1.row 
+  #{company ? company.name : 'All' } Projects
 
+.row
+  %ul.pills.sort
+    %li#mood-sorter
+      %a By Mood
+    %li#size-sorter
+      %a By Team Size
+      
+  %ul.pills.filter
+    %li#no-filter
+      %a All
+    %li#user-filter
+      %a Only Mine
+        
 = render :partial => 'projects', :object => projects
+
+:javascript
+  function setActivePill(el){
+    var currentFilter = $('ul.pills.filter li.active');
+    var currentSort   = $('ul.pills.sort li.active');
+        
+    $('ul.pills li').removeClass('active');
+    
+    switch(el.attr('id'))
+    {
+    case 'mood-sorter':
+      currentSort = el;
+      break;
+    case 'size-sorter':
+      currentSort = el;
+      break;
+    case 'user-filter':
+      currentFilter = el;
+      break;
+    case 'no-filter':
+      currentFilter = el;
+      break;
+    default:
+      console.log( 'WTF');
+      currentFilter = $('#no-filter'  );
+    }
+    
+    console.log('after currentFilter ='+currentFilter.attr('id'));
+    currentFilter.addClass('active');
+    currentSort.addClass('active');
+    
+  }  
+  
+  function setPopOvers(){
+    $('li.project a').popover({ 
+      'placement':'above', 
+      'offset':'0'
+    });
+  }
+  
+  function getSorter(){
+    var sorter = ($('#size-sorter.active').length > 0) ? 'data-team-size' : 'data-mood';
+    return {
+      attribute: sorter,
+      reversed: true
+    }
+  }
+  
+  function getFilter(){
+    return ($('#no-filter.active').length > 0) ? 'li' : 'li.mine';
+  }
+  
+  function sortData(el){
+    var sorter = getSorter();
+    return el.sorted({
+      by: function(v) {
+        return parseFloat($(v).attr(sorter['attribute']));
+      },
+      reversed: sorter['reversed']
+    });
+  }
+  
+  // DOMContentLoaded
+  
+  $(function() {
+    // get the first collection
+    var $projects = $('.projects ul.quicksand');
+    var $data = $projects.clone();
+    
+    var updateList = function(e){
+      setActivePill(e);
+    
+      var $filteredData = $data.find(getFilter());  // filter elements
+      var $sortedData   = sortData($filteredData);   // sort elements
+      
+      $projects.quicksand($sortedData, {
+        duration: 800,
+        easing: 'easeInOutQuad'
+      }, setPopOvers );
+    }
+    
+    setActivePill($('#no-filter'));
+    // attempt to call Quicksand on pill clicks
+    $('#mood-sorter').click( function(){updateList($(this))} );
+    $('#size-sorter').click( function(){updateList($(this))} );    
+    $('#user-filter').click( function(){updateList($(this))} );    
+    $('#no-filter'  ).click( function(){updateList($(this))} );
+    
+  });

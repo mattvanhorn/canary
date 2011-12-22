@@ -6,16 +6,6 @@
 @import "shared/palette";
 @import "shared/project";
 
-h1.row {
-  background: $whats_the_matter;
-  color: $please;
-  font-size: 3em;
-  line-height: 1em;
-  margin-bottom: 0;
-  padding-left: $gridGutterWidth;
-  padding-top: $baseline;
-  padding-bottom: $baseline;
-}
 .row.project-actions{
   background: $whats_the_matter;
   padding-top: $baseline;
@@ -40,4 +30,9 @@ h1.row {
     display: block;
     float: left;
   }
+}
+
+#page-header {
+  @include offset(1);
+  margin-top: $baseline * 2;
 }

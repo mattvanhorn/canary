@@ -1,5 +1,5 @@
 class MoodUpdate < ActiveRecord::Base
-  belongs_to :project
+  belongs_to :project, :touch => true
   belongs_to :user
   
   MOODS = %w(frustrated bored satisfied happy)

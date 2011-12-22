@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe Project do
-  describe "getting each user's most recent update" do
+describe "project query" do
+  describe "for getting each member's most recent mood update" do
     
     before(:each) do
       @project = Project.create(:name => 'test')
@@ -26,7 +26,7 @@ describe Project do
       @project.mood_updates.size.should == 9
     end
     
-    it "does something" do
+    it "gets only the most recent updates for this project from each project member" do
       result = @project.most_recent_mood_updates
       result.size.should == 3
       
