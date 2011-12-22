@@ -16,6 +16,8 @@ gem 'omniauth-identity'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'state_machine'
 gem 'rails3-jquery-autocomplete'
+gem 'redis'
+gem 'vanity'
 
 # Gems used only for assets and not required
 # in production environments by default.

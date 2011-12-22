@@ -190,6 +190,9 @@ GEM
     rb-fsevent (0.4.3.1)
     rdoc (3.11)
       json (~> 1.4)
+    redis (2.2.2)
+    redis-namespace (1.0.3)
+      redis (< 3.0.0)
     rspec (2.7.0)
       rspec-core (~> 2.7.0)
       rspec-expectations (~> 2.7.0)
@@ -238,6 +241,9 @@ GEM
     uglifier (1.1.0)
       execjs (>= 0.3.0)
       multi_json (>= 1.0.2)
+    vanity (1.7.1)
+      redis (~> 2.0)
+      redis-namespace (~> 1.0.0)
     xpath (0.1.4)
       nokogiri (~> 1.3)
     yamler (0.1.0)
@@ -279,6 +285,7 @@ DEPENDENCIES
   rails (= 3.1.1)
   rails3-jquery-autocomplete
   rb-fsevent
+  redis
   rspec-rails
   ruby_parser
   sass
@@ -288,3 +295,4 @@ DEPENDENCIES
   spork
   state_machine
   uglifier (>= 1.0.3)
+  vanity
