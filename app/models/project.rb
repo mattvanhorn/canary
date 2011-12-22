@@ -9,6 +9,20 @@ class Project < ActiveRecord::Base
   
   validates :name, :presence =>true, :uniqueness => {:scope => :company_id}
   
+  
+  def company_attributes=(params)
+    company_id = params.delete(:id)
+    if new_record? && self.company.nil?
+      if company_id
+        self.company = Company.find_by_id(company_id)
+      else
+        self.company = Company.new(params)
+      end
+    else
+      self.company.update_attributes(params)
+    end
+  end
+  
   def most_recent_mood_updates
     # yes, it cross joins, but I'm hoping indexes on project_id, user_id help
     Rails.cache.fetch(self.cache_key + '/most_recent_mood_updates') do
