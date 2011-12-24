@@ -9,3 +9,5 @@ coverage/
 coverage.data
 rerun.txt
 .DS_Store
+.tddium*
+.tddium
