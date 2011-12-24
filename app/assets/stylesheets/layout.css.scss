@@ -2,21 +2,59 @@
 @import "compass_twitter_bootstrap/mixins";
 @import "shared/palette";
  
+@font-face {
+    font-family: 'ChunkFiveRegular';
+    src: url('fonts/Chunkfive-webfont.eot');
+    src: url('fonts/Chunkfive-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/Chunkfive-webfont.woff') format('woff'),
+         url('fonts/Chunkfive-webfont.ttf') format('truetype'),
+         url('fonts/Chunkfive-webfont.svg#ChunkFiveRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'MuseoSans500';
+    src: url('fonts/MuseoSans_500-webfont.eot');
+    src: url('fonts/MuseoSans_500-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/MuseoSans_500-webfont.woff') format('woff'),
+         url('fonts/MuseoSans_500-webfont.ttf') format('truetype'),
+         url('fonts/MuseoSans_500-webfont.svg#MuseoSans500') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'EBGaramondRegular';
+    src: url('fonts/EBGaramond-webfont.eot');
+    src: url('fonts/EBGaramond-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/EBGaramond-webfont.woff') format('woff'),
+         url('fonts/EBGaramond-webfont.ttf') format('truetype'),
+         url('fonts/EBGaramond-webfont.svg#EBGaramondRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
 .debug {
   background-image: image-url('grid.png');
 }
 
 body { 
   padding-top: 40px;
-  
   .row {
     background-color: $whats_the_matter;
+  }
+  p {
+    font-family: EBGaramondRegular; 
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 18px;
+    margin-bottom: 1.125em;
   }
 }
 
 body.new,
 body.edit {
   background: $whats_the_matter;
+
   
   .topbar .container {
     background: transparent;
@@ -37,14 +75,26 @@ h1.row {
   padding-bottom: $baseline;
 }
 
+h2,h3,h4 {
+  font-family: MuseoSans500;
+  font-weight: normal;
+}
+
 form {
   @include columns(24);
   background: $whiteSmoke;
 }
 
-.footer {
+.footer.row {
   background: $icing;
   height: 8 * $baseline;
+  text-align: center;
+  .copyright {
+    display: block;
+    position: relative;
+    top: 100%;
+    margin-top: -18px;
+  }
 }
 
 .topbar-inner, .topbar .fill {

@@ -14,25 +14,32 @@
   .illustration1 {
     @include makeColumn(8);
     height: 21 * $baseline;
+    img {
+      margin-top: $baseline * 3;
+    }
   }
   .illustration2 {
     @include makeColumn(4);
     height: 21 * $baseline;
   }
   h1 {
+    @include offset(1);
+    font-family: ChunkFiveRegular;
     color: $please;
     font-size: 5em;
-    line-height:1em;
-    margin-top: 0.6em;
+    line-height:1.1em;
+    margin-top: $baseline*2;
+    text-shadow: 1px 1px 0px $whats_the_matter, 5px 5px 0px desaturate(darken($whats_the_matter, 25%), 15%);
+    
   }
 }
-.details {
+.row.details {
   height: 13 * $baseline;
   background: $nature;
   .features1 {
     height: 13 * $baseline;
-    @include makeColumn(12);
-    @include offset(0);
+    @include makeColumn(10);
+    @include offset(1);
   }
   .features2 {
     height: 13 * $baseline;

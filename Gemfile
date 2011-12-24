@@ -1,8 +1,7 @@
 source 'http://rubygems.org'
-
+gem 'bundler'
 gem 'rails', '3.1.1'
 gem 'pg'
-
 gem 'jquery-rails'
 gem "haml"
 gem "sass"

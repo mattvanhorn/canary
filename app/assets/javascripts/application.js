@@ -7,6 +7,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
+//= require foutbgone
 //= require autocomplete-rails
 //= require bootstrap-twipsy
 //= require bootstrap-popover
