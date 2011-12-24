@@ -5,3 +5,17 @@
 require File.expand_path('../config/application', __FILE__)
 
 Canary::Application.load_tasks
+
+namespace :ci do
+
+  # Command for running the specs
+  task :spec do
+    system("bundle exec rspec spec/")
+  end
+
+  # Running the entire rake task
+  desc "Prepare for CI and run entire test suite"
+    task :build => ['db:create', 'db:migrate', 'ci:spec'] do
+  end
+  
+end
