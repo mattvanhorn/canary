@@ -1,5 +1,5 @@
 source 'http://rubygems.org'
-gem 'bundler'
+gem 'bundler', '1.0.11'
 gem 'rails', '3.1.1'
 gem 'pg'
 gem 'jquery-rails'
