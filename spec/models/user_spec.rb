@@ -79,4 +79,9 @@ describe User do
       @user.invitations.first.recipient_email.should == "bob@example.com"
     end
   end
+  
+  it "has a mood" do
+    user.mood_updates.stub(:recent).and_return([mock_model(MoodUpdate, :mood => 'happy')])
+    user.mood.should == 'happy'
+  end
 end

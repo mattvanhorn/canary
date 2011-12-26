@@ -42,4 +42,16 @@ class User < OmniAuth::Identity::Models::ActiveRecord
   def update_mood(mood_update)
     self.mood_updates << mood_update
   end
+  
+  def mood
+    @mood ||= (most_recent_mood || MoodUpdate.mood_unknown)
+  end
+  
+  private
+  
+  def most_recent_mood
+    mu = self.mood_updates.recent.first
+    mu.mood unless mu.nil?
+  end
+  
 end

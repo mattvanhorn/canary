@@ -1,5 +1,5 @@
 Fabricator(:user) do
-  email "test@example.com"
+  email "alice@example.com"
   password "password"
   password_confirmation "password"
 end

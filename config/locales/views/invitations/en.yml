@@ -1,0 +1,12 @@
+en:
+  helpers:
+    submit:
+      invitation:
+        create: "Send Invitation"
+        update: "Accept Invitation"
+        submit: "Submit"
+        
+  simple_form:
+    labels:
+      invitation:
+        recipient_email: 'Recipient Email'

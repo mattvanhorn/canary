@@ -22,13 +22,10 @@ Feature: User Sign In
      And I should see a link to the sign-out page
 
   Scenario: Signing in redirects back to page
-    Given the following project:
-        | name   | Foobar |
-      And I am a member of "Foobar"
-    When I visit the project page for "Foobar"
+    When I visit the new project page
     Then I should be on the sign-in page
     When I sign in
-    Then I should be on the project page for "Foobar"
+    Then I should be on the new project page
 
   Scenario: Signing in with no credentials
     When I sign in with no credentials

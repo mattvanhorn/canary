@@ -7,13 +7,16 @@
       %a By Mood
     %li#size-sorter
       %a By Team Size
-      
-  %ul.pills.filter
-    %li#no-filter
-      %a All
-    %li#user-filter
-      %a Only Mine
-        
+  
+  - if user_signed_in?
+    %ul.pills.filter
+      %li#no-filter
+        %a All
+      %li#user-filter
+        %a Only Mine
+    
+    = link_to t('.create_a_project'), new_project_path
+    
 = render :partial => 'projects', :object => projects
 
 :javascript

@@ -4,11 +4,11 @@
   .alert-message.error= flash[:alert]
   
 .row
-  = form_tag '/auth/identity/callback' do |f| 
+  = form_tag '/auth/identity/callback', :id => 'sign-in-form' do |f| 
     %fieldset
   
       .clearfix.string.required
-        = label_tag(:email, t(".auth_key"), :class => 'required')
+        = label_tag(:auth_key, t(".auth_key"), :class => 'required')
         .input
           = text_field_tag(:auth_key, '', :required => 'required', :class => 'required')
       

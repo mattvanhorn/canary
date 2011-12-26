@@ -1,0 +1,10 @@
+en:
+  helpers:
+    submit:
+      mood_update:
+        create: "Submit"
+        update: "Accept Invitation"
+        submit: "Submit"
+        
+  # simple_form:
+  #   labels:

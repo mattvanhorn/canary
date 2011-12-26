@@ -8,7 +8,7 @@
       %a.close{:href => "#"}x
       = I18n.t('activerecord.errors.template.header.one_or_more', :errors => pluralize(actual_errors.count, "error"), :model => 'user')
 .row
-  = form_tag '/auth/identity/register' do |f| 
+  = form_tag '/auth/identity/register', :id => 'sign-up-form' do |f| 
     %fieldset
       .clearfix.string.required{:class => ('error' if user.errors[:email].any?)}
         = label_tag(:email, t(".auth_key"), :class => 'required')

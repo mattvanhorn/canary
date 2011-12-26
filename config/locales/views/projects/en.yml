@@ -1,4 +1,11 @@
 en:
+  helpers:
+    submit:
+      project:
+        create: "Create My %{model}"
+        update: "Save My %{model}"
+        submit: "Submit"
+        
   simple_form:
     titles:
       project: "Project"
@@ -18,13 +25,10 @@ en:
       company: 
         name: "company, team, group, or anything you like"
     placeholders:
-    actions:
-      create: "Create my %{model}"
-      update: "Save my %{model}"
-      submit: "Submit"
+
 
   projects:
+    index:
+      create_a_project: 'Create a Project'
     new:
       page_header: 'Create a Project'
-      
-   

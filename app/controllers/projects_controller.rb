@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :only => [:new, :create]
   autocomplete :company, :name, :full => true
   
   respond_to :html
@@ -30,7 +30,7 @@ class ProjectsController < ApplicationController
   
   def create
     if current_user.join(project)
-      redirect_to my_projects_url
+      redirect_to project_url(project)
     else
       render :action => 'new'
     end

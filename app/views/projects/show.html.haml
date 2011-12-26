@@ -4,10 +4,10 @@
 %h1.row{:class => project.mood}= project.name
 
 .row.team
-  %ul
-    - project.most_recent_mood_updates.each do |mu|
-      %li
-        = image_tag("#{mu.mood}.png", :size => '128x128')
+  %ul[project]
+    - project.users.each do |user|
+      %li[user]
+        = image_tag("#{user.mood}.png", :size => '128x128')
 
 - if user_signed_in? && current_user.member_of?(project)        
   .row.project-actions

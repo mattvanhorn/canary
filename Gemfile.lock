@@ -7,13 +7,15 @@ GIT
       fssm (>= 0.2.7)
       sass (~> 3.1)
 
-PATH
-  remote: /Users/mattvanhorn/projects/decent_exposure
+GIT
+  remote: git://github.com/mattvanhorn/decent_exposure
+  revision: f3469757080cc54ac6e33da2a899f65e68ff3bf5
   specs:
     decent_exposure (1.0.1)
 
-PATH
-  remote: /Users/mattvanhorn/projects/nulldb
+GIT
+  remote: git://github.com/mattvanhorn/nulldb
+  revision: fbf9dde8e4469d3b5d41840fae948ec53f6ccffd
   specs:
     activerecord-nulldb-adapter (0.2.1)
       activerecord (>= 2.0.0)

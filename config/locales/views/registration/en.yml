@@ -4,7 +4,7 @@ en:
     auth_key: 'Email'
     password: 'Password'
     password_confirmation: 'Confirm Password'
-    submit: 'Sign Up'
+    submit: 'Sign Me Up!'
     sign_in_link: 'Or, sign in with existing account'
     email_missing: 'You must provide an email address'
     password_missing: 'You must provide a password'

@@ -13,6 +13,9 @@ module NavigationHelpers
       
     when /the sign-up page/
       sign_up_path
+      
+    when /the failed sign-up page/
+      '/auth/identity/register'
     
     when /the sign-out page/
       sign_out_path
