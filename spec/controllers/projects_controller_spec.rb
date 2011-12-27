@@ -46,7 +46,7 @@ describe ProjectsController do
       
       it "redirects to the my projects page" do
         post :create, :project => valid_project_attributes
-        response.should redirect_to(my_projects_url)
+        response.should redirect_to(project_url(project))
       end
     end
     
