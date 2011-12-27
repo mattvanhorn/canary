@@ -58,7 +58,10 @@ class Project < ActiveRecord::Base
   end
   
   def mood
-    Rails.cache.fetch(self.cache_key + '/mood') do
+    key = self.cache_key + '/mood'
+    Rails.logger.info("CACHE KEY: #{key}")
+    Rails.cache.fetch(key) do
+      Rails.logger.info("CACHE MISS")
       score = average_mood_score
       if score
         MoodUpdate.mood(score.round) 
