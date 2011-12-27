@@ -1,9 +1,4 @@
 development:
   adapter: redis
 test:
-  adapter: redis
-  <% if ENV['TDDIUM'] %>
-  connection: <%= ENV['TDDIUM_REDIS_HOST'] %>:<%= ENV['TDDIUM_REDIS_PORT'] %>
-  <% else %>
-  connection: 127.0.0.1:6379
-  <% end %>
+  adapter: mock
