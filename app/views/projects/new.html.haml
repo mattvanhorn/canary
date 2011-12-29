@@ -12,7 +12,7 @@
                                :input_html => {:id_element => '#project_company_attributes_id'}
                                
       
-      = company_f.hidden_field(:id, :value => '')
+      = company_f.hidden_field(:id)
     = f.input :name, :label => t('simple_form.labels.project.name'), :hint => t('simple_form.hints.project.name'), :wrapper_html => {:class => 'project-name'}
     .actions.input
       = f.button :submit, :class => 'btn primary'

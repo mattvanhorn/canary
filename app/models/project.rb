@@ -11,16 +11,8 @@ class Project < ActiveRecord::Base
   
   
   def company_attributes=(params)
-    company_id = params.delete(:id)
-    if new_record? && self.company.nil?
-      if company_id.present?
-        self.company = Company.find_by_id(company_id)
-      else
-        co = Company.new(params)
-        self.company = co if co.valid?
-      end
-    else
-      self.company.update_attributes(params)
+    if new_record?
+      self.company = get_company_for_create(params[:id], params[:name])
     end
   end
   
@@ -76,5 +68,12 @@ class Project < ActiveRecord::Base
         MoodUpdate.mood_unknown
       end
     end
+  end
+
+  protected
+  
+  def get_company_for_create(company_id, company_name)
+    return Company.find_by_id(company_id) unless company_id.blank?
+    return Company.find_or_create_by_name(company_name) unless company_name.blank?
   end
 end

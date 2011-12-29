@@ -28,6 +28,56 @@ describe Project do
     subject.should respond_to(:company_attributes=)
   end
   
+  it "should only process nested attributes for new records" do
+    subject.should_receive(:new_record?).and_return(false)
+    subject.should_not_receive(:company=)
+    subject.company_attributes = {:name => 'Initech', :id => '42'}
+  end
+  
+  it "has a company name" do
+    subject.company = mock_model(Company, :name => 'foobar')
+    subject.company_name.should == 'foobar'
+  end
+  
+  it "has no company name without a company" do
+    subject.company = nil
+    subject.company_name.should be_nil
+  end
+  
+  describe "being created with nested attributes for company" do
+    let(:existing_company){ stub_model(Company) }
+    let(:new_company){ stub_model(Company) }
+    
+    before(:each) do
+      Company.stub(:find_by_id).and_return(existing_company)
+      Company.stub(:find_or_create_by_name).and_return(new_company)
+    end
+    
+    describe "including a valid company id and a name" do
+      
+      it "finds the company" do
+        project = Project.new(:company_attributes => {:name => 'Initech', :id => '42'})
+        project.company.should == existing_company
+      end
+    end
+    
+    describe "including a blank company id and a name" do
+
+      it "finds or creates the company by name" do
+        project = Project.new(:company_attributes => {:name => 'Initech', :id => ''})
+        project.company.should == new_company
+      end
+    end
+    
+    describe "including a blank company id and a blank name" do
+
+      it "does nothing" do
+        project = Project.new(:company_attributes => {:name => '', :id => ''})
+        project.company.should be_nil
+      end
+    end
+  end
+  
   describe "calculating moods" do
     
     let(:project){ Project.new }

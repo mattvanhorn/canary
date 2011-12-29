@@ -19,8 +19,9 @@ describe ProjectsController do
   end
   
   it "exposes the company's projects collection" do
-    Company.stub(:find_by_id).and_return(stub_model(Company))
-    controller.stub(:params).and_return(fake_params(:comapny_id => '42'))
+    company = stub_model(Company)
+    controller.stub(:company).and_return(company)
+    company.should_receive(:projects)
     controller.projects
   end
   

@@ -80,4 +80,16 @@ describe User do
     end
   end
   
+  it "can update a mood for a particular project" do
+    mood_updates  = mock('mood_updates_collection')
+    project       = mock('project')
+    mood_update   = mock('mood_update')
+    memberships   = mock('arel')
+    
+    mood_updates.should_receive(:<<).with(mood_update)
+    memberships.should_receive(:for_project).with(project).and_return([mock_model(Membership, :mood_updates => mood_updates)])
+    subject.stub(:memberships).and_return(memberships)
+        
+    subject.update_mood_for_project(project, mood_update)
+  end
 end

@@ -4,19 +4,7 @@ class ProjectsController < ApplicationController
   
   respond_to :html
   
-  expose(:company) do 
-    if params[:company_id] || params[:project]
-      c_id = params[:company_id]
-      if params[:project][:company_attributes]
-        c_id ||= params[:project][:company_attributes][:id]
-        if c_id.present?
-          Company.find_by_id(c_id)
-        else
-          Company.find_or_create_by_name(params[:project][:company_attributes][:name])
-        end
-      end
-    end
-  end
+  expose(:company) { Company.find_by_id(params[:company_id]) if params[:company_id].present? }
   
   expose(:projects) do
     if company
