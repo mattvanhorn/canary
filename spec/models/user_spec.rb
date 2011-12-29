@@ -80,8 +80,4 @@ describe User do
     end
   end
   
-  it "has a mood" do
-    user.mood_updates.stub(:recent).and_return([mock_model(MoodUpdate, :mood => 'happy')])
-    user.mood.should == 'happy'
-  end
 end

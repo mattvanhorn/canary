@@ -1,8 +1,8 @@
 class User < OmniAuth::Identity::Models::ActiveRecord
   has_many :memberships
   has_many :projects, :through => :memberships
+  has_many :mood_updates, :through => :memberships
   has_many :invitations
-  has_many :mood_updates
   
   validates :email, :password, :password_confirmation, :presence =>true
   
@@ -39,19 +39,13 @@ class User < OmniAuth::Identity::Models::ActiveRecord
     invitations.new(:recipient_email => email)
   end
   
-  def update_mood(mood_update)
-    self.mood_updates << mood_update
+  def update_mood_for_project(project, mood_update)
+    membership_for(project).mood_updates << mood_update
   end
-  
-  def mood
-    @mood ||= (most_recent_mood || MoodUpdate.mood_unknown)
-  end
-  
+
   private
   
-  def most_recent_mood
-    mu = self.mood_updates.recent.first
-    mu.mood unless mu.nil?
+  def membership_for(project)
+    memberships.for_project(project).first
   end
-  
 end

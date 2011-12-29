@@ -6,13 +6,16 @@ Feature: See my projects
   I want to see a My Projects page
 
     Background:
-      Given I have an account
+      Given 3 projects
+        And 1 user
+        And that user has 1 project
         And I sign in
-        And I have a project named "Foobar"
         
     @javascript 
     Scenario:
       Given I am on the home page
-       When I click on "My Projects"
-       Then I should be on my projects page
-        And I should see "Foobar"
+       When I click on "Projects"
+       Then I should be on the projects page
+       And I should see exactly 4 projects
+       When I click on "Only Mine"
+       Then I should see exactly 1 project

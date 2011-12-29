@@ -4,16 +4,16 @@
 .row
   %ul.pills.sort
     %li#mood-sorter
-      %a By Mood
+      %a{:href => '#'} By Mood
     %li#size-sorter
-      %a By Team Size
+      %a{:href => '#'} By Team Size
   
   - if user_signed_in?
     %ul.pills.filter
       %li#no-filter
-        %a All
+        %a{:href => '#'} All
       %li#user-filter
-        %a Only Mine
+        %a{:href => '#'} Only Mine
     
     = link_to t('.create_a_project'), new_project_path
     
@@ -45,7 +45,6 @@
       currentFilter = $('#no-filter'  );
     }
     
-    console.log('after currentFilter ='+currentFilter.attr('id'));
     currentFilter.addClass('active');
     currentSort.addClass('active');
     

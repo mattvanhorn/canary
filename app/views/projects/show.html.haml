@@ -1,13 +1,17 @@
 -if flash[:alert]
   .alert-message.error= flash[:alert]
   
-%h1.row{:class => project.mood}= project.name
+%h1.row{:class => project.mood}
+  = project.company_name
+  = project.name
+
+%h2.row Project Mood: #{project.mood.titleize}
 
 .row.team
   %ul[project]
-    - project.users.each do |user|
-      %li[user]
-        = image_tag("#{user.mood}.png", :size => '128x128')
+    - project.memberships.each do |member|
+      %li[member.user]
+        = image_tag("#{member.mood}.png", :size => '128x128')
 
 - if user_signed_in? && current_user.member_of?(project)        
   .row.project-actions

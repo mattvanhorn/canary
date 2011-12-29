@@ -15,7 +15,7 @@ describe Project do
   
   it { should have_many(:invitations) }
   
-  it { should have_many(:mood_updates) }
+  it { should have_many(:mood_updates).through(:memberships) }
   
   it { should validate_presence_of(:name) }
   
@@ -59,7 +59,5 @@ describe Project do
       end
     end
   end
-
-  
 
 end

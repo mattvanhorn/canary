@@ -1,11 +1,10 @@
 class MoodUpdate < ActiveRecord::Base
-  belongs_to :project, :touch => true
-  belongs_to :user
+  belongs_to :membership
   
   MOODS = %w(frustrated bored satisfied happy)
   
-  scope :for_project, lambda{ |project| where(:project_id => project.id) }
-  scope :for_user, lambda{ |user| where(:user_id => user.id) }
+  scope :for_project, lambda{ |project| joins(:memberships).where('memberships.project_id = ?', project.id) }
+  scope :for_user, lambda{ |user| joins(:memberships).where('memberships.user_id = ?', user.id) }
   scope :recent, order('updated_at DESC')
   
   def self.mood(idx)
@@ -21,3 +20,5 @@ class MoodUpdate < ActiveRecord::Base
   end
 
 end
+
+

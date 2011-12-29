@@ -2,15 +2,10 @@ require 'spec_helper'
 
 describe MoodUpdate do
 
-  it { should belong_to :project }
-  it { should belong_to :user }
+  it { should belong_to :membership }
   
   describe "displaying mood in plain language" do
     let! (:mood_update){ MoodUpdate.new }
-    
-    before(:each) do
-      moods = %w(happy satisfied bored frustrated)
-    end
     
     it "can be happy" do
       mood_update.mood_score = 3

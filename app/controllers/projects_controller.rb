@@ -9,7 +9,7 @@ class ProjectsController < ApplicationController
       c_id = params[:company_id]
       if params[:project][:company_attributes]
         c_id ||= params[:project][:company_attributes][:id]
-        if c_id
+        if c_id.present?
           Company.find_by_id(c_id)
         else
           Company.find_or_create_by_name(params[:project][:company_attributes][:name])

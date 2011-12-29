@@ -11,10 +11,9 @@ Feature: Scope projects to company
     Scenario: Create a project
       When I visit the new project page
        And I create the following project:
-         |name| Yoyodyne website|
-         |company| Acme Products|
-      Then I should be on my projects page
+         | project.name     | company.name     |
+         | Yoyodyne website | Acme Products    |
+      Then I should be on the project page for "Yoyodyne website"
        And I should see "Acme Products"
        And I should see "Yoyodyne website"
-       And I should see one member
-       And I should see a link to the invite members page for "Yoyodyne website"
+       And I should see 1 member

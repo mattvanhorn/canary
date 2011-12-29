@@ -8,7 +8,7 @@ class MoodUpdatesController < ApplicationController
   expose(:mood_update)
   
   def create
-    current_user.update_mood(mood_update)
+    current_user.update_mood_for_project(project, mood_update)
     redirect_to project_mood_updates_url(project.id)
   end
   

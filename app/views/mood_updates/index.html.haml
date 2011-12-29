@@ -2,6 +2,5 @@
 %h2 Project Mood: #{project.mood.titleize}
 %h3 Members
 %ul.moods
-  - project.users.each do |u|
-    - mood = MoodUpdate.for_user(u).for_project(project).recent.first.mood
-    %li{:class => ['member', mood]}= mood
+  - project.memberships.each do |member|
+    %li{:class => ['member', member.mood]}= member.mood

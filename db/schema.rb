@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111216172913) do
+ActiveRecord::Schema.define(:version => 20111228204145) do
 
   create_table "companies", :force => true do |t|
     t.string   "name"
@@ -41,14 +41,11 @@ ActiveRecord::Schema.define(:version => 20111216172913) do
   end
 
   create_table "mood_updates", :force => true do |t|
-    t.integer  "project_id"
-    t.integer  "user_id"
     t.integer  "mood_score"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "membership_id"
   end
-
-  add_index "mood_updates", ["project_id", "user_id"], :name => "index_mood_updates_on_project_id_and_user_id"
 
   create_table "projects", :force => true do |t|
     t.string   "name"

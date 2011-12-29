@@ -3,6 +3,16 @@ When /^I create a project named "([^"]+)"$/ do |name|
   click_on I18n.t('helpers.submit.project.create', :model => 'Project')
 end
 
+When /^I create the following project:$/ do |project_table|
+  project_table.hashes.each do |hash|
+    hash.keys.each do |k|
+      fill_in I18n.t("simple_form.labels.#{k}"), :with => hash[k]
+    end
+  end
+  click_on I18n.t('helpers.submit.project.create', :model => 'Project')
+end
+
+
 When /^I create a project without a name$/ do 
   click_on I18n.t('helpers.submit.project.create', :model => 'Project')
 end
@@ -16,3 +26,8 @@ end
 When /^I should see (\d+) members?$/ do |num|
   page.should have_selector('ul.project li.user', :count => num)
 end
+
+When /^I should see exactly (\d+) projects?$/ do |num|
+  page.should have_selector('ul li.project', :count => num, :visible => true)
+end
+

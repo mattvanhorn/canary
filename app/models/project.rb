@@ -4,8 +4,8 @@ class Project < ActiveRecord::Base
   
   has_many :memberships
   has_many :users, :through => :memberships
+  has_many :mood_updates, :through => :memberships
   has_many :invitations
-  has_many :mood_updates
   
   validates :name, :presence =>true, :uniqueness => {:scope => :company_id}
   
@@ -13,14 +13,19 @@ class Project < ActiveRecord::Base
   def company_attributes=(params)
     company_id = params.delete(:id)
     if new_record? && self.company.nil?
-      if company_id
+      if company_id.present?
         self.company = Company.find_by_id(company_id)
       else
-        self.company = Company.new(params)
+        co = Company.new(params)
+        self.company = co if co.valid?
       end
     else
       self.company.update_attributes(params)
     end
+  end
+  
+  def company_name
+    company.name unless company.nil?
   end
   
   def most_recent_mood_updates
@@ -29,18 +34,21 @@ class Project < ActiveRecord::Base
       sql = <<-EOS
         SELECT mu1.*
         FROM mood_updates AS mu1
+        INNER JOIN memberships m ON mu1.membership_id = m.id 
         LEFT OUTER JOIN mood_updates AS mu2 ON (
-          (mu2.user_id = mu1.user_id) 
-          AND 
-          (mu2.project_id = mu1.project_id)
+          (mu2.membership_id = mu1.membership_id) 
           AND
           (mu2.updated_at > mu1.updated_at)
         )
-        WHERE mu2.updated_at IS NULL
-        AND mu1.project_id = #{self.id}
-        ORDER BY mu1.user_id
+        WHERE (
+          m.project_id = #{self.id}
+          AND
+          mu2.updated_at IS NULL
+        )
+        ORDER BY mu1.updated_at DESC
       EOS
       result = MoodUpdate.find_by_sql(sql)
+      result
     end
   end
   
@@ -59,7 +67,6 @@ class Project < ActiveRecord::Base
   
   def mood
     key = self.cache_key + '/mood'
-    Rails.logger.info("CACHE KEY: #{key}")
     Rails.cache.fetch(key) do
       Rails.logger.info("CACHE MISS")
       score = average_mood_score

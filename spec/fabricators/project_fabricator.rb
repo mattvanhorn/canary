@@ -1,3 +1,3 @@
 Fabricator(:project) do
-  name "#{Faker::Company.name} Website"
+  name {"#{Faker::Company.name} Website"}
 end
