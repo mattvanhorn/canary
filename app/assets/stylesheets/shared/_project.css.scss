@@ -1,3 +1,7 @@
+@import "custom_twitter_bootstrap/variables";
+@import "compass_twitter_bootstrap/mixins";
+@import "shared/palette";
+
 .quicksand {
   @include columns(22);
   @include offset(1);

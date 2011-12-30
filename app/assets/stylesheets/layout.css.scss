@@ -1,4 +1,4 @@
-@import "compass_twitter_bootstrap/variables";
+@import "custom_twitter_bootstrap/variables";
 @import "compass_twitter_bootstrap/mixins";
 @import "shared/palette";
  
@@ -33,9 +33,16 @@
     font-style: normal;
 }
 
-.debug {
-  background-image: image-url('grid.png');
+body {
+  .debug {
+    background: image-url('grid30x10.png');
+    div {
+      background-image: none;
+      background-color: transparent;
+    }
+  }
 }
+
 
 body { 
   padding-top: 40px;

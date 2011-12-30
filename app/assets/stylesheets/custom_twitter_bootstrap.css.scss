@@ -2,11 +2,11 @@
 @import "compass_twitter_bootstrap/reset";
 
 // Core variables and mixins
-@import "compass_twitter_bootstrap/variables";
+@import "custom_twitter_bootstrap/variables";
 @import "compass_twitter_bootstrap/mixins";
 
 // Grid system and page structure
-@import "compass_twitter_bootstrap/_scaffolding";
+@import "custom_twitter_bootstrap/_scaffolding";
 
 // Styled patterns and elements
 @import "compass_twitter_bootstrap/type";

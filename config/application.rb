@@ -47,6 +47,7 @@ module Canary
 
     # Enable the asset pipeline
     config.assets.enabled = true
+    config.assets.initialize_on_precompile = false
     
     # Compass integration
     if defined?(Bundler)
@@ -55,7 +56,12 @@ module Canary
         # If you want your assets lazily compiled in production, use this line
         # Bundler.require(:default, :assets, Rails.env)
     end
-    config.sass.load_paths << Compass::Frameworks['compass'].stylesheets_directory if Rails.configuration.respond_to?(:sass)
+    
+    if Rails.configuration.respond_to?(:sass)
+      config.sass.load_paths << Compass::Frameworks['compass'].stylesheets_directory
+      config.sass.load_paths << Compass::Frameworks['twitter_bootstrap'].stylesheets_directory
+    end
+    
     config.assets.precompile << /(^[^_]|\/[^_])[^\/]*/
 
     # Version of your assets, change this if you want to expire all your assets

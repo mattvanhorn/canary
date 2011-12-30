@@ -33,7 +33,7 @@ $baseline:          18px;
 // Modify the grid styles in mixins.less
 $gridColumns:       24;
 $gridColumnWidth:   30px;
-$gridGutterWidth:   10px;
+$gridGutterWidth:   10px;   
 $extraSpace:        $gridGutterWidth; // For our grid calculations
 $siteWidth:         ($gridColumns * $gridColumnWidth) + ($gridGutterWidth * ($gridColumns - 1));
 

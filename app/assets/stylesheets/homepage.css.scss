@@ -1,4 +1,4 @@
-@import "compass_twitter_bootstrap/variables";
+@import "custom_twitter_bootstrap/variables";
 @import "compass_twitter_bootstrap/mixins";
 @import "shared/palette";
 @import "shared/project";
@@ -7,8 +7,8 @@
   height: 21 * $baseline;
   background: $whats_the_matter;
   .call-to-action {
-    @include makeColumn(12);
-    @include offset(0);
+    @include makeColumn(11);
+    @include offset(1);
     height: 21 * $baseline;
   }
   .illustration1 {
@@ -23,7 +23,6 @@
     height: 21 * $baseline;
   }
   h1 {
-    @include offset(1);
     font-family: ChunkFiveRegular;
     color: $please;
     font-size: 5em;
