@@ -16,11 +16,12 @@ gem 'state_machine'
 gem 'rails3-jquery-autocomplete'
 gem 'redis'
 gem 'vanity'
+gem 'sass-rails'
+gem "faker"
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails'
   gem 'coffee-rails', '~> 3.1.1'
   gem 'uglifier', '>= 1.0.3'
   gem 'compass', '~> 0.12.alpha.3'
@@ -52,7 +53,6 @@ group :development, :test do
   gem "fabrication"
   gem "database_cleaner"
   gem "launchy"
-  gem "faker"
   gem "spork"
   gem 'activerecord-nulldb-adapter', :git => 'git://github.com/mattvanhorn/nulldb'
   gem 'email_spec'
