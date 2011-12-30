@@ -58,8 +58,11 @@ module Canary
     end
     
     if Rails.configuration.respond_to?(:sass)
-      config.sass.load_paths << Compass::Frameworks['compass'].stylesheets_directory
-      config.sass.load_paths << Compass::Frameworks['twitter_bootstrap'].stylesheets_directory
+      config.sass.load_paths << ::Compass::Frameworks['compass'].stylesheets_directory
+      config.sass.load_paths << ::Compass::Frameworks['twitter_bootstrap'].stylesheets_directory
+      
+      # config.sass.load_paths << "#{Gem.loaded_specs['compass'].full_gem_path}/frameworks/compass/stylesheets"
+      # config.sass.load_paths << "#{Gem.loaded_specs['compass_twitter_bootstrap'].full_gem_path}/lib/../stylesheets"
     end
     
     config.assets.precompile << /(^[^_]|\/[^_])[^\/]*/

@@ -17,6 +17,8 @@ gem 'rails3-jquery-autocomplete'
 gem 'redis'
 gem 'vanity'
 gem 'sass-rails'
+gem 'compass', '~> 0.12.alpha.3'
+gem 'compass_twitter_bootstrap'
 gem "faker"
 
 # Gems used only for assets and not required
@@ -24,8 +26,6 @@ gem "faker"
 group :assets do
   gem 'coffee-rails', '~> 3.1.1'
   gem 'uglifier', '>= 1.0.3'
-  gem 'compass', '~> 0.12.alpha.3'
-  gem 'compass_twitter_bootstrap'
 end
 
 
