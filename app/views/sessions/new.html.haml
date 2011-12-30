@@ -2,23 +2,22 @@
 
 -if flash[:alert]
   .alert-message.error= flash[:alert]
-  
+
 .row
-  = form_tag '/auth/identity/callback', :id => 'sign-in-form' do |f| 
+  = form_tag '/auth/identity/callback', :id => 'sign-in-form' do |f|
     %fieldset
-  
+
       .clearfix.string.required
         = label_tag(:auth_key, t(".auth_key"), :class => 'required')
         .input
           = text_field_tag(:auth_key, '', :required => 'required', :class => 'required')
-      
+
       .clearfix.password.required
         = label_tag(:password, t(".password"))
         .input
           = password_field_tag(:password, '', :required => 'required', :class => 'required')
-    
+
       .actions
         = submit_tag t('.submit'), :class => 'btn primary create'
-        
+
     %p.sign-up-link= link_to t('.sign_up_link'), sign_up_path
-  

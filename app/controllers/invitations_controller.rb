@@ -1,16 +1,24 @@
 class InvitationsController < ApplicationController
   before_filter :authenticate_user!, :only => [:new, :create]
-  
+
   respond_to :html
-  
+
   expose(:project)
   expose(:invitations){ project.invitations }
   expose(:invitation)
-  
+
+  def new
+    # view only
+  end
+
+  def show
+    # view only
+  end
+
   def create
     recipient = params['invitation']['recipient_email']
     invitation = current_user.invite(recipient).to_join(project)
-    
+
     if invitation.deliver!
       respond_with(project)
     else
@@ -19,7 +27,7 @@ class InvitationsController < ApplicationController
   end
 
   protected
-  
+
   def projects
     current_user.projects
   end

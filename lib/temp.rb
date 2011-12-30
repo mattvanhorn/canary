@@ -1,4 +1,4 @@
-25.times do 
+25.times do
   c = Company.create(:name => Faker::Company.name)
   rand(5).times do
     u = User.create(:email => Faker::Internet.email, :password => 'password', :password_confirmation => 'password')

@@ -3,33 +3,33 @@
 - if @user && @user.errors.any?
   .row
     - actual_errors = @user.errors.to_hash.delete_if{|k,v| k == :password_digest}
-  
+
     .alert-message.error
       %a.close{:href => "#"}x
       = I18n.t('activerecord.errors.template.header.one_or_more', :errors => pluralize(actual_errors.count, "error"), :model => 'user')
 .row
-  = form_tag '/auth/identity/register', :id => 'sign-up-form' do |f| 
+  = form_tag '/auth/identity/register', :id => 'sign-up-form' do |f|
     %fieldset
       .clearfix.string.required{:class => ('error' if user.errors[:email].any?)}
         = label_tag(:email, t(".auth_key"), :class => 'required')
         .input
           = text_field_tag(:email, user.try(:email), :required => 'required', :class => ['required', ('error' if user.errors[:email].any?)])
           %span.help-inline= user.errors[:email].map{|e| "Email #{e}"}.uniq.join(', ')
-        
+
       .clearfix.password.required{:class => ('error' if user.errors[:password].any?)}
         = label_tag(:password, t(".password"))
         .input
           = password_field_tag(:password, '', :required => 'required', :class => ['required', ('error' if user.errors[:password].any?)])
           %span.help-inline= user.errors[:password].map{|e| "Password #{e}"}.uniq.join(', ')
-        
+
       .clearfix.password.required{:class => ('error' if user.errors[:password_confirmation].any?)}
         = label_tag(:password_confirmation, t(".password_confirmation"))
         .input
           = password_field_tag(:password_confirmation, '', :required => 'required', :class => ['required', ('error' if user.errors[:password_confirmation].any?)])
           %span.help-inline= user.errors[:password_confirmation].map{|e| "Confirmation #{e}"}.uniq.join(', ')
-          
+
       = hidden_field_tag(:token, params[:token])
-    
+
     .actions
       = submit_tag t('.submit'), :class => 'btn primary create'
 

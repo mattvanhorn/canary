@@ -7,13 +7,13 @@ class OmniAuth::Strategies::Identity
       return fail!('sign_in.invalid_credentials')
     end
     super
-  end 
+  end
 end
 
 OmniAuth.config.on_failure = SessionsController.action(:failure)
 
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :identity, :fields => [:email, :token], 
+  provider :identity, :fields => [:email, :token],
                       :model => User,
                       :form => SessionsController.action(:new),
                       :on_failed_registration => RegistrationsController.action(:new)

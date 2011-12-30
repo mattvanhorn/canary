@@ -6,8 +6,8 @@
     - companies.each do |company|
       %li[company]{:class => company.mood || 'puzzled'}
         %a{:href => company_projects_path(company), :title => company.name, :'data-content' => pluralize(company.projects.count, 'project')}
-      
-      
+
+
 :javascript
   $('li.company a').popover({
     'placement':'above',

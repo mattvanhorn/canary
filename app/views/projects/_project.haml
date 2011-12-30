@@ -1,5 +1,5 @@
-- project_attr = {  :'data-id' => project.id, 
-                    :'data-team-size' => project.users.count, 
+- project_attr = {  :'data-id' => project.id,
+                    :'data-team-size' => project.users.count,
                     :'data-mood' => project.average_mood_score || -1,
                     :class => [project.mood || 'puzzled'] << ('mine' if current_user.member_of?(project)) }
 

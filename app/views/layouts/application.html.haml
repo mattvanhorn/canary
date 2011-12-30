@@ -24,12 +24,12 @@
             - else
               %li= link_to t('nav.sign_in'), sign_in_path
               %li= link_to t('nav.sign_up'), sign_up_path
-          
+
     .container
       = yield
-      
+
       .footer.row
         %span.copyright &copy; #{Time.now.year} Matt Van Horn
-        
+
 :javascript
   $(".alert-message").alert();

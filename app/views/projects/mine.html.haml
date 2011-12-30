@@ -1,6 +1,8 @@
 %h1.row My Projects
 
-= render :partial => 'projects', :object => projects
+.projects.row
+  %ul.quicksand
+    = render projects
 
 .row.project-actions
   = link_to t('nav.new_project'), new_project_path, :class => %w(btn primary)

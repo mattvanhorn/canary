@@ -1,32 +1,30 @@
 Canary::Application.routes.draw do
-  
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
-  
-  resources :invitations
 
   match '/auth/:provider/callback', to: 'sessions#create'
   match '/auth/failure',            to: 'sessions#failure'
-  
+
   match '/sign-up',  to: 'registrations#new', :as => :sign_up
   match '/sign-in',  to: 'sessions#new',      :as => :sign_in
   match '/sign-out', to: 'sessions#destroy',  :as => :sign_out
-  
+
   match '/invitations/accept/:token', to: 'registrations#new', :as => :accept_invitation
-  
-  resources :projects do
-    resources :invitations
-    resources :mood_updates
+
+  resources :projects, :only => [:index, :show, :new, :create] do
+    resources :invitations, :only => [:new, :create, :show]
+    resources :mood_updates, :only => [:new, :create, :index]
     get 'mine', :on => :collection, :as => :my
     get :autocomplete_company_name, :on => :collection
   end
 
-  resources :companies do
-    resources :projects
+  resources :companies, :only => [:index] do
+    resources :projects,:only => [:index]
   end
-  
+
   match '/vanity(/:action(/:id(.:format)))', :controller=>:vanity
-  
+
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action

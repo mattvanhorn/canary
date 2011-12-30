@@ -1,0 +1,16 @@
+MetricFu::Configuration.run do |config|
+    #define which metrics you want to use
+    config.metrics  = [:flay, :flog, :reek, :roodi, :rails_best_practices, :churn, :stats]
+    config.graphs   = [:flay, :flog, :reek, :roodi, :rails_best_practices, :stats]
+
+    config.flay = {
+      :dirs_to_flay => ['app', 'lib'],
+      :minimum_score => 100,
+      :filetypes => ['rb'] }
+
+    config.reek = {
+      :dirs_to_reek => ['app', 'lib'] }
+
+    config.roodi = {
+      :dirs_to_roodi => ['app', 'lib'] }
+end

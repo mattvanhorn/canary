@@ -1,4 +1,4 @@
-%h1.row 
+%h1.row
   #{company ? company.name : 'All' } Projects
 
 .row
@@ -7,25 +7,27 @@
       %a{:href => '#'} By Mood
     %li#size-sorter
       %a{:href => '#'} By Team Size
-  
+
   - if user_signed_in?
     %ul.pills.filter
       %li#no-filter
         %a{:href => '#'} All
       %li#user-filter
         %a{:href => '#'} Only Mine
-    
+
     = link_to t('.create_a_project'), new_project_path
-    
-= render :partial => 'projects', :object => projects
+
+.projects.row
+  %ul.quicksand
+    = render projects
 
 :javascript
   function setActivePill(el){
     var currentFilter = $('ul.pills.filter li.active');
     var currentSort   = $('ul.pills.sort li.active');
-        
+
     $('ul.pills li').removeClass('active');
-    
+
     switch(el.attr('id'))
     {
     case 'mood-sorter':
@@ -44,19 +46,19 @@
       console.log( 'WTF');
       currentFilter = $('#no-filter'  );
     }
-    
+
     currentFilter.addClass('active');
     currentSort.addClass('active');
-    
-  }  
-  
+
+  }
+
   function setPopOvers(){
-    $('li.project a').popover({ 
-      'placement':'above', 
+    $('li.project a').popover({
+      'placement':'above',
       'offset':'0'
     });
   }
-  
+
   function getSorter(){
     var sorter = ($('#size-sorter.active').length > 0) ? 'data-team-size' : 'data-mood';
     return {
@@ -64,11 +66,11 @@
       reversed: true
     }
   }
-  
+
   function getFilter(){
     return ($('#no-filter.active').length > 0) ? 'li' : 'li.mine';
   }
-  
+
   function sortData(el){
     var sorter = getSorter();
     return el.sorted({
@@ -78,31 +80,31 @@
       reversed: sorter['reversed']
     });
   }
-  
+
   // DOMContentLoaded
-  
+
   $(function() {
     // get the first collection
     var $projects = $('.projects ul.quicksand');
     var $data = $projects.clone();
-    
+
     var updateList = function(e){
       setActivePill(e);
-    
+
       var $filteredData = $data.find(getFilter());  // filter elements
       var $sortedData   = sortData($filteredData);   // sort elements
-      
+
       $projects.quicksand($sortedData, {
         duration: 800,
         easing: 'easeInOutQuad'
       }, setPopOvers );
     }
-    
+
     setActivePill($('#no-filter'));
     // attempt to call Quicksand on pill clicks
     $('#mood-sorter').click( function(){updateList($(this))} );
-    $('#size-sorter').click( function(){updateList($(this))} );    
-    $('#user-filter').click( function(){updateList($(this))} );    
+    $('#size-sorter').click( function(){updateList($(this))} );
+    $('#user-filter').click( function(){updateList($(this))} );
     $('#no-filter'  ).click( function(){updateList($(this))} );
-    
+
   });

@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   use_vanity :current_user
-  
+
   protected
 
   def current_user
@@ -14,28 +14,28 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user, :user_signed_in?
 
-  def current_user=(user)
+  def sign_in(user)
     @current_user = user
     session[:user_id] = user.id
   end
-  
+
   def authenticate_user!
     unless user_signed_in?
       store_location
       redirect_to sign_in_url, :alert => 'You need to sign in for access to this page.'
     end
   end
-  
+
   def store_location(url = nil)
     session[:return_to] = url || request.url
   end
-  
+
   def stored_location
     destination = session[:return_to]
     session[:return_to] = nil
     destination
   end
-  
+
   def redirect_back_or_default(fallback = nil)
     redirect_to( stored_location || fallback || root_path )
   end

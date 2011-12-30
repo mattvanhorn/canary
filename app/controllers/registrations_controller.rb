@@ -1,6 +1,6 @@
 class RegistrationsController < ApplicationController
   expose(:user) { @user }
-  
+
   def new
     @user = request.env['omniauth.identity'] || User.new
     token = params[:token]

@@ -3,15 +3,15 @@
 
 .row
   = simple_form_for project do |f|
-    
+
     = f.simple_fields_for :company_attributes do |company_f|
       = company_f.input :name, :url => autocomplete_company_name_projects_path, :as => :autocomplete,
                                :required => false,
-                               :label => t('simple_form.labels.company.name'), 
+                               :label => t('simple_form.labels.company.name'),
                                :hint => t('simple_form.hints.company.name'),
                                :input_html => {:id_element => '#project_company_attributes_id'}
-                               
-      
+
+
       = company_f.hidden_field(:id)
     = f.input :name, :label => t('simple_form.labels.project.name'), :hint => t('simple_form.hints.project.name'), :wrapper_html => {:class => 'project-name'}
     .actions.input
