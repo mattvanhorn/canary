@@ -79,3 +79,27 @@ Canary::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
 end
+#== Route Map
+# Generated on 30 Dec 2011 13:52
+#
+#                       auth_failure      /auth/failure(.:format)                          {:controller=>"sessions", :action=>"failure"}
+#                            sign_up      /sign-up(.:format)                               {:controller=>"registrations", :action=>"new"}
+#                            sign_in      /sign-in(.:format)                               {:controller=>"sessions", :action=>"new"}
+#                           sign_out      /sign-out(.:format)                              {:controller=>"sessions", :action=>"destroy"}
+#                  accept_invitation      /invitations/accept/:token(.:format)             {:controller=>"registrations", :action=>"new"}
+#                project_invitations POST /projects/:project_id/invitations(.:format)      {:action=>"create", :controller=>"invitations"}
+#             new_project_invitation GET  /projects/:project_id/invitations/new(.:format)  {:action=>"new", :controller=>"invitations"}
+#                 project_invitation GET  /projects/:project_id/invitations/:id(.:format)  {:action=>"show", :controller=>"invitations"}
+#               project_mood_updates GET  /projects/:project_id/mood_updates(.:format)     {:action=>"index", :controller=>"mood_updates"}
+#                                    POST /projects/:project_id/mood_updates(.:format)     {:action=>"create", :controller=>"mood_updates"}
+#            new_project_mood_update GET  /projects/:project_id/mood_updates/new(.:format) {:action=>"new", :controller=>"mood_updates"}
+#                        my_projects GET  /projects/mine(.:format)                         {:action=>"mine", :controller=>"projects"}
+# autocomplete_company_name_projects GET  /projects/autocomplete_company_name(.:format)    {:action=>"autocomplete_company_name", :controller=>"projects"}
+#                           projects GET  /projects(.:format)                              {:action=>"index", :controller=>"projects"}
+#                                    POST /projects(.:format)                              {:action=>"create", :controller=>"projects"}
+#                        new_project GET  /projects/new(.:format)                          {:action=>"new", :controller=>"projects"}
+#                            project GET  /projects/:id(.:format)                          {:action=>"show", :controller=>"projects"}
+#                   company_projects GET  /companies/:company_id/projects(.:format)        {:action=>"index", :controller=>"projects"}
+#                          companies GET  /companies(.:format)                             {:action=>"index", :controller=>"companies"}
+#                                         /vanity(/:action(/:id(.:format)))                {:controller=>"vanity"}
+#                               root      /                                                {:controller=>"homepage", :action=>"index"}

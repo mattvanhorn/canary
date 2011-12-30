@@ -1,3 +1,19 @@
+# == Schema Information
+# Schema version: 20111230200612
+#
+# Table name: mood_updates
+#
+#  id            :integer         not null, primary key
+#  mood_score    :integer
+#  created_at    :datetime
+#  updated_at    :datetime
+#  membership_id :integer
+#
+# Indexes
+#
+#  index_mood_updates_on_membership_id  (membership_id)
+#
+
 require 'spec_helper'
 
 describe MoodUpdate do

@@ -1,3 +1,20 @@
+# == Schema Information
+# Schema version: 20111230200612
+#
+# Table name: projects
+#
+#  id         :integer         not null, primary key
+#  name       :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#  company_id :integer
+#
+# Indexes
+#
+#  index_projects_on_company_id           (company_id)
+#  index_projects_on_company_id_and_name  (company_id,name) UNIQUE
+#
+
 class Project < ActiveRecord::Base
   belongs_to :company
   accepts_nested_attributes_for :company, :allow_destroy => true, :reject_if => proc { |obj| obj.blank? }
@@ -12,7 +29,7 @@ class Project < ActiveRecord::Base
 
   def company_attributes=(params)
     if new_record?
-      self.company = get_company_for_create(params[:id], params[:name])
+      self.company = Company.for_new_project(params[:id], params[:name])
     end
   end
 
@@ -45,35 +62,15 @@ class Project < ActiveRecord::Base
   end
 
   def average_mood_score
-    Rails.cache.fetch(self.cache_key + '/average_mood_score') do
-      scores = most_recent_mood_updates.map{|m|m.mood_score}
+    scores = most_recent_mood_updates.map{|mood_update|mood_update.mood_score}
+    if scores.any?
       sum = scores.sum.to_f
       number = scores.size
-      if number > 0
-        (sum / number)
-      else
-        return nil
-      end
+      return (sum / number)
     end
   end
 
   def mood
-    key = self.cache_key + '/mood'
-    Rails.cache.fetch(key) do
-      Rails.logger.info("CACHE MISS")
-      score = average_mood_score
-      if score
-        MoodUpdate.mood(score.round)
-      else
-        MoodUpdate.mood_unknown
-      end
-    end
-  end
-
-  protected
-
-  def get_company_for_create(company_id, company_name)
-    return Company.find_by_id(company_id) unless company_id.blank?
-    return Company.find_or_create_by_name(company_name) unless company_name.blank?
+    MoodUpdate.mood(average_mood_score)
   end
 end

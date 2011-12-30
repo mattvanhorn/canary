@@ -1,3 +1,18 @@
+# == Schema Information
+# Schema version: 20111230200612
+#
+# Table name: companies
+#
+#  id         :integer         not null, primary key
+#  name       :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#
+# Indexes
+#
+#  index_companies_on_name  (name) UNIQUE
+#
+
 require 'spec_helper'
 
 describe Company do

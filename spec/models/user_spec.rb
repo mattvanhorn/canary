@@ -1,3 +1,19 @@
+# == Schema Information
+# Schema version: 20111230200612
+#
+# Table name: users
+#
+#  id              :integer         not null, primary key
+#  created_at      :datetime
+#  updated_at      :datetime
+#  password_digest :string(255)
+#  email           :string(255)
+#
+# Indexes
+#
+#  index_users_on_email  (email)
+#
+
 require 'spec_helper'
 
 describe User do 

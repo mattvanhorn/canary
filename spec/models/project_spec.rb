@@ -1,3 +1,20 @@
+# == Schema Information
+# Schema version: 20111230200612
+#
+# Table name: projects
+#
+#  id         :integer         not null, primary key
+#  name       :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#  company_id :integer
+#
+# Indexes
+#
+#  index_projects_on_company_id           (company_id)
+#  index_projects_on_company_id_and_name  (company_id,name) UNIQUE
+#
+
 require 'spec_helper'
 
 describe Project do

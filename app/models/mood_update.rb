@@ -1,3 +1,19 @@
+# == Schema Information
+# Schema version: 20111230200612
+#
+# Table name: mood_updates
+#
+#  id            :integer         not null, primary key
+#  mood_score    :integer
+#  created_at    :datetime
+#  updated_at    :datetime
+#  membership_id :integer
+#
+# Indexes
+#
+#  index_mood_updates_on_membership_id  (membership_id)
+#
+
 class MoodUpdate < ActiveRecord::Base
   belongs_to :membership
 
@@ -6,8 +22,12 @@ class MoodUpdate < ActiveRecord::Base
   scope :for_project, lambda{ |project| joins(:memberships).where('memberships.project_id = ?', project.id) }
   scope :recent, order('updated_at DESC')
 
-  def self.mood(idx)
-    I18n.translate("moods.#{MOODS[idx]}")
+  def self.mood(score)
+    if score
+      I18n.translate("moods.#{MOODS[score.round]}")
+    else
+      mood_unknown
+    end
   end
 
   def self.mood_unknown

@@ -1,3 +1,24 @@
+# == Schema Information
+# Schema version: 20111230200612
+#
+# Table name: invitations
+#
+#  id              :integer         not null, primary key
+#  user_id         :integer
+#  project_id      :integer
+#  recipient_email :string(255)
+#  token           :string(255)
+#  state           :string(255)
+#  created_at      :datetime
+#  updated_at      :datetime
+#
+# Indexes
+#
+#  index_invitations_on_project_id  (project_id)
+#  index_invitations_on_token       (token) UNIQUE
+#  index_invitations_on_user_id     (user_id)
+#
+
 require 'spec_helper'
 
 describe Invitation do
