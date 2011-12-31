@@ -23,11 +23,7 @@ class MoodUpdate < ActiveRecord::Base
   scope :recent, order('updated_at DESC')
 
   def self.mood(score)
-    if score
-      I18n.translate("moods.#{MOODS[score.round]}")
-    else
-      mood_unknown
-    end
+    I18n.translate("moods.#{MOODS[score.round]}")
   end
 
   def self.mood_unknown

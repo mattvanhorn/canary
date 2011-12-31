@@ -38,7 +38,7 @@ class Project < ActiveRecord::Base
   end
 
   def most_recent_mood_updates
-    # yes, it cross joins, but I'm hoping indexes on project_id, user_id help
+    # yes, it cross joins, but I'm hoping indexes on project_id, membership_id help
     Rails.cache.fetch(self.cache_key + '/most_recent_mood_updates') do
       sql = <<-EOS
         SELECT mu1.*
@@ -61,16 +61,21 @@ class Project < ActiveRecord::Base
     end
   end
 
+  def recent_mood_scores
+    most_recent_mood_updates.map{|mood_update|mood_update.mood_score}
+  end
+
   def average_mood_score
-    scores = most_recent_mood_updates.map{|mood_update|mood_update.mood_score}
-    if scores.any?
-      sum = scores.sum.to_f
-      number = scores.size
-      return (sum / number)
-    end
+    scores = recent_mood_scores
+    scores.sum.to_f / scores.size if scores.any?
   end
 
   def mood
-    MoodUpdate.mood(average_mood_score)
+    score = average_mood_score
+    if score
+      MoodUpdate.mood(score)
+    else
+      MoodUpdate.mood_unknown
+    end
   end
 end

@@ -22,11 +22,11 @@ class User < OmniAuth::Identity::Models::ActiveRecord
 
   validates :email, :password, :password_confirmation, :presence =>true
 
-  validates :email, :uniqueness=>true, :if => Proc.new{|i| i.email.present?}
+  validates :email, :uniqueness=>true, :if => Proc.new{|user| user.email.present?}
 
   validates  :password, :length => { :minimum => 5, :maximum => 40 },
                         :confirmation =>true,
-                        :if => Proc.new{|i| i.password.present?}
+                        :if => Proc.new{|user| user.password.present?}
 
   def self.find_from_hash(auth_hash)
     where(:id => auth_hash['uid']).first
@@ -48,7 +48,7 @@ class User < OmniAuth::Identity::Models::ActiveRecord
   end
 
   def member_of?(project)
-    projects.select{ |p| p == project }.any?
+    projects.select{ |prj| prj == project }.any?
   end
 
   def invite(email)
