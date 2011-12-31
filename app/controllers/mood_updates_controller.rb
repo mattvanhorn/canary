@@ -16,8 +16,9 @@ class MoodUpdatesController < ApplicationController
   end
 
   def create
-    current_user.update_mood_for_project(project, mood_update)
-    redirect_to project_mood_updates_url(project.id)
+    my_project = project
+    current_user.update_mood_for_project(my_project, mood_update)
+    redirect_to project_mood_updates_url(my_project.id)
   end
 
 end

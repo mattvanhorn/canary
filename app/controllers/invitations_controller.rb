@@ -16,13 +16,13 @@ class InvitationsController < ApplicationController
   end
 
   def create
-    recipient = params['invitation']['recipient_email']
-    invitation = current_user.invite(recipient).to_join(project)
-
+    my_project = project
+    teammate = params['invitation']['recipient_email']
+    invitation = current_user.invite(teammate).to_join(my_project)
     if invitation.deliver!
-      respond_with(project)
+      respond_with(my_project)
     else
-      respond_with(project, invitation)
+      respond_with(my_project, invitation)
     end
   end
 

@@ -37,10 +37,8 @@ class User < OmniAuth::Identity::Models::ActiveRecord
   end
 
   def setup_from_invitation(invitation)
-    if invitation
-      self.email ||= invitation.recipient_email
-      self.join(invitation.project)
-    end
+    self.email ||= invitation.recipient_email
+    self.join(invitation.project)
   end
 
   def join(project)

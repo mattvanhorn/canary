@@ -34,7 +34,7 @@ class Project < ActiveRecord::Base
   end
 
   def company_name
-    company.name unless company.nil?
+    company.try(:name)
   end
 
   def most_recent_mood_updates
@@ -78,4 +78,6 @@ class Project < ActiveRecord::Base
       MoodUpdate.mood_unknown
     end
   end
+
+  pr
 end

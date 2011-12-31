@@ -29,8 +29,9 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    if current_user.join(project)
-      redirect_to project_url(project)
+    new_project = project
+    if current_user.join(new_project)
+      redirect_to project_url(new_project)
     else
       render :new
     end

@@ -1,3 +1,4 @@
+# Handles invitations that get emailed to teammates
 class InvitationMailer < ActionMailer::Base
 
   def invitation(model)

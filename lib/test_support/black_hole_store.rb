@@ -1,3 +1,4 @@
+# A do-nothing cache implementation just used for testing
 class BlackHoleStore
   def logger
     Rails.logger
