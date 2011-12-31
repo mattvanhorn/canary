@@ -144,6 +144,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.17.2)
     multi_json (1.0.4)
+    newrelic_rpm (3.3.1)
     nokogiri (1.5.0)
     omniauth (1.0.1)
       hashie (~> 1.2)
@@ -278,6 +279,7 @@ DEPENDENCIES
   hpricot
   jquery-rails
   launchy
+  newrelic_rpm
   omniauth-identity
   paperclip
   pg
