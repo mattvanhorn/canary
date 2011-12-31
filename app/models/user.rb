@@ -33,7 +33,8 @@ class User < OmniAuth::Identity::Models::ActiveRecord
   end
 
   def token=(code)
-    setup_from_invitation(Invitation.for_token(code))
+    invitation = Invitation.for_token(code)
+    setup_from_invitation(invitation) if invitation
   end
 
   def setup_from_invitation(invitation)

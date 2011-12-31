@@ -28,7 +28,8 @@
           = password_field_tag(:password_confirmation, '', :required => 'required', :class => ['required', ('error' if user.errors[:password_confirmation].any?)])
           %span.help-inline= user.errors[:password_confirmation].map{|e| "Confirmation #{e}"}.uniq.join(', ')
 
-      = hidden_field_tag(:token, params[:token])
+      - unless params[:token].blank?
+        = hidden_field_tag(:token, params[:token])
 
     .actions
       = submit_tag t('.submit'), :class => 'btn primary create'
