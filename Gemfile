@@ -31,18 +31,21 @@ end
 
 
 group :development do
-  gem "pickler"
+  gem "hpricot"
+  gem "ruby_parser"
+  # gem 'ruby-graphviz', :require => 'graphviz' # For graphing of state-machines
+end
+
+group :tddium_ignore do
+  gem 'rb-fsevent'
   gem "guard"
   gem "guard-rspec"
   gem "guard-cucumber"
   gem "guard-spork"
   gem "guard-bundler"
   gem "guard-pow"
-  gem "rb-fsevent"
+  gem "pickler"
   gem "growl"
-  gem "hpricot"
-  gem "ruby_parser"
-  # gem 'ruby-graphviz', :require => 'graphviz' # For graphing of state-machines
 end
 
 group :development, :test do
