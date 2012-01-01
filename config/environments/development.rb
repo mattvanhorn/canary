@@ -30,5 +30,7 @@ Canary::Application.configure do
   config.assets.debug = true
 
   Vanity.playground.collecting = true
+
+  config.action_mailer.default_url_options = { :host => ENV['APP_HOST'] }
 end
 
