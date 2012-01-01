@@ -4,6 +4,7 @@ log/*.log
 tmp/
 .sass-cache/
 config/database.yml
+config/heroku.yml
 public/system/
 coverage/
 coverage.data

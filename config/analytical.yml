@@ -1,0 +1,10 @@
+development: &defaults
+  google:
+    key: UA-FAKEKEY-0
+
+test:
+  <<: *defaults
+
+production:
+  google:
+    key: <%= ENV['GOOGLE_ANALYTICS_KEY'] %>

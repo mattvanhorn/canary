@@ -1,15 +1,20 @@
 !!!
 %html
   %head
+    = raw analytical.head_prepend_javascript
     %title Mood Metrics
     = stylesheet_link_tag    "application"
     = stylesheet_link_tag    controller.controller_name
-
     = javascript_include_tag "application"
     = csrf_meta_tags
     :javascript
       fbg.hideFOUT('asap');
+    - analytical.identify(current_user.id, :email => current_user.email) if user_signed_in?
+    = raw analytical.head_append_javascript
+
   %body{:class => [controller.controller_name, controller.action_name]}
+    = raw analytical.body_prepend_javascript
+
     .topbar
       .topbar-inner
         .container
@@ -30,6 +35,6 @@
 
       .footer.row
         %span.copyright &copy; #{Time.now.year} Matt Van Horn
-
-:javascript
-  $(".alert-message").alert();
+    :javascript
+      $(".alert-message").alert();
+    = raw analytical.body_append_javascript

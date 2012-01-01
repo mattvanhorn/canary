@@ -22,6 +22,7 @@ gem 'compass_twitter_bootstrap'
 gem "faker"
 gem 'newrelic_rpm'
 gem 'postmark-rails'
+gem 'analytical'
 
 # Gems used only for assets and not required
 # in production environments by default.

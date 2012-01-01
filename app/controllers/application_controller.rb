@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  analytical
   use_vanity :current_user
 
   protected

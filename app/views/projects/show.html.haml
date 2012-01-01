@@ -11,7 +11,7 @@
   %ul[project]
     - project.memberships.each do |member|
       %li[member.user]
-        = image_tag("#{member.mood}.png", :size => '128x128')
+        = image_tag("#{member.mood || 'puzzled'}.png", :size => '128x128')
 
 - if user_signed_in? && current_user.member_of?(project)
   .row.project-actions

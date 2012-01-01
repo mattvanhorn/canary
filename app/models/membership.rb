@@ -24,7 +24,7 @@ class Membership < ActiveRecord::Base
   scope :for_project, lambda{ |project| where(:project_id => project.id) }
 
   def mood
-    @mood ||= (most_recent_mood_update.try(:mood) || MoodUpdate.mood_unknown)
+    @mood ||= most_recent_mood_update.try(:mood)
   end
 
   def most_recent_mood_update
