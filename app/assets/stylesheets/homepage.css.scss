@@ -4,54 +4,91 @@
 @import "shared/project";
 
 .promo {
-  height: 21 * $baseline;
+  height: 17 * $baseline;
   background: $whats_the_matter;
+  background-image: linear-gradient(        bottom, $nature 1%, $whats_the_matter 33%);
+  background-image: -o-linear-gradient(     bottom, $nature 1%, $whats_the_matter 33%);
+  background-image: -moz-linear-gradient(   bottom, $nature 1%, $whats_the_matter 33%);
+  background-image: -webkit-linear-gradient(bottom, $nature 1%, $whats_the_matter 33%);
+  background-image: -ms-linear-gradient(    bottom, $nature 1%, $whats_the_matter 33%);
+  background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0.01, $nature),
+    color-stop(0.33, $whats_the_matter)
+  );
+
   .call-to-action {
-    @include makeColumn(11);
+    @include makeColumn(12);
     @include offset(1);
-    height: 21 * $baseline;
+    height: 17 * $baseline;
+    text-align: center;
+
+    .btn {
+      margin: $baseline $gridGutterWidth;
+      -moz-box-shadow: 5px 5px 10px 5px #000000;
+      -webkit-box-shadow: 2px 2px 5px 2px #666666;
+      box-shadow: 3px 3px 5px 0 #666666;
+    }
   }
+
   .illustration1 {
     @include makeColumn(8);
-    height: 21 * $baseline;
+    height: 17 * $baseline;
     img {
       margin-top: $baseline * 3;
     }
   }
+
   .illustration2 {
-    @include makeColumn(4);
-    height: 21 * $baseline;
+    @include makeColumn(3);
+    height: 17 * $baseline;
   }
+
   h1 {
     font-family: ChunkFiveRegular;
     color: $please;
     font-size: 5em;
     line-height:1.1em;
     margin-top: $baseline*2;
+    margin-bottom: 0;
     text-shadow: 1px 1px 0px $whats_the_matter, 5px 5px 0px desaturate(darken($whats_the_matter, 25%), 15%);
-    
+
   }
 }
 .row.details {
-  height: 13 * $baseline;
   background: $nature;
-  .features1 {
-    height: 13 * $baseline;
-    @include makeColumn(10);
+  .feature {
+    @include makeColumn(7);
     @include offset(1);
-  }
-  .features2 {
-    height: 13 * $baseline;
-    @include makeColumn(8);
-  }
-  .coming-soon {
-    height: 13 * $baseline;
-    @include makeColumn(4);
+    p {
+      height: 4 * $baseline;
+    }
   }
   h2{
     color: $please;
-  } 
+  }
   h3 {
     color: $whats_the_matter;
   }
+}
+.coming-soon {
+  clear: both;
+}
+.homepage .footer.row {
+  background-color: $icing;
+  background-image: linear-gradient(bottom, $icing 13%, $nature 34%, $nature 89%);
+  background-image: -o-linear-gradient(bottom, $icing 13%, $nature 34%, $nature 89%);
+  background-image: -moz-linear-gradient(bottom, $icing 13%, $nature 34%, $nature 89%);
+  background-image: -webkit-linear-gradient(bottom, $icing 13%, $nature 34%, $nature 89%);
+  background-image: -ms-linear-gradient(bottom, $icing 13%, $nature 34%, $nature 89%);
+  background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0.13, $icing),
+    color-stop(0.34, $nature),
+    color-stop(0.89, $nature)
+  );
 }

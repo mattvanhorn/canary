@@ -1,7 +1,7 @@
 @import "custom_twitter_bootstrap/variables";
 @import "compass_twitter_bootstrap/mixins";
 @import "shared/palette";
- 
+
 @font-face {
     font-family: 'ChunkFiveRegular';
     src: url('fonts/Chunkfive-webfont.eot');
@@ -32,7 +32,7 @@
     font-weight: normal;
     font-style: normal;
 }
-
+html { height: 100%;}
 body {
   .debug {
     background: image-url('grid30x10.png');
@@ -44,29 +44,40 @@ body {
 }
 
 
-body { 
-  padding-top: 40px;
+body {
+  min-height: 100%;
+
+  height:auto !important;
+
+  height: 100%;
+  background-image: image-url('light-tile.png');
+
+
+
   .row {
     background-color: $whats_the_matter;
   }
   p {
-    font-family: EBGaramondRegular; 
+    font-family: EBGaramondRegular;
     font-weight: normal;
     font-size: 16px;
     line-height: 18px;
     margin-bottom: 1.125em;
   }
 }
-
+.container.page {
+  padding-top: 40px;
+  border: 1px solid $spooky_blue;
+}
 body.new,
 body.edit {
   background: $whats_the_matter;
 
-  
+
   .topbar .container {
     background: transparent;
    }
-   
+
   .row {
     background: $whiteSmoke;
   }
@@ -93,7 +104,21 @@ form {
 }
 
 .footer.row {
-  background: $icing;
+  background-color: $icing;
+  background-image: linear-gradient(bottom, $icing 13%, $whats-the-matter 34%, $whats-the-matter 89%);
+  background-image: -o-linear-gradient(bottom, $icing 13%, $whats-the-matter 34%, $whats-the-matter 89%);
+  background-image: -moz-linear-gradient(bottom, $icing 13%, $whats-the-matter 34%, $whats-the-matter 89%);
+  background-image: -webkit-linear-gradient(bottom, $icing 13%, $whats-the-matter 34%, $whats-the-matter 89%);
+  background-image: -ms-linear-gradient(bottom, $icing 13%, $whats-the-matter 34%, $whats-the-matter 89%);
+  background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0.13, $icing),
+    color-stop(0.34, $whats-the-matter),
+    color-stop(0.89, $whats-the-matter)
+  );
+
   height: 8 * $baseline;
   text-align: center;
   .copyright {

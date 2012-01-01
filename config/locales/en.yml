@@ -5,7 +5,7 @@
 #
 # Use this as the base for the locale file of your language.
 en:
-  brand: 'Canary'
+  brand: 'Mood Metrics'
   nav:
     sign_up: 'Sign Up'
     sign_in: 'Sign In'
@@ -22,13 +22,13 @@ en:
     satisfied: satisfied
     bored: bored
     frustrated: frustrated
-    
-    
+
+
   invitations:
     new:
       page_header: 'Create an Invitation'
-      
-      
+
+
   date:
     formats:
       default: "%Y-%m-%d"
@@ -255,4 +255,3 @@ en:
         format: "%{attribute} %{message}"
 
 
-  

@@ -1,36 +1,40 @@
 .promo.row
   .call-to-action
-    %h1 Happy Metrics
-
+    %h1 Mood Metrics
+    %h2 Better feedback for better projects.
+    = link_to t('.try_it_now'), sign_up_path, :class => %w(btn primary large)
+    = link_to t('.learn_more'), '#', :class => %w(btn large)
+    %p This app is still <u>ALPHA</u>. Proceed at your own risk.
   .illustration1
     = image_tag('crowd.png')
   .illustration2
-    %p tddium
+    %p
 
 .details.row
-  .features1
-    %h2 Honest Feedback
+  .feature
+    %h2 Fast Feedback
     %p
-      It can be hard to get really honest feedback from even the most agile
-      teams. Your fellow developers may feel self conscious raising issues in
-      a group setting, or even in a on-on-one. Canary makes it easy to get at
-      the real truth about team morale.
+      Knowing the team mood on a day-to-day basis can help spot problems before
+      they become large enough to have a major impact on your project.
 
-    %h2 No Reprisals
+    %h3 Soon to come:
+    %p Better charts and graphs, as well as rollups of project mood, and company mood.
+
+  .feature
+    %h2 More Transparency
     %p
-      Because updates are anonymous, you don't have to worry about your manager
-      thinking of you as a squeaky wheel. Just come in and say how you feel, and
-      maybe send your boss a link to the project -- anonymously, of course.
+      Team happiness is an important metric. Use it in conjunction with velocity
+      and other metrics to analyze which parts of your process are working and
+      which are not.
 
-  .features2
-    %h3 If You See Dilbert, It's Too Late
+    %h3 Soon to come:
+    %p Integration with other tools such as Pivotal Tracker and Github.
+
+  .feature
+    %h2 Easy To Use
     %p
-      We've all seen the places where Dilbert cartoons adorn every cubicle wall.
-      There's a positive correlation between Dilbert cartoons and developer churn.
-      Don't let it happen to you!
+      Team members can update their mood daily, and if anyone forgets they'll
+      get a reminder email sent automatically.
 
-    %h3 #{Faker::Lorem.words.join(' ').titleize}
-    %p Get started for only #{ab_test :price_options} a month!
-
-  .coming-soon
-    %p Pic goes here
+    %h3 Soon to come:
+    %p Update via email, Twitter, or mobile app.
