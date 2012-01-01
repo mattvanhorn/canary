@@ -1,5 +1,4 @@
 @http://www.pivotaltracker.com/story/show/22175969
-
 Feature: See my projects
   In order to get to my projects quickly
   as a team member
@@ -10,8 +9,8 @@ Feature: See my projects
         And 1 user
         And that user has 1 project
         And I sign in
-        
-    @javascript 
+
+    @javascript
     Scenario:
       Given I am on the home page
        When I click on "Projects"

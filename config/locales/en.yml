@@ -5,7 +5,7 @@
 #
 # Use this as the base for the locale file of your language.
 en:
-  brand: 'Mood Metrics'
+  brand: 'Home'
   nav:
     sign_up: 'Sign Up'
     sign_in: 'Sign In'

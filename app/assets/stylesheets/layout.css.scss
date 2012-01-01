@@ -46,14 +46,9 @@ body {
 
 body {
   min-height: 100%;
-
   height:auto !important;
-
   height: 100%;
   background-image: image-url('light-tile.png');
-
-
-
   .row {
     background-color: $whats_the_matter;
   }
@@ -64,6 +59,7 @@ body {
     line-height: 18px;
     margin-bottom: 1.125em;
   }
+  .topbar a.brand { margin-left: 0;}
 }
 .container.page {
   padding-top: 40px;
