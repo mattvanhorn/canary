@@ -17,5 +17,5 @@ Feature: Inviting Members
      And I should be on the project page for "Yoyodyne website"
     When they open the email
     Then they should see "Yoyodyne website" in the email body
-     And they should see the email delivered from "alice@example.com"
+     And they should see the email delivered from "info@moodmetricsapp.com"
 

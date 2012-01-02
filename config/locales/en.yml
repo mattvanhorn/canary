@@ -27,7 +27,9 @@ en:
   invitations:
     new:
       page_header: 'Create an Invitation'
-
+    email:
+      subject: 'MoodMetrics Invitation'
+      signature: 'info@moodmetricsapp.com'
 
   date:
     formats:
