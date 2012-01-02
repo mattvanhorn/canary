@@ -1,8 +1,8 @@
-When /^I am not signed in$/ do 
+When /^I am not signed in$/ do
   step "I sign out"
 end
 
-When /^I sign out$/ do 
+When /^I sign out$/ do
   visit sign_out_path
 end
 
@@ -10,6 +10,15 @@ When /^I sign in$/ do
   visit sign_in_path
   within(selector_for("the sign in form")) do
     fill_in I18n.t('sign_in.auth_key'), :with => 'alice@example.com'
+    fill_in I18n.t('sign_in.password'), :with => 'password'
+    click_on I18n.t('sign_in.submit')
+  end
+end
+
+When /^I sign in as that user$/ do
+  visit sign_in_path
+  within(selector_for("the sign in form")) do
+    fill_in I18n.t('sign_in.auth_key'), :with => @user.first.email
     fill_in I18n.t('sign_in.password'), :with => 'password'
     click_on I18n.t('sign_in.submit')
   end

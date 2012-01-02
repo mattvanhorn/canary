@@ -30,6 +30,8 @@ en:
     email:
       subject: 'MoodMetrics Invitation'
       signature: 'info@moodmetricsapp.com'
+      link:
+        subject: 'MoodMetrics Project'
 
   date:
     formats:

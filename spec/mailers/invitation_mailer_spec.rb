@@ -37,6 +37,28 @@ describe InvitationMailer do
 
   end
 
+  describe "project_link" do
+    let(:email){ Faker::Internet.email }
+    let(:project){ mock_model(Project, :name => 'Yoyodyne Website') }
+    let(:mail) { InvitationMailer.project_link(email, project) }
+
+    it "renders the subject" do
+      mail.should have_subject(I18n.t('invitations.email.link.subject'))
+    end
+
+    it "renders the body" do
+      mail.should have_body_text(/Yoyodyne Website/)
+    end
+
+    it "is sent from the application's Postmark authorized address" do
+      mail.should be_delivered_from(I18n.t('invitations.email.signature'))
+    end
+
+    it "is sent to the invitation's email recipient" do
+      mail.should deliver_to(email)
+    end
+
+  end
 end
 
 

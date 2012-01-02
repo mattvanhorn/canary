@@ -1,3 +1,9 @@
+# for sign-in and sign-out
+#               /auth/:provider/callback(.:format)  {:controller=>"sessions", :action=>"create"}
+# auth_failure  /auth/failure(.:format)             {:controller=>"sessions", :action=>"failure"}
+#      sign_in  /sign-in(.:format)                  {:controller=>"sessions", :action=>"new"}
+#     sign_out  /sign-out(.:format)                 {:controller=>"sessions", :action=>"destroy"}
+
 class SessionsController < ApplicationController
 
   def create

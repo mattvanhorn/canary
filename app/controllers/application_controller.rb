@@ -1,3 +1,4 @@
+# For commonly used controller logic
 class ApplicationController < ActionController::Base
   protect_from_forgery
   analytical

@@ -1,3 +1,7 @@
+# for signups
+#           sign_up  /sign-up(.:format)                    {:controller=>"registrations", :action=>"new"}
+# accept_invitation  /invitations/accept/:token(.:format)  {:controller=>"registrations", :action=>"new"}
+
 class RegistrationsController < ApplicationController
   expose(:user) { @user }
 

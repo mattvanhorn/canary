@@ -10,4 +10,10 @@ class InvitationMailer < ActionMailer::Base
          :reply_to => model.sender_email)
   end
 
+  def project_link(recipient, project)
+    @project = project
+    mail(:to => recipient,
+         :subject => "MoodMetrics Project",
+         :from => "info@moodmetricsapp.com")
+  end
 end

@@ -1,3 +1,8 @@
+# Processes user updates to their mood wrt a project
+#    project_mood_updates GET  /projects/:project_id/mood_updates(.:format)     {:action=>"index", :controller=>"mood_updates"}
+#                         POST /projects/:project_id/mood_updates(.:format)     {:action=>"create", :controller=>"mood_updates"}
+# new_project_mood_update GET  /projects/:project_id/mood_updates/new(.:format) {:action=>"new", :controller=>"mood_updates"}
+
 class MoodUpdatesController < ApplicationController
   before_filter :authenticate_user!
 

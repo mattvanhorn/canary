@@ -12,8 +12,8 @@ When /^(?:they|I) (?:visit|am on|are on) (.+)$/ do |page_name|
   visit path_to(page_name)
 end
 
-Then /^(?:they|I) should see "([^"]*)"$/ do |content|
-  page.should have_content(content)
+Then /^(?:they|I) (should|should not) see "([^"]*)"$/ do |should_or_not, content|
+  page.send should_or_not, have_content(content)
 end
 
 Then /^(?:they|I) should see a link to (.+)$/ do |page_name|
@@ -42,6 +42,14 @@ end
 
 When /^(?:they|I) (?:select|choose) "([^"]*)" from "([^"]*)"$/ do |value, field|
   select(value, :from => field)
+end
+
+When /^(?:they|I) fill in "([^"]*)" with "([^"]*)"$/ do |field, value|
+  fill_in(field, :with => value)
+end
+
+When /^(?:they|I) fill in "([^"]*)" for "([^"]*)"$/ do |value, field|
+  fill_in(field, :with => value)
 end
 
 When /^(.*) within ([^:"]+)$/ do |scoped_step, scope|

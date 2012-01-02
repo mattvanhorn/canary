@@ -1,3 +1,8 @@
+# Responsible for showing invitation form and processing send-invitation requests
+#
+#    project_invitations POST /projects/:project_id/invitations(.:format)      {:action=>"create", :controller=>"invitations"}
+# new_project_invitation GET  /projects/:project_id/invitations/new(.:format)  {:action=>"new", :controller=>"invitations"}
+#     project_invitation GET  /projects/:project_id/invitations/:id(.:format)  {:action=>"show", :controller=>"invitations"}
 class InvitationsController < ApplicationController
   before_filter :authenticate_user!, :only => [:new, :create]
 

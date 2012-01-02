@@ -1,3 +1,5 @@
+# Companies controller
+# companies GET  /companies(.:format) {:action=>"index", :controller=>"companies"}
 class CompaniesController < ApplicationController
 
   respond_to :html

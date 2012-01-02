@@ -18,3 +18,14 @@
     = link_to t('nav.invite_member'), new_project_invitation_path(project), :class => %w(btn default)
     = link_to t('nav.update_mood'),  new_project_mood_update_path(project), :class => %w(btn default)
 
+  .row
+    = form_tag project_links_path, :id => 'send-link-form' do |f|
+      %fieldset
+
+        .clearfix.string.required
+          = label_tag(:email, t(".email"), :class => 'required')
+          .input
+            = text_field_tag(:email, '', :required => 'required', :class => 'required')
+        = hidden_field_tag :project_id, project.id
+        .actions
+          = submit_tag t('.send_link'), :class => 'btn primary create'

@@ -22,6 +22,7 @@ Canary::Application.routes.draw do
   resources :companies, :only => [:index] do
     resources :projects,:only => [:index]
   end
+  resources :project_links,:only => [:create]
 
   match '/vanity(/:action(/:id(.:format)))', :controller=>:vanity
 
