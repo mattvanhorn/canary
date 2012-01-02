@@ -25,6 +25,17 @@
     height: 17 * $baseline;
     text-align: center;
 
+    h1 {
+      @include offset(0);
+      font-family: ChunkFiveRegular;
+      color: $please;
+      font-size: 5em;
+      line-height:1.1em;
+      margin-top: $baseline*2;
+      margin-bottom: 0;
+      text-shadow: 1px 1px 0px $whats_the_matter, 5px 5px 0px desaturate(darken($whats_the_matter, 25%), 15%);
+    }
+
     .btn {
       margin: $baseline $gridGutterWidth;
       -moz-box-shadow: 5px 5px 10px 5px #000000;
@@ -44,17 +55,6 @@
   .illustration2 {
     @include makeColumn(3);
     height: 17 * $baseline;
-  }
-
-  h1 {
-    font-family: ChunkFiveRegular;
-    color: $please;
-    font-size: 5em;
-    line-height:1.1em;
-    margin-top: $baseline*2;
-    margin-bottom: 0;
-    text-shadow: 1px 1px 0px $whats_the_matter, 5px 5px 0px desaturate(darken($whats_the_matter, 25%), 15%);
-
   }
 }
 .row.details {

@@ -6,6 +6,29 @@
 @import "shared/palette";
 @import "shared/project";
 
+.pill-label {
+  @include offset(1);
+  @include columns(2);
+  float: left;
+  color: $please;
+  text-align: center;
+  font-size: 1.25em;
+  line-height: $baseline * 2;
+}
+ul.sort {
+  float: left;
+  @include columns(8);
+  margin-left: $gridGutterWidth;
+}
+ul.filter {
+  float: left;
+  @include columns(8);
+  margin-left: $gridGutterWidth;
+}
+#new-project-btn {
+  @include offset(1);
+}
+
 .row.project-actions{
   background: $whats_the_matter;
   padding-top: $baseline;

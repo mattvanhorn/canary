@@ -79,14 +79,16 @@ body.edit {
   }
 }
 
-h1.row {
+h1 {
+  @include offset(1);
+  font-family: ChunkFiveRegular;
   color: $please;
   font-size: 3em;
-  line-height: 1em;
+  line-height: 1.39em;
+  margin-top: 0;
   margin-bottom: 0;
-  padding-left: $gridGutterWidth;
   padding-top: $baseline;
-  padding-bottom: $baseline;
+  padding-bottom: 0;
 }
 
 h2,h3,h4 {
@@ -129,3 +131,6 @@ form {
   background-color: $spooky_blue;
 }
 
+.pills a {
+  margin: 3px 3px 3px 0;
+}

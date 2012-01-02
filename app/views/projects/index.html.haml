@@ -1,21 +1,25 @@
-%h1.row
-  #{company ? company.name : 'All' } Projects
+.row
+  %h1 #{company ? company.name : 'All' } Projects
 
 .row
+  .pill-label Sort by:
   %ul.pills.sort
+    %li#age-sorter
+      %a{:href => '#'} Recent
     %li#mood-sorter
-      %a{:href => '#'} By Mood
+      %a{:href => '#'} Mood
     %li#size-sorter
-      %a{:href => '#'} By Team Size
+      %a{:href => '#'} Team Size
 
   - if user_signed_in?
+    .pill-label Show:
     %ul.pills.filter
       %li#no-filter
         %a{:href => '#'} All
       %li#user-filter
         %a{:href => '#'} Only Mine
-
-    = link_to t('.create_a_project'), new_project_path
+.row
+  = link_to t('.create_a_project'), new_project_path, :class => %w(btn primary), :id => 'new-project-btn'
 
 .projects.row
   %ul.quicksand
@@ -30,6 +34,9 @@
 
     switch(el.attr('id'))
     {
+    case 'age-sorter':
+      currentSort = el;
+      break;
     case 'mood-sorter':
       currentSort = el;
       break;
@@ -60,7 +67,25 @@
   }
 
   function getSorter(){
-    var sorter = ($('#size-sorter.active').length > 0) ? 'data-team-size' : 'data-mood';
+    var sorter;
+    switch($('ul.sort .active')[0])
+    {
+    case $('#age-sorter')[0]:
+      sorter = 'data-id';
+      break;
+
+    case $('#mood-sorter')[0]:
+      sorter = 'data-mood';
+      break;
+
+    case $('#size-sorter')[0]:
+      sorter = 'data-team-size';
+      break;
+
+    default:
+      console.log('oops');
+    }
+    // var sorter = ($('#size-sorter.active').length > 0) ? 'data-team-size' : 'data-mood';
     return {
       attribute: sorter,
       reversed: true
@@ -101,7 +126,9 @@
     }
 
     setActivePill($('#no-filter'));
+    setActivePill($('#age-sorter'));
     // attempt to call Quicksand on pill clicks
+    $('#age-sorter' ).click( function(){updateList($(this))} );
     $('#mood-sorter').click( function(){updateList($(this))} );
     $('#size-sorter').click( function(){updateList($(this))} );
     $('#user-filter').click( function(){updateList($(this))} );

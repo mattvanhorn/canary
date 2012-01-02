@@ -10,7 +10,7 @@ class ProjectsController < ApplicationController
     if company
       company.projects
     else
-      Project.scoped
+      Project.scoped.order('id DESC')
     end
   end
 
