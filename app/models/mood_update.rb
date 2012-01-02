@@ -15,7 +15,8 @@
 #
 
 class MoodUpdate < ActiveRecord::Base
-  belongs_to :membership
+  belongs_to :membership, :touch => true
+  delegate :project, :to => :membership
 
   MOODS = %w(frustrated bored satisfied happy)
 

@@ -16,7 +16,7 @@
 #
 
 class Membership < ActiveRecord::Base
-  belongs_to :project, :inverse_of => :memberships, :touch => true
+  belongs_to :project, :touch => true, :inverse_of => :memberships
   belongs_to :user, :inverse_of => :memberships
 
   has_many :mood_updates
