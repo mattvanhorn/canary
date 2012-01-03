@@ -13,8 +13,7 @@ Feature: Team member mood updates
    When I follow "Update Mood"
     And I choose "happy" from "Mood"
     And I submit the update
-  Then I should be on the project mood updates page for "Yoyodyne website"
-   And I should see "happy"
+  Then I should be on the project page for "Yoyodyne website"
    And I should see 1 happy team member
-   And I should see "Project Mood: Happy"
-  
+   And I should see "Current Mood: Happy"
+
