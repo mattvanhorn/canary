@@ -37,4 +37,10 @@
         %span.copyright &copy; #{Time.now.year} Matt Van Horn
     :javascript
       $(".alert-message").alert();
+      var uvOptions = {};
+      (function() {
+        var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;
+        uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/PV7T93KhSZuAl1HZtscpkw.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
+      })();
     = raw analytical.body_append_javascript
