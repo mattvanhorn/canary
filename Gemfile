@@ -25,6 +25,7 @@ gem 'postmark-rails'
 gem 'analytical'
 gem 'airbrake'
 gem 'thin'
+gem 'dalli'
 
 # Gems used only for assets and not required
 # in production environments by default.
