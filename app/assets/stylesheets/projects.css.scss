@@ -6,6 +6,12 @@
 @import "shared/palette";
 @import "shared/project";
 
+h3.members {
+  @include offset(1);
+}
+h2.mood {
+  @include offset(1);
+}
 .pill-label {
   @include offset(1);
   @include columns(2);
@@ -25,6 +31,72 @@ ul.filter {
   @include columns(8);
   margin-left: $gridGutterWidth;
 }
+
+#niko-niko {
+  @include columns(24);
+  position: relative;
+  text-align: center;
+  #calendar {
+    @include offset(1);
+  }
+  ul{
+    width: 124px;
+    background-color: darken($whats_the_matter, 8%);
+    list-style-type: none;
+    display: block;
+    float: left;
+    margin-left: 0;
+    margin-bottom: 0;
+    &.current {
+      background-color: $nature;
+    }
+    li {
+      height: 128px;
+      &.date {
+        height: $baseline * 2;
+        background-color: $spooky-blue;
+        color: #f5f5f5;
+        text-align: center;
+      }
+      &.happy {
+        background: image-url("happy.png") no-repeat center bottom;
+      }
+      &.satisfied {
+        background: image-url("satisfied.png") no-repeat center bottom;
+      }
+      &.bored {
+        background: image-url("bored.png") no-repeat center bottom;
+      }
+      &.frustrated {
+        background: image-url("frustrated.png") no-repeat center bottom;
+      }
+      &.unknown {
+        background: image-url("puzzled.png") no-repeat center bottom;
+      }
+    }
+  }
+
+  #prev, #next {
+    $arrow-height: $baseline * 4;
+    width: $gridColumnWidth + $gridGutterWidth;
+    height: $arrow-height;
+    display: block;
+    position: absolute;
+    background: $icing;
+    top: 50%;
+    margin-top: 0 - $arrow-height/2;
+  }
+  #prev {
+    left: 0;
+  }
+  #next {
+    right: 0;
+  }
+}
+.caroufredsel_wrapper {
+  border: 1px solid $spooky-blue;
+}
+
 #new-project-btn {
   @include offset(1);
 }

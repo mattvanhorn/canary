@@ -16,4 +16,4 @@ Feature: Scope projects to company
       Then I should be on the project page for "Yoyodyne website"
        And I should see "Acme Products"
        And I should see "Yoyodyne website"
-       And I should see 1 member
+       And I should see "1 member"

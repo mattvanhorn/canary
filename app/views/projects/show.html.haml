@@ -1,18 +1,23 @@
 -if flash[:alert]
   .alert-message.error= flash[:alert]
+.row
+  %h1
+    = project.company_name
+    = project.name
+  %h3.members #{pluralize(project.memberships.size, 'member')}
+  %h2.mood #{t(".current_mood")}: #{project.mood.titleize}
 
-%h1.row{:class => project.mood}
-  = project.company_name
-  = project.name
-
-%h2.row Project Mood: #{project.mood.titleize}
-
-.row.team
-  %ul[project]
-    - project.memberships.each do |member|
-      %li[member.user]
-        = image_tag("#{member.mood || 'puzzled'}.png", :size => '128x128')
-
+.row
+  #niko-niko
+    #calendar
+      - 13.downto(0) do |num|
+        %ul.column{:class => ('current' if num == 0)}
+          %li.date= num.days.ago.to_date.to_s
+          - project.memberships.each do |member|
+            %li{:'data-date' => num.days.ago.to_s, :class => member.mood_on(num.days.ago)}
+              = member.mood_on(num.days.ago)
+    #prev prev
+    #next next
 - if user_signed_in? && current_user.member_of?(project)
   .row.project-actions
     = link_to t('nav.invite_member'), new_project_invitation_path(project), :class => %w(btn default)
@@ -29,3 +34,21 @@
         = hidden_field_tag :project_id, project.id
         .actions
           = submit_tag t('.send_link'), :class => 'btn primary create'
+
+:javascript
+  $(document).ready(function() {
+    // Using custom configuration
+    $("#calendar").carouFredSel({
+      items     : 7,
+      circular  : false,
+      infinite  : false,
+      prev      : "#prev",
+      next      : "#next",
+      scroll : {
+        items      : 1,
+        easing      : "swing",
+        duration    : 200,
+        pauseOnHover  : true
+      }
+    });
+  });
