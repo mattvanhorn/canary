@@ -1,0 +1,3 @@
+:tddium:
+  :environment:
+    'SECRET_TOKEN': 'this_is_not_so_secret_because_it_is_just_for_tddium'
