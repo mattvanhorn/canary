@@ -79,4 +79,8 @@ class Project < ActiveRecord::Base
     end
   end
 
+  def mood_history
+    @history ||= MoodHistory.new(self)
+  end
+
 end

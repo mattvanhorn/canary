@@ -10,9 +10,9 @@ Spork.prefork do
   require 'paperclip/matchers'
   require 'nulldb_rspec'
   require "email_spec"
-  
+
   NullDB.configure {|ndb| ndb.project_root = Rails.root}
-  
+
   # Requires supporting ruby files with custom matchers and macros, etc,
   # in spec/support/ and its subdirectories.
   Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
@@ -41,10 +41,11 @@ Spork.prefork do
     config.infer_base_class_for_anonymous_controllers = false
 
     config.include Paperclip::Shoulda::Matchers
+    config.include Custom::Shoulda::Matchers
     # config.include EmailSpec::Helpers
     # config.include EmailSpec::Matchers
   end
-  
+
   def fake_params(hash)
     HashWithIndifferentAccess.new(hash)
   end
@@ -53,4 +54,6 @@ end
 Spork.each_run do
   # This code will be run each time you run your specs.
   $rspec_start_time = Time.now
-end
+  ActiveSupport::Dependencies.clear
+  ActiveRecord::Base.instantiate_observers
+end if Spork.using_spork?

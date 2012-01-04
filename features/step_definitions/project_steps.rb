@@ -13,7 +13,7 @@ When /^I create the following project:$/ do |project_table|
 end
 
 
-When /^I create a project without a name$/ do 
+When /^I create a project without a name$/ do
   click_on I18n.t('helpers.submit.project.create', :model => 'Project')
 end
 
@@ -31,3 +31,6 @@ When /^I should see exactly (\d+) projects?$/ do |num|
   page.should have_selector('ul li.project', :count => num, :visible => true)
 end
 
+When /^I should see (\d+) columns of updates$/ do |num|
+  page.should have_selector('#niko-niko ul li', :count => num)
+end

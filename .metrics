@@ -9,7 +9,7 @@ MetricFu::Configuration.run do |config|
       :filetypes => ['rb'] }
 
     config.reek = {
-      :dirs_to_reek => ['app', 'lib'] }
+      :dirs_to_reek => ['app/models', 'lib'] }
 
     config.roodi = {
       :dirs_to_roodi => ['app', 'lib'] }
