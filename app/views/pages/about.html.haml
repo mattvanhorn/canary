@@ -1,0 +1,47 @@
+.row
+  %h1 About MoodMetrics
+  #why
+    %h2 Why?
+    %p
+      I got the idea for this application one day at work, when I was feeling
+      really crappy about being pushed into abandoning some good practices, and I
+      really wanted a way to communicate my feelings without it being just
+      complaining. I also wanted a way for team leaders to get a window into the
+      emotional state of their team, hoping that this would provide feedback that
+      enabled them to move in the right direction.
+    %p
+      After I built the original proof of concept, I discovered other people had
+      been developing similar ideas, and one in particular intrigued me. The
+      niko-niko calendar (described here) seemed like a good way to organize the
+      updates I wanted to collect.
+    %p
+      I believe that a happiness metric is an important tool to use when building
+      a productive team. I know that I am 2x - 3x more productive when I am happy
+      than when I am frustrated. I also think that it is useful to know that you
+      are communicating your feelings to the rest of the team, even anonymously.
+      It often turns out that when one developer is unhappy, that the others are
+      also frustrated, but no one wants to be the first to bring it up.
+    %p
+      Mood Metrics is designed to address these concerns.
+  #how
+    %h2 How?
+    %p
+      Three simple steps:
+      %ol
+        %li
+          - if user_signed_in?
+            Sign up for an account
+          - else
+            = link_to "Sign up for an account", sign_up_path
+
+        %li
+          - if user_signed_in?
+            = link_to "Create a project", new_project_path
+          - else
+            Create a project
+
+        %li Each day, update your mood
+
+    %p
+      You can also invite other team members, or send a link (anonymously) to
+      anyone you think would benefit from knowing the team's mood.

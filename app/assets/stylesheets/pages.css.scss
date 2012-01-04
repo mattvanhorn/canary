@@ -76,7 +76,7 @@
 .coming-soon {
   clear: both;
 }
-.homepage .footer.row {
+.home .footer.row {
   background-color: $icing;
   background-image: linear-gradient(bottom, $icing 13%, $nature 34%, $nature 89%);
   background-image: -o-linear-gradient(bottom, $icing 13%, $nature 34%, $nature 89%);
@@ -91,4 +91,10 @@
     color-stop(0.34, $nature),
     color-stop(0.89, $nature)
   );
+}
+
+
+#why, #how {
+  @include offset(1);
+  @include columns(11);
 }

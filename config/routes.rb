@@ -10,6 +10,8 @@ Canary::Application.routes.draw do
   match '/sign-in',  to: 'sessions#new',      :as => :sign_in
   match '/sign-out', to: 'sessions#destroy',  :as => :sign_out
 
+  match '/about', to: 'pages#about', :as => :about
+
   match '/invitations/accept/:token', to: 'registrations#new', :as => :accept_invitation
 
   resources :projects, :only => [:index, :show, :new, :create] do
@@ -72,7 +74,7 @@ Canary::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'homepage#index'
+  root :to => 'pages#home'
 
   # See how all your routes lay out with "rake routes"
 
