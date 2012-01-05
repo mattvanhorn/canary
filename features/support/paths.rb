@@ -7,37 +7,40 @@ module NavigationHelpers
   #
   def path_to(page_name)
     case page_name
-      
+
     when /the home\s?page/
       '/'
-      
+
     when /the sign-up page/
       sign_up_path
-      
+
     when /the failed sign-up page/
       '/auth/identity/register'
-    
+
     when /the sign-out page/
       sign_out_path
-    
+
     when /the sign-in page/
       sign_in_path
-      
+
     when /the invite members page for "([^"]+)"/
       new_project_invitation_path(Project.find_by_name($1))
-    
+
     when /the accept invitation page/
       /\/invitations\/accept\/[^\/]+/
-      
+
     when /my projects page/
       my_projects_path
-      
+
     when /the project page for "([^"]+)"/
       project_path(Project.find_by_name($1))
-      
+
     when /the project mood updates page for "([^"]+)"/
       project_mood_updates_path(Project.find_by_name($1))
-      
+
+    when /the about page/
+      "/about"
+
     else
       begin
         page_name =~ /the (.*) page/

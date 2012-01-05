@@ -53,7 +53,11 @@ end
 
 Spork.each_run do
   # This code will be run each time you run your specs.
-  $rspec_start_time = Time.now
-  ActiveSupport::Dependencies.clear
-  ActiveRecord::Base.instantiate_observers
-end if Spork.using_spork?
+  if Spork.using_spork?
+    $rspec_start_time = Time.now
+    ActiveSupport::Dependencies.clear
+    load "#{Rails.root}/config/routes.rb"
+    Dir["#{Rails.root}/app/**/*.rb"].each { |f| load f }
+    ActiveRecord::Base.instantiate_observers
+  end
+end

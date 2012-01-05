@@ -3,6 +3,8 @@
 # accept_invitation  /invitations/accept/:token(.:format)  {:controller=>"registrations", :action=>"new"}
 
 class RegistrationsController < ApplicationController
+  before_filter :ensure_guest!, :only => [:new]
+
   expose(:user) { @user }
 
   def new

@@ -42,4 +42,9 @@ Feature: User Sign Up
    Then I should be on the failed sign-up page
     And I should see "Password doesn't match confirmation"
 
-
+  Scenario: Already logged in
+   Given I have an account
+     And I sign in
+    When I visit the sign-up page
+    Then I should be on the home page
+     And I should see "already logged in"

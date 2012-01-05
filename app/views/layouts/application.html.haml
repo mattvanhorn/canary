@@ -31,6 +31,11 @@
               %li= link_to t('nav.sign_up'), sign_up_path
 
     .container.page
+      - if flash[:alert]
+        .row
+          .alert-message.error
+            %a.close{:href => "#"}×
+            %p= flash[:alert]
       = yield
 
       .footer.row

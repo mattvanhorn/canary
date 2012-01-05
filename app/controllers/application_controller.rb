@@ -28,6 +28,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def ensure_guest!
+    if user_signed_in?
+      redirect_to root_url, :alert => 'You are already logged in.'
+    end
+  end
+
   def store_location(url = nil)
     session[:return_to] = url || request.url
   end
