@@ -8,6 +8,6 @@ describe "Routing for homepage" do
   #   { :get  => "/auth/identity/registration" }.should route_to(:controller => "users", :action => "new")
   # end
   it "routes the root path correctly" do
-    { :get => "/" }.should route_to(:controller => "homepage", :action => "index")
+    { :get => "/" }.should route_to(:controller => "pages", :action => "home")
   end
 end

@@ -14,6 +14,8 @@ class RegistrationsController < ApplicationController
         store_location project_url(invitation.project)
         @user.setup_from_invitation(invitation)
       end
+    else
+      store_location new_project_path
     end
   end
 

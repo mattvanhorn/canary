@@ -10,7 +10,12 @@
 .row
   #niko-niko
     #calendar
-      - project.mood_history.days.each do |day|
+      - history = project.mood_history
+      - if history.number_of_days < 7
+        - (7 - history.number_of_days).times do
+          %ul.column
+            %li.date No Data
+      - history.days.each do |day|
         %ul.column{:class => ('current' if day.to_date == Time.now.to_date)}
           %li.date #{day.to_date}
           - project.mood_history.on(day).each do |mood_update|

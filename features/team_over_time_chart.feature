@@ -9,7 +9,7 @@ Feature: Team over time chart
       | name | Foobar |
     And that project has 1 member
     And that member has the following mood updates:
-    | mood_score | updated_at |
+    | mood_score | updated_at          |
     | 3          | 2012-01-01 12:00:00 |
     | 3          | 2012-01-02 12:00:00 |
     | 2          | 2012-01-03 12:00:00 |
@@ -20,4 +20,4 @@ Feature: Team over time chart
 
     When I visit the project page for "Foobar"
 
-    Then show me the page
+    Then I should see 7 columns of updates

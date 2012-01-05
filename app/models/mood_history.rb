@@ -30,9 +30,7 @@ class MoodHistory
   protected
 
   def raw_data
-    @raw_data ||= @project.mood_updates.includes(:membership)
-                    .order('mood_updates.updated_at')
-                    .group_by{|mu| mu.updated_at.in_time_zone.beginning_of_day }
+    @raw_data ||= @project.mood_updates.includes(:membership).order('mood_updates.updated_at').group_by{|mu| mu.updated_at.in_time_zone.beginning_of_day }
   end
 
   def first_day

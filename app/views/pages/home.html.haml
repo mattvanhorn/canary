@@ -4,7 +4,7 @@
     %h2 Better feedback for better projects.
     = link_to t('.try_it_now'), sign_up_path, :class => %w(btn primary large)
     = link_to t('.learn_more'), about_path, :class => %w(btn large)
-    %p This app is still <u>ALPHA</u>. Proceed at your own risk.
+    %p This app is still <u><a href='#' id='alpha'>ALPHA</a></u>. Proceed at your own risk.
   .illustration1
     = image_tag('crowd.png')
   .illustration2
@@ -38,3 +38,15 @@
 
     %h3 Soon to come:
     %p Update via email, Twitter, or mobile app.
+
+#my-modal.modal.hide.fade{:style => "display: none;"}
+  .modal-header
+    %a.close{:href => "#"}x
+    %h3 Alpha apps haz many surprises
+    .modal-body
+    = image_tag("lolcat#{[1,2,3,4].sample}.jpg", :id => 'lolcat')
+    .modal-footer
+
+:javascript
+  $('#my-modal').modal();
+  $('#alpha').click(function(){$('#lolcat').attr("src", '/assets/lolcat' + Math.ceil(Math.random()*4) + '.jpg');$('#my-modal').modal('show')})

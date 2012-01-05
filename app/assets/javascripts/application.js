@@ -11,6 +11,7 @@
 //= require autocomplete-rails
 //= require bootstrap-twipsy
 //= require bootstrap-popover
+//= require bootstrap-modal
 //= require_tree .
 
 // Custom sorting plugin
