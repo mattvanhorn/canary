@@ -27,10 +27,6 @@ class Membership < ActiveRecord::Base
     @mood ||= most_recent_mood_update.try(:mood)
   end
 
-  def mood_on(date)
-    mood_updates.on_date(date).first.try(:mood)
-  end
-
   def most_recent_mood_update
     mood_updates.recent.first
   end
