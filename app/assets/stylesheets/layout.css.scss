@@ -131,11 +131,13 @@ form {
 .topbar-inner, .topbar .fill {
   background-color: $spooky_blue;
 }
-
-.pills a {
-  margin: 3px 3px 3px 0;
-}
-
 a {
   text-decoration: underline;
+}
+.pills a {
+  margin: 3px 3px 3px 0;
+  text-decoration: none;
+}
+a.btn {
+  text-decoration: none;
 }

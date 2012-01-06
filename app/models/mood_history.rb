@@ -39,7 +39,7 @@ class MoodHistory
   end
 
   def first_day
-    (raw_data.keys.first || @today).utc
+    raw_data.keys.first || @today
   end
 
   def total_days

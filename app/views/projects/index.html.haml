@@ -125,7 +125,10 @@
       }, setPopOvers );
     }
 
-    setActivePill($('#no-filter'));
+    setActivePill($('#user-filter'));
+    $('li.project').hide();
+    $('li.project.mine').show();
+
     setActivePill($('#age-sorter'));
     // attempt to call Quicksand on pill clicks
     $('#age-sorter' ).click( function(){updateList($(this))} );
@@ -133,5 +136,5 @@
     $('#size-sorter').click( function(){updateList($(this))} );
     $('#user-filter').click( function(){updateList($(this))} );
     $('#no-filter'  ).click( function(){updateList($(this))} );
-
+    $('#user-filter').click();
   });

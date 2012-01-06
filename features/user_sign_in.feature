@@ -18,7 +18,7 @@ Feature: User Sign In
 
   Scenario: Signing in
     When I sign in
-    Then I should be on the homepage
+    Then I should be on the new project page
      And I should see a link to the sign-out page
 
   Scenario: Signing in redirects back to page

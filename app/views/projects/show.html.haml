@@ -11,15 +11,18 @@
   #niko-niko
     #calendar
       - history = project.mood_history
+
       - if history.number_of_days < 7
+
         - (7 - history.number_of_days).times do
           %ul.column
             %li.date No Data
       - history.days.each do |day|
-        %ul.column{:class => ('current' if day.to_date == Time.now.to_date)}
-          %li.date #{day.to_date}
+        %ul.column{:class => ('current' if day.in_time_zone.to_date == Time.now.to_date)}
+          %li.date
+            #{day.to_date}
           - project.mood_history.on(day).each do |mood_update|
-            %li{:'data-date' => day.to_s, :class => mood_update.try(:mood)}
+            %li[mood_update]{:'data-date' => day.to_s, :class => mood_update.try(:mood)}
               = mood_update.try(:mood)
 
     #prev prev
@@ -27,19 +30,22 @@
 - if user_signed_in? && current_user.member_of?(project)
   .row.project-actions
     = link_to t('nav.invite_member'), new_project_invitation_path(project), :class => %w(btn default)
-    = link_to t('nav.update_mood'),  new_project_mood_update_path(project), :class => %w(btn default)
+    = link_to t('nav.update_mood'),  new_project_mood_update_path(project), :class => %w(btn primary)
 
   .row
-    = form_tag project_links_path, :id => 'send-link-form' do |f|
-      %fieldset
+    #send-link
+      = form_tag project_links_path, :id => 'send-link-form' do |f|
 
-        .clearfix.string.required
-          = label_tag(:email, t(".email"), :class => 'required')
-          .input
-            = text_field_tag(:email, '', :required => 'required', :class => 'required')
-        = hidden_field_tag :project_id, project.id
-        .actions
-          = submit_tag t('.send_link'), :class => 'btn primary create'
+        %fieldset
+          %legend Send Link
+          .clearfix.string.required
+            = label_tag(:email, t(".email"), :class => 'required')
+            .input
+              = text_field_tag(:email, '', :required => 'required', :class => 'required')
+              %span.help-inline Use this form to send a link to someone, anonymously.
+          = hidden_field_tag :project_id, project.id
+          .actions
+            = submit_tag t('.send_link'), :class => 'btn  create'
 
 :javascript
   $(document).ready(function() {

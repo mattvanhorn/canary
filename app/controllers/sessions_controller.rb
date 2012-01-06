@@ -9,7 +9,8 @@ class SessionsController < ApplicationController
   def create
     user = User.find_from_hash(auth_hash)
     sign_in user
-    redirect_back_or_default
+    fallback = user.projects.any? ? projects_path : new_project_path
+    redirect_back_or_default(fallback)
   end
 
   def failure

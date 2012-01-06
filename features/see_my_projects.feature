@@ -15,6 +15,6 @@ Feature: See my projects
       Given I am on the home page
        When I click on "Projects"
        Then I should be on the projects page
-       And I should see exactly 4 projects
-       When I click on "Only Mine"
-       Then I should see exactly 1 project
+       And I should see exactly 1 project
+       When I click on "All"
+       Then I should see exactly 4 projects

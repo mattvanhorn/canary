@@ -2,25 +2,30 @@ require 'spec_helper'
 
 describe SessionsController do
   describe "#create" do
+    let(:user){ mock_model(User, :projects => []) }
     before(:each) do
-      @mock_user = mock_model(User)
-      @mock_user = mock_model(User, :user => @mock_user)
-      User.stub(:find_from_hash).and_return(@mock_user)
+      User.stub(:find_from_hash).and_return(user)
     end
 
     it "identifies the authenticated user" do
-      User.should_receive(:find_from_hash).and_return(@mock_user)
+      User.should_receive(:find_from_hash).and_return(user)
       get :create, :provider => 'identity'
     end
 
     it "signs in the authenticated user as the current user" do
-      controller.should_receive(:sign_in).with(@mock_user)
+      controller.should_receive(:sign_in).with(user)
       get :create, :provider => 'identity'
     end
 
-    it "redirects to the home page" do
+    it "redirects to the new projects page if the user has no projects" do
       get :create, :provider => 'identity'
-      response.should redirect_to(root_url)
+      response.should redirect_to(new_project_url)
+    end
+
+    it "redirects to the projects page if the user has any projects" do
+      user.stub(:projects => [mock_model(Project)])
+      get :create, :provider => 'identity'
+      response.should redirect_to(projects_url)
     end
   end
 

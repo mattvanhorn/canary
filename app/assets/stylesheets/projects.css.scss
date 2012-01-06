@@ -131,3 +131,12 @@ ul.filter {
   @include offset(1);
   margin-top: $baseline * 2;
 }
+
+#send-link {
+  @include offset(1);
+  @include columns(22);
+  form {
+    padding-top: $baseline;
+    @include columns(22);
+  }
+}
