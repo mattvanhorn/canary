@@ -34,18 +34,6 @@ class MoodHistory
     users_from_project
   end
 
-  def raw_data
-    @raw_data ||= @project.mood_updates.includes(:membership).order('mood_updates.updated_at').group_by{|mu| mu.updated_at.in_time_zone.beginning_of_day }
-  end
-
-  def first_day
-    raw_data.keys.first || @today
-  end
-
-  def total_days
-    ((@today - first_day)/ 1.day).ceil
-  end
-
   def populated_history
     populated = {}
     0.upto(total_days) do |num|
@@ -59,4 +47,17 @@ class MoodHistory
     end
     populated
   end
+
+  def total_days
+    ((@today - first_day)/ 1.day).ceil
+  end
+
+  def first_day
+    raw_data.keys.first || @today
+  end
+
+  def raw_data
+    @raw_data ||= @project.mood_updates.includes(:membership).order('mood_updates.updated_at').group_by{|mu| mu.updated_at.in_time_zone.beginning_of_day }
+  end
+
 end

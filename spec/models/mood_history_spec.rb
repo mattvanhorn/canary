@@ -37,7 +37,22 @@ describe MoodHistory do
     end
   end
 
+  describe "initialization" do
+    before(:each) do
+      @orig_stderr = $stderr
+      $stderr = StringIO.new
+    end
 
+    after do
+      $stderr = @orig_stderr
+    end
 
-
+    it "warns when there is a project/user mismatch" do
+      project.stub_chain(:mood_updates, :includes, :order).and_return([mood_update])
+      other_user = mock_model(User)
+      MoodHistory.new(project, [other_user])
+      $stderr.rewind
+      $stderr.string.chomp.should match(/user ids: \[\d+\] were not associated with project and were ignored!/)
+    end
+  end
 end
