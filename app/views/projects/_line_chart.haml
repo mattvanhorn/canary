@@ -1,0 +1,83 @@
+- title           ||=  project.name
+- dom_element_id  ||= "project_#{project.id}_history_chart"
+- callback_suffix ||= "Project#{project.id}"
+
+.line_chart{:id => dom_element_id}
+
+- content_for :page_scripts do
+  :javascript
+    google.load('visualization', '1', {packages: ['corechart']});
+    google.setOnLoadCallback(drawLineChart#{callback_suffix});
+    google.setOnLoadCallback();
+    var lineChart;
+
+    function lineChartMouseOver(e){
+      console.log(e);
+      var pos = ((e.row - 3) < 0) ? 0 : e.row - 3;
+      var dest = '#day'+pos;
+      var selector = '#day'+e.row;
+      $("#calendar").trigger("slideTo", dest, -3);
+      $(selector).css('background-color','#6CB6A5');
+      $("#calendar").trigger("pause");
+      lineChart.setSelection([e])
+    }
+
+    function lineChartMouseOut(e){
+      $("#calendar ul").css('background-color', 'transparent');
+      lineChart.setSelection([{'row': null, 'column': null}])
+    }
+
+    function drawLineChart#{callback_suffix}()
+    {
+      var data = [];
+      data[0] = new google.visualization.DataTable();
+      data[1] = new google.visualization.DataTable();
+
+      var container = document.getElementById('#{dom_element_id}');
+
+      lineChart = new google.visualization.LineChart(container);
+
+      var options = {
+        animation: { duration: 1000 },
+        axisFontSize: 10,
+        colors: ['90425C'],
+        height: 270,
+        pointSize: 2,
+        width: 870,
+        backgroundColor: {
+          fill: '#DAE2CB',
+          stroke: '#221D34',
+          strokeWidth: 2
+        },
+        chartArea: {left:40,top:10,width:810,height:160},
+        legendBackgroundColor: '#DAE2CB',
+        title: '#{title}',
+        titlePosition: 'in',
+        vAxis: {gridlines: {count: 4}, viewWindowMode: 'explicit', viewWindow: {max: 3, min: 0}},
+        hAxis: {slantedTextAngle: 45},
+        interpolateNulls: true,
+      }
+
+      data[0].addColumn('string', 'Date');
+      data[0].addColumn('number', 'Happiness');
+
+      data[1].addColumn('string', 'Date');
+      data[1].addColumn('number', 'Happiness');
+      data[1].addColumn({type:'string', role:'tooltip'});
+
+      var history = $('#calendar ul.column[data-date]');
+
+      history.each(function(idx, el){
+        data[0].addRow([$(el).attr('data-date'), 0 ])
+      });
+
+      history.each(function(idx, el){
+        data[1].addRow([$(el).attr('data-date'), parseFloat($(el).attr('data-avg')), $(el).attr('data-date')+"\n"+$(el).attr('data-mood')]);
+      });
+
+      lineChart.draw(data[0], options);
+      lineChart.draw(data[1], options);
+      google.visualization.events.addListener(lineChart, 'onmouseover', lineChartMouseOver);
+      google.visualization.events.addListener(lineChart, 'onmouseout',  lineChartMouseOut);
+    }
+

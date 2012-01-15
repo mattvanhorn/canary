@@ -66,6 +66,7 @@ group :development, :test do
   gem 'activerecord-nulldb-adapter', :git => 'git://github.com/mattvanhorn/nulldb'
   gem 'email_spec'
   # gem 'ruby-debug19'
+  gem 'timecop'
 end
 
 group :test do

@@ -32,5 +32,9 @@ When /^I should see exactly (\d+) projects?$/ do |num|
 end
 
 When /^I should see (\d+) columns of updates$/ do |num|
-  page.should have_selector('#niko-niko ul li', :count => num)
+  page.should have_selector('#niko-niko ul.column', :count => num)
+end
+
+When 'the time is $time' do |time|
+  Timecop.travel Time.parse(time)
 end

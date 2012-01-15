@@ -1,4 +1,5 @@
 @http://www.pivotaltracker.com/story/show/22175969
+@javascript
 Feature: See my projects
   In order to get to my projects quickly
   as a team member

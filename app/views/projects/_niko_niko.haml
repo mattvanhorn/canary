@@ -1,0 +1,42 @@
+#niko-niko
+  #calendar{:style => 'visibility: hidden'}
+    - history = project.mood_history
+    - if history.number_of_days < 7
+      - (7 - history.number_of_days).times do
+        %ul.column
+          %li.date No Data
+    - history.days.each do |day|
+      - mood_score = project.mood_history.avg_mood_score_on(day)
+      - mood = MoodUpdate.mood(mood_score) if mood_score
+      %ul.column{:class => ('current' if day.in_time_zone.to_date == Time.now.to_date), :'data-date' => day.to_date.to_s(:rfc822), :'data-avg' => mood_score, :'data-mood' =>  mood}
+        %li.date
+          #{day.to_date}
+        - project.mood_history.on(day).each do |mood_update|
+          %li[mood_update]{:'data-score' => "#{mood_update.try(:mood_score)}", :class => mood_update.try(:mood)}
+            = mood_update.try(:mood)
+  #prev prev
+  #next next
+
+- content_for :page_scripts do
+  :javascript
+    $("#calendar ul").each(function(n) {
+      $(this).attr("id", "day"+n);
+    });
+
+    $(document).ready(function() {
+      $("#calendar").carouFredSel({
+        items     : 7,
+        circular  : false,
+        infinite  : false,
+        prev      : "#prev",
+        next      : "#next",
+        scroll : {
+          items      : 1,
+          easing      : "swing",
+          duration    : 200,
+          pauseOnHover  : true
+        }
+      }).css('visibility','visible');
+    });
+
+

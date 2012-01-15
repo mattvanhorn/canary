@@ -23,6 +23,15 @@ class MoodHistory
     @history.size
   end
 
+  def avg_mood_score_on(datetime)
+    updates = self.on(datetime)
+    if updates.any?
+      updates.map{|u|u.try(:mood_score)}.compact.sum/@user_ids.size.to_f
+    else
+      nil
+    end
+  end
+
   protected
 
   def screen_users(users)

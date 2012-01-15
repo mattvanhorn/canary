@@ -5,12 +5,19 @@
 @import "compass_twitter_bootstrap/mixins";
 @import "shared/palette";
 @import "shared/project";
-
+h1 {
+  float: left;
+}
 h3.members {
-  @include offset(1);
+  margin-right: $gridColumnWidth + $gridGutterWidth;
+  float: right;
+  clear: right;
 }
 h2.mood {
-  @include offset(1);
+  margin-right: 40px;
+  float: right;
+
+  clear: right;
 }
 .pill-label {
   @include offset(1);
@@ -34,14 +41,16 @@ ul.filter {
 
 #niko-niko {
   @include columns(24);
+  height: 420px;
   position: relative;
   text-align: center;
   #calendar {
     @include offset(1);
+    background-color: darken($whats_the_matter, 8%);
   }
   ul{
     width: 124px;
-    background-color: darken($whats_the_matter, 8%);
+
     list-style-type: none;
     display: block;
     float: left;
@@ -139,4 +148,21 @@ ul.filter {
     padding-top: $baseline;
     @include columns(22);
   }
+}
+.line_chart {
+  @include offset(1);
+  display: none;
+}
+
+ul.tabs {
+  @include offset(1);
+  margin-bottom: 0;
+  li {
+    a { background: $whats_the_matter; text-decoration: none; color: $please;}
+    a:hover { background: lighten($whats_the_matter, 5%); color: $please; }
+    &.active a { background: darken($whats_the_matter, 8%); color: $spooky-blue;}
+    &.active a:hover { background: lighten($whats_the_matter, 10%); color: $spooky-blue;}
+  }
+
+
 }

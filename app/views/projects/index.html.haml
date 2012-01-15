@@ -25,116 +25,117 @@
   %ul.quicksand
     = render projects
 
-:javascript
-  function setActivePill(el){
-    var currentFilter = $('ul.pills.filter li.active');
-    var currentSort   = $('ul.pills.sort li.active');
+- content_for :page_scripts do
+  :javascript
+    function setActivePill(el){
+      var currentFilter = $('ul.pills.filter li.active');
+      var currentSort   = $('ul.pills.sort li.active');
 
-    $('ul.pills li').removeClass('active');
+      $('ul.pills li').removeClass('active');
 
-    switch(el.attr('id'))
-    {
-    case 'age-sorter':
-      currentSort = el;
-      break;
-    case 'mood-sorter':
-      currentSort = el;
-      break;
-    case 'size-sorter':
-      currentSort = el;
-      break;
-    case 'user-filter':
-      currentFilter = el;
-      break;
-    case 'no-filter':
-      currentFilter = el;
-      break;
-    default:
-      console.log( 'WTF');
-      currentFilter = $('#no-filter'  );
+      switch(el.attr('id'))
+      {
+      case 'age-sorter':
+        currentSort = el;
+        break;
+      case 'mood-sorter':
+        currentSort = el;
+        break;
+      case 'size-sorter':
+        currentSort = el;
+        break;
+      case 'user-filter':
+        currentFilter = el;
+        break;
+      case 'no-filter':
+        currentFilter = el;
+        break;
+      default:
+        console.log( 'WTF');
+        currentFilter = $('#no-filter'  );
+      }
+
+      currentFilter.addClass('active');
+      currentSort.addClass('active');
+
     }
 
-    currentFilter.addClass('active');
-    currentSort.addClass('active');
+    function setPopOvers(){
+      $('li.project a').popover({
+        'placement':'above',
+        'offset':'0'
+      });
+    }
 
-  }
+    function getSorter(){
+      var sorter;
+      switch($('ul.sort .active')[0])
+      {
+      case $('#age-sorter')[0]:
+        sorter = 'data-id';
+        break;
 
-  function setPopOvers(){
-    $('li.project a').popover({
-      'placement':'above',
-      'offset':'0'
+      case $('#mood-sorter')[0]:
+        sorter = 'data-mood';
+        break;
+
+      case $('#size-sorter')[0]:
+        sorter = 'data-team-size';
+        break;
+
+      default:
+        console.log('oops');
+      }
+      // var sorter = ($('#size-sorter.active').length > 0) ? 'data-team-size' : 'data-mood';
+      return {
+        attribute: sorter,
+        reversed: true
+      }
+    }
+
+    function getFilter(){
+      return ($('#no-filter.active').length > 0) ? 'li' : 'li.mine';
+    }
+
+    function sortData(el){
+      var sorter = getSorter();
+      return el.sorted({
+        by: function(v) {
+          return parseFloat($(v).attr(sorter['attribute']));
+        },
+        reversed: sorter['reversed']
+      });
+    }
+
+    // DOMContentLoaded
+
+    $(function() {
+      // get the first collection
+      var $projects = $('.projects ul.quicksand');
+      var $data = $projects.clone();
+
+      var updateList = function(e){
+        setActivePill(e);
+
+        var $filteredData = $data.find(getFilter());  // filter elements
+        var $sortedData   = sortData($filteredData);   // sort elements
+
+        $projects.quicksand($sortedData, {
+          duration: 800,
+          easing: 'easeInOutQuad'
+        }, setPopOvers );
+      }
+
+      setActivePill($('#user-filter'));
+      $('li.project').hide();
+      $('li.project.mine').show();
+
+      setActivePill($('#age-sorter'));
+      // attempt to call Quicksand on pill clicks
+      $('#age-sorter' ).click( function(){updateList($(this))} );
+      $('#mood-sorter').click( function(){updateList($(this))} );
+      $('#size-sorter').click( function(){updateList($(this))} );
+      $('#user-filter').click( function(){updateList($(this))} );
+      $('#no-filter'  ).click( function(){updateList($(this))} );
+      $('#user-filter').click();
     });
-  }
-
-  function getSorter(){
-    var sorter;
-    switch($('ul.sort .active')[0])
-    {
-    case $('#age-sorter')[0]:
-      sorter = 'data-id';
-      break;
-
-    case $('#mood-sorter')[0]:
-      sorter = 'data-mood';
-      break;
-
-    case $('#size-sorter')[0]:
-      sorter = 'data-team-size';
-      break;
-
-    default:
-      console.log('oops');
-    }
-    // var sorter = ($('#size-sorter.active').length > 0) ? 'data-team-size' : 'data-mood';
-    return {
-      attribute: sorter,
-      reversed: true
-    }
-  }
-
-  function getFilter(){
-    return ($('#no-filter.active').length > 0) ? 'li' : 'li.mine';
-  }
-
-  function sortData(el){
-    var sorter = getSorter();
-    return el.sorted({
-      by: function(v) {
-        return parseFloat($(v).attr(sorter['attribute']));
-      },
-      reversed: sorter['reversed']
-    });
-  }
-
-  // DOMContentLoaded
-
-  $(function() {
-    // get the first collection
-    var $projects = $('.projects ul.quicksand');
-    var $data = $projects.clone();
-
-    var updateList = function(e){
-      setActivePill(e);
-
-      var $filteredData = $data.find(getFilter());  // filter elements
-      var $sortedData   = sortData($filteredData);   // sort elements
-
-      $projects.quicksand($sortedData, {
-        duration: 800,
-        easing: 'easeInOutQuad'
-      }, setPopOvers );
-    }
-
-    setActivePill($('#user-filter'));
-    $('li.project').hide();
-    $('li.project.mine').show();
-
-    setActivePill($('#age-sorter'));
-    // attempt to call Quicksand on pill clicks
-    $('#age-sorter' ).click( function(){updateList($(this))} );
-    $('#mood-sorter').click( function(){updateList($(this))} );
-    $('#size-sorter').click( function(){updateList($(this))} );
-    $('#user-filter').click( function(){updateList($(this))} );
-    $('#no-filter'  ).click( function(){updateList($(this))} );
-    $('#user-filter').click();
-  });

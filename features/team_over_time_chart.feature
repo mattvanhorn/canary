@@ -1,4 +1,5 @@
 @http://www.pivotaltracker/stories/new
+@javascript
 Feature: Team over time chart
   In order to spot morale issues
   As a team member
@@ -17,7 +18,6 @@ Feature: Team over time chart
     | 2          | 2012-01-05 12:00:00 |
     | 3          | 2012-01-06 12:00:00 |
     | 3          | 2012-01-07 12:00:00 |
-
+    And the time is 2012-01-07 12:00:00
     When I visit the project page for "Foobar"
-
     Then I should see 7 columns of updates

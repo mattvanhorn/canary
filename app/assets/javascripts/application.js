@@ -7,12 +7,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
-//= require foutbgone
 //= require autocomplete-rails
-//= require bootstrap-twipsy
-//= require bootstrap-popover
-//= require bootstrap-modal
-//= require_tree .
+//= require ./application/bootstrap-twipsy
+//= require ./application/bootstrap-popover
+//= require_tree ./application
 
 // Custom sorting plugin
 (function($) {

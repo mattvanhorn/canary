@@ -5,7 +5,8 @@
     %title Mood Metrics
     = stylesheet_link_tag    "application"
     = stylesheet_link_tag    controller.controller_name
-    = javascript_include_tag "application"
+    = javascript_include_tag "foutbgone"
+
     = csrf_meta_tags
     :javascript
       fbg.hideFOUT('asap');
@@ -40,12 +41,17 @@
 
       .footer.row
         %span.copyright &copy; #{Time.now.year} Matt Van Horn
-    :javascript
-      $(".alert-message").alert();
-      var uvOptions = {};
-      (function() {
-        var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;
-        uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/PV7T93KhSZuAl1HZtscpkw.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
-      })();
     = raw analytical.body_append_javascript
+
+  = javascript_include_tag "http://www.google.com/jsapi"
+  = javascript_include_tag "application"
+  :javascript
+    $(".alert-message").alert();
+    var uvOptions = {};
+    (function() {
+      var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;
+      uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/PV7T93KhSZuAl1HZtscpkw.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
+    })();
+
+  = yield :page_scripts

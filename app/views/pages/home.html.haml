@@ -47,6 +47,7 @@
     = image_tag("lolcat#{[1,2,3,4].sample}.jpg", :id => 'lolcat')
     .modal-footer
 
-:javascript
-  $('#my-modal').modal();
-  $('#alpha').click(function(){$('#lolcat').attr("src", '/assets/lolcat' + Math.ceil(Math.random()*4) + '.jpg');$('#my-modal').modal('show')})
+- content_for :page_scripts do
+  :javascript
+    $('#my-modal').modal();
+    $('#alpha').click(function(){$('#lolcat').attr("src", '/assets/lolcat' + Math.ceil(Math.random()*4) + '.jpg');$('#my-modal').modal('show')})
