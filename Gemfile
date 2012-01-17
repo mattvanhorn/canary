@@ -26,6 +26,7 @@ gem 'analytical'
 gem 'airbrake'
 gem 'thin'
 gem 'dalli'
+gem "asset_sync"
 
 # Gems used only for assets and not required
 # in production environments by default.
