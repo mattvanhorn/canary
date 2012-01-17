@@ -2,13 +2,10 @@
 - dom_element_id  ||= "project_#{project.id}_history_chart"
 - callback_suffix ||= "Project#{project.id}"
 
-.line_chart{:id => dom_element_id}
+.line-chart{:id => dom_element_id}
 
 - content_for :page_scripts do
   :javascript
-    google.load('visualization', '1', {packages: ['corechart']});
-    google.setOnLoadCallback(drawLineChart#{callback_suffix});
-    google.setOnLoadCallback();
     var lineChart;
 
     function lineChartMouseOver(e){
@@ -80,4 +77,6 @@
       google.visualization.events.addListener(lineChart, 'onmouseover', lineChartMouseOver);
       google.visualization.events.addListener(lineChart, 'onmouseout',  lineChartMouseOut);
     }
+    google.load('visualization', '1', {packages: ['corechart']});
+    google.setOnLoadCallback(drawLineChart#{callback_suffix});
 

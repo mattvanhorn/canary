@@ -8,7 +8,7 @@
   %h2.mood #{t(".current_mood")}: #{project.mood.titleize}
 
 .row
-  %ul.tabs{'data-tabs' => 'tabs'}
+  %ul.tabs
     %li.active
       %a{:href => '#niko-niko'} Calendar
     %li
@@ -17,8 +17,8 @@
       %a{:href => '#both'} Both
 
 .row
-  = render :partial => 'niko_niko'
-  = render :partial => 'line_chart', :locals => {:dom_element_id => 'line-chart'}
+  = render 'niko_niko'
+  = render 'line_chart', :dom_element_id => 'line-chart'
 
 - if user_signed_in? && current_user.member_of?(project)
   .row.project-actions
@@ -53,4 +53,5 @@
         $('#line-chart').hide();
         $(targetId).toggle();
       }
-    })
+    });
+    $('.tabs').tabs();

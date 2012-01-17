@@ -41,7 +41,6 @@ ul.filter {
 
 #niko-niko {
   @include columns(24);
-  height: 420px;
   position: relative;
   text-align: center;
   #calendar {
@@ -149,10 +148,11 @@ ul.filter {
     @include columns(22);
   }
 }
-.line_chart {
+.line-chart {
   @include offset(1);
   display: none;
 }
+
 
 ul.tabs {
   @include offset(1);
