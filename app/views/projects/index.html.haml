@@ -94,7 +94,7 @@
     }
 
     function getFilter(){
-      return ($('#no-filter.active').length > 0) ? 'li' : 'li.mine';
+      return ($('#user-filter.active').length == 0) ? 'li' : 'li.mine';
     }
 
     function sortData(el){
@@ -126,9 +126,15 @@
         }, setPopOvers );
       }
 
-      setActivePill($('#user-filter'));
-      $('li.project').hide();
-      $('li.project.mine').show();
+      var activeFilter = '#{user_signed_in? ? '#user-filter' : '#no-filter'}';
+      if (activeFilter == '#user-filter'){
+        setActivePill($('#user-filter'));
+        $('li.project').hide();
+        $('li.project.mine').show();
+      } else {
+        $('li.project').show();
+      }
+
 
       setActivePill($('#age-sorter'));
       // attempt to call Quicksand on pill clicks
