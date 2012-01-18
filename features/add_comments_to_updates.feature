@@ -1,5 +1,5 @@
 @http://www.pivotaltracker.com/stories/new
-@wip
+
 Feature: Add comments to updates
   In order to let my manager know why I have a certain mood
   As a user
@@ -18,7 +18,6 @@ Feature: Add comments to updates
     Then I should be on the project page for "Yoyodyne website"
      And I should see 1 happy team member
      And I should see "Current Mood: Happy"
-     And I should see "life is good" within recent comments
-
+     And I should see a comment with the text "life is good"
 
 

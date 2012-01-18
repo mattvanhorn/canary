@@ -35,6 +35,10 @@ When /^I should see (\d+) columns of updates$/ do |num|
   page.should have_selector('#niko-niko ul.column', :count => num)
 end
 
+When /^I should see a comment with the text "([^"]+)"$/ do |txt|
+  page.should have_selector("li.mood_update[data-content='#{txt}']")
+end
+
 When 'the time is $time' do |time|
   Timecop.travel Time.parse(time)
 end
