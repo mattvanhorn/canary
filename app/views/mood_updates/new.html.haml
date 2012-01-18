@@ -4,5 +4,6 @@
 .row
   = simple_form_for [project, MoodUpdate.new] do |f|
     = f.input :mood_score, :label => 'Mood', :as => :select, :collection => moods_and_mood_scores
+    = f.input :comment
     .actions.input
       = f.button :submit, :class => 'btn primary'

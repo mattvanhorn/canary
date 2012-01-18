@@ -17,6 +17,8 @@ module HtmlSelectorsHelper
       "#sign-in-form"
     when /project member/
       'ul.project li.user'
+    when /recent comments/
+      'ul.recent-comments'
     else
       raise "Can't find mapping from \"#{scope}\" to a selector.\n" +
         "Now, go and add a mapping in #{__FILE__}"

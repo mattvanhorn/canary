@@ -17,7 +17,7 @@
 require 'spec_helper'
 
 describe MoodUpdate do
-
+  it { should have_db_column(:comment).of_type(:string)}
   it { should belong_to :membership }
 
   it 'should delegate project to membership' do

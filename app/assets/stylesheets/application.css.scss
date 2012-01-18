@@ -1,8 +1,16 @@
 /*
  * Globally used styles and all the compass and twitter_bootstrap styles and variables and mixins
  * Other stylesheets should just import variables and mixins as necessary
+ *
+ *= require_self
+ *= require "companies"
+ *= require "mood_updates"
+ *= require "pages"
+ *= require "projects"
+ *= require "registrations"
+ *= require "sessions"
  */
- 
+
  @import "compass";
  @import "custom_twitter_bootstrap";
  @import "shared/palette";

@@ -64,7 +64,8 @@ module Canary
       config.sass.load_paths << "#{Gem.loaded_specs['compass_twitter_bootstrap'].full_gem_path}/lib/../stylesheets"
     end
 
-    config.assets.precompile << /^((.*?)\/)?(?!_)[^\/]*$/
+    #config.assets.precompile << /^((.*?)\/)?(?!_)[^\/]*$/
+    config.assets.precompile << 'foutbgone.js'
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'

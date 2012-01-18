@@ -12,7 +12,7 @@
         %li.date
           #{day.to_date}
         - project.mood_history.on(day).each do |mood_update|
-          %li[mood_update]{:'data-score' => "#{mood_update.try(:mood_score)}", :class => mood_update.try(:mood)}
+          %li[mood_update]{:title => 'worker says', :'data-content' => (mood_update.comment if (mood_update && mood_update.comment?)), :'data-score' => "#{mood_update.try(:mood_score)}", :class => mood_update.try(:mood)}
             = mood_update.try(:mood)
   #prev prev
   #next next
@@ -37,6 +37,13 @@
           pauseOnHover  : true
         }
       }).css('visibility','visible');
+
+      $('li.mood_update[data-content]').popover({
+        'placement':'above',
+        'offset':'0'
+      });
+
+
     });
 
 

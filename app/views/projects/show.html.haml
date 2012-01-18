@@ -40,6 +40,10 @@
           .actions
             = submit_tag t('.send_link'), :class => 'btn  create'
 
+  .row
+    %ul.recent-comments
+      - project.mood_updates.recent.collect(&:comment).compact.each do |comment|
+        %li= comment
 
 - content_for :page_scripts do
   :javascript

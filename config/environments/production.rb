@@ -20,6 +20,9 @@ Canary::Application.configure do
   # Generate digests for assets URLs
   config.assets.digest = true
 
+  # Not sure if this is happening by default.
+  config.assets.cache_store = :dalli_store
+
   # Defaults to Rails.root.join("public/assets")
   # config.assets.manifest = YOUR_PATH
 
@@ -46,8 +49,7 @@ Canary::Application.configure do
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   # config.assets.precompile += %w( search.js )
-  config.serve_static_assets = true
-  config.static_cache_control = "public, max-age=3600"
+  # config.static_cache_control = "public, max-age=3600"
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
