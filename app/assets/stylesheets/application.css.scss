@@ -1,14 +1,6 @@
 /*
  * Globally used styles and all the compass and twitter_bootstrap styles and variables and mixins
  * Other stylesheets should just import variables and mixins as necessary
- *
- *= require_self
- *= require "companies"
- *= require "mood_updates"
- *= require "pages"
- *= require "projects"
- *= require "registrations"
- *= require "sessions"
  */
 
  @import "compass";
@@ -16,3 +8,9 @@
  @import "shared/palette";
  @import "layout";
  @import "jquery-ui-1.8.16.custom";
+ @import "companies";
+ @import "mood_updates";
+ @import "pages";
+ @import "projects";
+ @import "registrations";
+ @import "sessions";
