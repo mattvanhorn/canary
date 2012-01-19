@@ -21,9 +21,10 @@ class MoodUpdate < ActiveRecord::Base
 
   MOODS = %w(frustrated bored satisfied happy)
 
-  scope :for_project, lambda{ |project| joins(:memberships).where('memberships.project_id = ?', project.id) }
-  scope :recent, order('updated_at DESC')
-  scope :on_date, lambda{ |date| where('updated_at BETWEEN ? AND ?', date.beginning_of_day.utc, date.end_of_day.utc ).order('updated_at DESC') }
+  scope :for_project, lambda{ |project| includes(:membership).where('memberships.project_id = ?', project.id) }
+  scope :recent, order("#{table_name}.updated_at DESC")
+  scope :chronological, order("#{table_name}.updated_at ASC")
+  #scope :on_date, lambda{ |date| where('updated_at BETWEEN ? AND ?', date.beginning_of_day.utc, date.end_of_day.utc ).order('updated_at DESC') }
 
   def self.mood(score)
     I18n.translate("moods.#{MOODS[score.round]}")
@@ -37,6 +38,9 @@ class MoodUpdate < ActiveRecord::Base
     self.class.mood(mood_score)
   end
 
+  def date
+    updated_at.in_time_zone.beginning_of_day
+  end
 end
 
 

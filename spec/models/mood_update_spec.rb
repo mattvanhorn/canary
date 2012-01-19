@@ -28,6 +28,11 @@ describe MoodUpdate do
      MoodUpdate.new.should delegate(:user, :to => :membership)
   end
 
+  it "has a date that it was updated" do
+    mood_update = MoodUpdate.new(:updated_at => Time.parse('2012-01-02 18:00:00 PST'))
+    mood_update.date.should == Time.parse('2012-01-02 00:00:00 PST')
+  end
+
   describe "displaying mood in plain language" do
     let! (:mood_update){ MoodUpdate.new }
 

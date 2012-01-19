@@ -26,7 +26,7 @@ class MoodHistory
   def avg_mood_score_on(datetime)
     updates = self.on(datetime)
     if updates.any?
-      updates.map{|u|u.try(:mood_score)}.compact.sum/@user_ids.size.to_f
+      updates.map{|mood_update|mood_update.try(:mood_score)}.compact.sum/@user_ids.size.to_f
     else
       nil
     end
@@ -47,12 +47,7 @@ class MoodHistory
     populated = {}
     0.upto(total_days) do |num|
       key = (@today - num.days).in_time_zone
-      days_updates = raw_data[key]
-      if days_updates.present?
-        populated[key] = @user_ids.map{|uid| days_updates.select{|mu|mu.user.id == uid}.last }
-      else
-        populated[key] = [nil] * @user_ids.size
-      end
+      populated[key] = populate(key)
     end
     populated
   end
@@ -66,7 +61,18 @@ class MoodHistory
   end
 
   def raw_data
-    @raw_data ||= @project.mood_updates.includes(:membership).order('mood_updates.updated_at').group_by{|mu| mu.updated_at.in_time_zone.beginning_of_day }
+    @raw_data ||= MoodUpdate.for_project(@project).chronological.group_by{|mu| mu.date }
   end
 
+  def populate(date)
+    if raw_data[date].present?
+      return @user_ids.collect{|uid| populate_for_user_on_date(uid, date) }
+    end
+
+    return ([nil] * @user_ids.size)
+  end
+
+  def populate_for_user_on_date(uid, date)
+    raw_data[date].select{|mu|mu.user.id == uid}.last
+  end
 end

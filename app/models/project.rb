@@ -62,12 +62,21 @@ class Project < ActiveRecord::Base
   end
 
   def recent_mood_scores
-    most_recent_mood_updates.map{|mood_update|mood_update.mood_score}
+    @recent_mood_scores ||= most_recent_mood_updates.map{|mood_update|mood_update.mood_score}
+  end
+
+  def recent_moods_total
+    recent_mood_scores.sum.to_f
+  end
+
+  def recent_moods_count
+    recent_mood_scores.size
   end
 
   def average_mood_score
-    scores = recent_mood_scores
-    scores.sum.to_f / scores.size if scores.any?
+    if recent_mood_scores.any?
+      (recent_moods_total / recent_moods_count)
+    end
   end
 
   def mood
