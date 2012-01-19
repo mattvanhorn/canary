@@ -7,7 +7,6 @@ gem "sass"
 gem "haml-rails"
 gem "jquery-rails"
 gem "simple_form"
-gem "paperclip"
 gem 'decent_exposure', :git => 'git://github.com/mattvanhorn/decent_exposure'
 gem 'draper'
 gem 'omniauth-identity'

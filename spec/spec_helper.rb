@@ -7,7 +7,6 @@ Spork.prefork do
   require File.expand_path("../../config/environment", __FILE__)
   require 'rspec/rails'
   require 'rspec/autorun'
-  require 'paperclip/matchers'
   require 'nulldb_rspec'
   require "email_spec"
 
@@ -40,7 +39,6 @@ Spork.prefork do
     # rspec-rails.
     config.infer_base_class_for_anonymous_controllers = false
 
-    config.include Paperclip::Shoulda::Matchers
     config.include Custom::Shoulda::Matchers
     # config.include EmailSpec::Helpers
     # config.include EmailSpec::Matchers
